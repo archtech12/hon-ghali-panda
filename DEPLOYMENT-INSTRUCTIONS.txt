@@ -1,0 +1,31 @@
+DEPLOYMENT INSTRUCTIONS
+
+1. After creating your repository on GitHub:
+   - Copy the repository URL from GitHub
+
+2. Connect your local repository to GitHub:
+   cd "c:\Users\lenovo\Abdulkadir Rahis"
+   git remote add origin https://github.com/YOUR_USERNAME/ghalimustaphatijjani.git
+   git branch -M main
+   git push -u origin main
+
+3. Deploy to Vercel:
+   - Go to https://vercel.com
+   - Sign in with your GitHub account
+   - Click "New Project"
+   - Import your "ghalimustaphatijjani" repository
+   - In the environment variables section, add:
+     * MONGODB_URI = your MongoDB Atlas connection string
+     * JWT_SECRET = your JWT secret key
+   - Click "Deploy"
+
+4. After deployment is complete:
+   - Your frontend will be accessible at the Vercel URL
+   - Your backend API will be accessible at the same domain with /api/ endpoints
+
+Your project is ready for deployment with:
+- MongoDB Atlas properly configured
+- All necessary environment variables set
+- Clean Git repository
+- Proper .gitignore file
+- Working backend and frontend servers
