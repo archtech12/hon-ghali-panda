@@ -23,20 +23,13 @@ export default function AdminLogin() {
     setLoading(true);
     setError('');
 
-    // Trim whitespace from email and password
-    const trimmedEmail = email.trim();
-    const trimmedPassword = password.trim();
-
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          email: trimmedEmail, 
-          password: trimmedPassword 
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -49,7 +42,6 @@ export default function AdminLogin() {
         setError(data.message || 'Login failed');
       }
     } catch (err) {
-      console.error('Login error:', err);
       setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);

@@ -18,23 +18,11 @@ const getNews = async (req, res) => {
 // @access  Private
 const getAllNewsAdmin = async (req, res) => {
   try {
-    console.log('getAllNewsAdmin called');
-    console.log('User:', req.user);
-    
-    // Check if News model is properly loaded
-    if (!News) {
-      console.error('News model is not defined');
-      return res.status(500).json({ message: 'News model not loaded' });
-    }
-    
     const news = await News.find().sort({ createdAt: -1 });
-    console.log('News found:', news.length);
-    
     res.json(news);
   } catch (error) {
     console.error('Get all news error:', error);
-    console.error('Error stack:', error.stack);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    res.status(500).json({ message: 'Server error' });
   }
 };
 

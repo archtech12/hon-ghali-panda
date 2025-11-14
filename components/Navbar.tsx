@@ -36,9 +36,6 @@ export function Navbar() {
         <Link className="text-white hover:text-gold-400 text-sm font-medium transition-colors" href="/constituency">
           Constituency Services
         </Link>
-        <Link className="text-white hover:text-gold-400 text-sm font-medium transition-colors" href="/applications">
-          Applications
-        </Link>
         <Link className="text-white hover:text-gold-400 text-sm font-medium transition-colors" href="/projects">
           Projects
         </Link>
@@ -80,9 +77,6 @@ export function Navbar() {
             <Link className="text-white hover:text-gold-400 text-sm font-medium px-4 py-3 transition-colors" href="/constituency" onClick={closeMenu}>
               Constituency Services
             </Link>
-            <Link className="text-white hover:text-gold-400 text-sm font-medium px-4 py-3 transition-colors" href="/applications" onClick={closeMenu}>
-              Applications
-            </Link>
             <Link className="text-white hover:text-gold-400 text-sm font-medium px-4 py-3 transition-colors" href="/projects" onClick={closeMenu}>
               Projects
             </Link>
@@ -97,10 +91,6 @@ export function Navbar() {
             </Link>
             <Link className="text-white hover:text-gold-400 text-sm font-medium px-4 py-3 transition-colors" href="/contact" onClick={closeMenu}>
               Contact
-            </Link>
-            {/* Admin Link for Mobile Users */}
-            <Link className="text-white hover:text-gold-400 text-sm font-medium px-4 py-3 transition-colors bg-green-800/50" href="/admin" onClick={closeMenu}>
-              Admin Access
             </Link>
           </nav>
         </div>

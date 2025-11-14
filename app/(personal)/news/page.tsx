@@ -1,100 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-// Define the NewsItem type
-type NewsItem = {
-  _id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  imageUrl?: string;
-  category: string;
-  author: string;
-  published: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
 export default function NewsPage() {
-  const [newsItems, setNewsItems] = useState<NewsItem[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/news')
-        if (response.ok) {
-          const data = await response.json()
-          setNewsItems(data)
-        } else {
-          setError('Failed to fetch news items')
-        }
-      } catch (err) {
-        console.error('Fetch error:', err)
-        setError('An error occurred while fetching news items')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchNews()
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="w-full">
-        <section className="bg-green-900/90 dark:bg-green-900/95 py-12 sm:py-16 text-center text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter">Latest News & Updates</h1>
-            <p className="mt-4 text-base sm:text-lg text-green-100">Stay informed about the latest developments, initiatives, and community updates from Hon. Dr. Ghali Mustapha Tijjani Phanda's office.</p>
-          </div>
-        </section>
-        
-        <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-700"></div>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="w-full">
-        <section className="bg-green-900/90 dark:bg-green-900/95 py-12 sm:py-16 text-center text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter">Latest News & Updates</h1>
-            <p className="mt-4 text-base sm:text-lg text-green-100">Stay informed about the latest developments, initiatives, and community updates from Hon. Dr. Ghali Mustapha Tijjani Phanda's office.</p>
-          </div>
-        </section>
-        
-        <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-red-50 text-red-500 p-6 rounded-lg text-center">
-              <h3 className="text-lg font-medium mb-2">Error Loading News</h3>
-              <p>{error}</p>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
-  }
-
-  // Format date safely
-  const formatDate = (dateString: string) => {
-    try {
-      return new Date(dateString).toLocaleDateString()
-    } catch (e) {
-      return 'Unknown date'
-    }
-  }
-
   return (
     <div className="w-full">
       <section className="bg-green-900/90 dark:bg-green-900/95 py-12 sm:py-16 text-center text-white">
@@ -106,53 +14,74 @@ export default function NewsPage() {
       
       <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {newsItems.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsItems.map((news) => (
-                <div key={news._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
-                    {news.imageUrl ? (
-                      <img src={news.imageUrl} alt={news.title} className="w-full h-full object-cover" />
-                    ) : (
-                      <span className="material-symbols-outlined text-4xl text-gray-400">article</span>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
-                      <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
-                      <span>{formatDate(news.createdAt)}</span>
-                      <span className="inline-block px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
-                        {news.category}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{news.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {news.excerpt}
-                    </p>
-                    <Link href={`/news/${news._id}`} className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center">
-                      Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
-                    </Link>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* News items will be loaded dynamically from the API */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                <span className="material-symbols-outlined text-4xl text-gray-400">article</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
+                  <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
+                  <span>October 5, 2024</span>
+                  <span className="inline-block px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                    Community Engagement
+                  </span>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-auto">
-                <span className="material-symbols-outlined text-6xl text-gray-400 mb-4">article</span>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No News Available</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Dr Ghali Mustapha Tijjani Phanda's Recent Community Engagement</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  There are currently no news articles published. Please check back later for updates.
+                  Mai Fada Da Cikawa Muddin Yace Zaiyi To Babu Makawa Sai Yayi. Jiya Asabar Kenan 05/10/2024 Idda Dan Majalissa Mai Wakiltar Gaya Ajingi Albasu Ya Gwangwaje Shugabannin Matasa (Youth Leaders) Na Ko Wacce Mazaba Datake Gaya Ajingi Da Albasu.
                 </p>
-                <Link 
-                  href="/" 
-                  className="inline-flex items-center px-4 py-2 bg-green-700 text-white font-medium rounded-lg hover:bg-green-800 transition-colors"
-                >
-                  Return Home
+                <Link href="#" className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center">
+                  Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
                 </Link>
               </div>
             </div>
-          )}
+            
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                <span className="material-symbols-outlined text-4xl text-gray-400">groups</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
+                  <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
+                  <span>October 5, 2024</span>
+                  <span className="inline-block px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
+                    Political
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Political Dialogue with Youth Leaders</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  Option A.Da B.Pdp Nnpp Da Injinan Malkade Dan Karkari Domin Dogaro Da Kansu. Tabbas Dr Ghali Mustapha Tijjani Phanda Mutumin Kirki Ne Mai San Cigaban Al'umma Da Ayyukan Raya Kasa.
+                </p>
+                <Link href="#" className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center">
+                  Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                <span className="material-symbols-outlined text-4xl text-gray-400">volunteer_activism</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
+                  <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
+                  <span>October 2024</span>
+                  <span className="inline-block px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
+                    Social Welfare
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Continued Community Support Initiatives</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  Shine Yasa Ya Bude Bada Tallafi Ba Dare Ba Rana Tare Da Ayyukan Alkhairi Domin Amfanuwar Al'ummarsa. Dr Ghali Mustapha Tijjani Phanda Allah Ubangiji Ya Cigaba Da Taimaka Maka.
+                </p>
+                <Link href="#" className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center">
+                  Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
+                </Link>
+              </div>
+            </div>
+          </div>
           
           {/* YouTube Videos Section */}
           <div className="mt-16">

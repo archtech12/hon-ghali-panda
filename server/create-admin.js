@@ -26,11 +26,15 @@ const createAdminUser = async () => {
       await User.deleteOne({ email: 'admin@ghalipanda.gov.ng' });
     }
     
-    // Create new admin user (password will be hashed by the User model pre-save hook)
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('Admin123!', salt);
+    
+    // Create new admin user
     const adminUser = new User({
       name: 'Admin User',
       email: 'admin@ghalipanda.gov.ng',
-      password: 'Admin123!',
+      password: hashedPassword,
       role: 'admin'
     });
     

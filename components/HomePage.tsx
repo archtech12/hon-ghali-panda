@@ -3,8 +3,6 @@
 import {Header} from '@/components/Header'
 import {GhaliTimeline, timelineData} from '@/components/GhaliTimeline'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
 
 interface HomePageProps {
   data: any
@@ -13,85 +11,6 @@ interface HomePageProps {
 export function HomePage({data}: HomePageProps) {
   // Default to empty values if no data is provided
   const {title = "Dr. Ghali Mustapha Tijjani Phanda"} = data || {}
-  const [showAdminLink, setShowAdminLink] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Handle keyboard events for showing admin link
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Ctrl + Shift + A to show admin link
-      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-        setShowAdminLink(true);
-      }
-      // ESC to hide admin link
-      if (e.key === 'Escape') {
-        setShowAdminLink(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  // Simulate loading for demo purposes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="space-y-20">
-        {/* Hero Section Skeleton */}
-        <section className="relative bg-gradient-to-r from-green-800 to-green-600 text-white overflow-hidden">
-          <div className="container mx-auto px-4 md:px-8 py-20 md:py-32 relative z-10">
-            <div className="flex flex-col lg:flex-row items-center">
-              <div className="lg:w-1/2 mb-10 lg:mb-0">
-                <div className="h-16 bg-green-700/30 rounded mb-4 animate-pulse"></div>
-                <div className="h-8 bg-green-700/30 rounded mb-6 animate-pulse"></div>
-                <div className="space-y-3 mb-8">
-                  <div className="h-4 bg-green-700/30 rounded animate-pulse"></div>
-                  <div className="h-4 bg-green-700/30 rounded animate-pulse w-5/6"></div>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <div className="h-12 w-32 bg-green-700/30 rounded animate-pulse"></div>
-                  <div className="h-12 w-32 bg-green-700/30 rounded animate-pulse"></div>
-                </div>
-              </div>
-              <div className="lg:w-1/2 flex justify-center">
-                <div className="relative">
-                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-green-700/30 animate-pulse"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Dashboard Skeleton */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="text-center mb-12">
-              <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-4 animate-pulse"></div>
-              <div className="h-4 bg-gray-300 rounded w-96 mx-auto animate-pulse"></div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="bg-white p-6 rounded-xl shadow-lg">
-                  <div className="h-16 bg-gray-300 rounded-full mb-4 animate-pulse"></div>
-                  <div className="h-8 bg-gray-300 rounded mb-2 animate-pulse"></div>
-                  <div className="h-4 bg-gray-300 rounded animate-pulse"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-20">
@@ -117,26 +36,19 @@ export function HomePage({data}: HomePageProps) {
                 Official digital home showcasing leadership, philanthropy, and community transformation across Gaya, Ajingi, and Albasu.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="bg-white text-green-800 hover:bg-green-100 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                <button className="bg-white text-green-800 hover:bg-green-100 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
                   Connect With Me
-                </Link>
-                <Link href="/projects" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                </button>
+                <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
                   View My Work
-                </Link>
+                </button>
               </div>
             </div>
             <div className="lg:w-1/2 flex justify-center">
               <div className="relative">
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl">
-                  {/* Dr. Ghali's portrait with optimization */}
-                  <Image 
-                    src="/ghaliphoto.jpg" 
-                    alt="Dr. Ghali Mustapha Tijjani Phanda" 
-                    width={320} 
-                    height={320}
-                    className="w-full h-full object-cover"
-                    priority
-                  />
+                  {/* Dr. Ghali's portrait */}
+                  <img src="/ghaliphoto.jpg" alt="Dr. Ghali Mustapha Tijjani Phanda" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-gold-500 text-green-900 font-bold py-2 px-4 rounded-lg shadow-lg transform rotate-3">
                   15,000+ Beneficiaries Helped
@@ -148,19 +60,6 @@ export function HomePage({data}: HomePageProps) {
             </div>
           </div>
         </div>
-        
-        {/* Hidden Admin Link - Only visible when activated */}
-        {showAdminLink && (
-          <div className="absolute top-4 right-4">
-            <Link 
-              href="/admin" 
-              className="text-xs text-white/70 hover:text-white underline"
-              title="Admin Dashboard"
-            >
-              Admin Access
-            </Link>
-          </div>
-        )}
       </section>
 
       {/* Enhanced Impact Dashboard */}
@@ -219,14 +118,7 @@ export function HomePage({data}: HomePageProps) {
           <div className="flex flex-col lg:flex-row items-center gap-10">
             <div className="lg:w-1/3">
               <div className="rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105">
-                {/* Optimized image with Next.js Image component */}
-                <Image 
-                  src="/ghaliphoto.jpg" 
-                  alt="Dr. Ghali" 
-                  width={400} 
-                  height={320}
-                  className="w-full h-80 object-cover"
-                />
+                <img src="/ghaliphoto.jpg" alt="Dr. Ghali" className="w-full h-80 object-cover" />
               </div>
             </div>
             <div className="lg:w-2/3">

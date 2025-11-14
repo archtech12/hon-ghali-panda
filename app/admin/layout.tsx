@@ -12,7 +12,6 @@ export default function AdminLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(false);
 
   // Check if user is authenticated (except on login page)
   useEffect(() => {
@@ -21,16 +20,6 @@ export default function AdminLayout({
       router.push('/admin/login');
     }
   }, [router, pathname]);
-
-  // Add loading indicator for navigation
-  useEffect(() => {
-    const handleRouteChangeStart = () => setIsLoading(true);
-    const handleRouteChangeComplete = () => setIsLoading(false);
-    
-    // In a real app, you would use Next.js router events
-    // For now, we'll just simulate
-    setIsLoading(false);
-  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
@@ -44,13 +33,6 @@ export default function AdminLayout({
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Loading indicator */}
-      {isLoading && (
-        <div className="fixed top-0 left-0 right-0 z-50">
-          <div className="h-1 bg-green-600 animate-pulse"></div>
-        </div>
-      )}
-      
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-30 w-64 bg-green-800 text-white transition-transform duration-300 ease-in-out transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:inset-0`}>
         <div className="flex items-center justify-between p-4 border-b border-green-700">
@@ -102,21 +84,6 @@ export default function AdminLayout({
           <Link href="/admin/contact" className="flex items-center px-4 py-3 text-white hover:bg-green-700">
             <span className="material-symbols-outlined mr-3">contact_mail</span>
             <span>Contact</span>
-          </Link>
-          
-          <Link href="/admin/applications" className="flex items-center px-4 py-3 text-white hover:bg-green-700">
-            <span className="material-symbols-outlined mr-3">assignment</span>
-            <span>Applications</span>
-          </Link>
-          
-          <Link href="/admin/users" className="flex items-center px-4 py-3 text-white hover:bg-green-700">
-            <span className="material-symbols-outlined mr-3">group</span>
-            <span>User Management</span>
-          </Link>
-          
-          <Link href="/admin/change-password" className="flex items-center px-4 py-3 text-white hover:bg-green-700">
-            <span className="material-symbols-outlined mr-3">lock</span>
-            <span>Change Password</span>
           </Link>
         </nav>
       </div>

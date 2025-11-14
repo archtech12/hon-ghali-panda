@@ -1,7 +1,6 @@
 import '@/styles/index.css'
 import {Navbar} from '@/components/Navbar'
 import {Newsletter} from '@/components/Newsletter'
-import Link from 'next/link'
 
 export default function IndexRoute({children}: {children: React.ReactNode}) {
   return (
@@ -46,8 +45,6 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                   <li><a className="text-gray-300 hover:text-gold-400" href="/projects">Projects</a></li>
                   <li><a className="text-gray-300 hover:text-gold-400" href="/news">News</a></li>
                   <li><a className="text-gray-300 hover:text-gold-400" href="/sticker-generator">Sticker Generator</a></li>
-                  {/* Hidden admin link - only visible on hover */}
-                  <li><Link className="text-gray-300 hover:text-gold-400 text-xs" href="/admin" title="Admin Dashboard">Admin</Link></li>
                 </ul>
               </div>
             </div>

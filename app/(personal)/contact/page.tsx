@@ -1,19 +1,6 @@
 'use client'
 
 import {useState, useEffect} from 'react'
-import Link from 'next/link'
-
-interface ContactInfo {
-  phone: string;
-  email: string;
-  officeAddress: string;
-  officeHours: string;
-  socialMedia: {
-    facebook: string;
-    twitter: string;
-    instagram: string;
-  };
-}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -26,7 +13,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState('')
-  const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null)
+  const [contactInfo, setContactInfo] = useState(null)
 
   useEffect(() => {
     // In a real application, this would fetch from the API
@@ -41,7 +28,7 @@ export default function ContactPage() {
         twitter: "https://twitter.com/ghalipanda",
         instagram: "https://instagram.com/ghalipanda"
       }
-    } as ContactInfo)
+    })
   }, [])
 
   const handleChange = (e: any) => {
@@ -245,13 +232,6 @@ export default function ContactPage() {
                   <a href="#" className="bg-green-700 text-white p-3 rounded-full hover:bg-green-800 transition-colors">
                     <span className="material-symbols-outlined">share</span>
                   </a>
-                </div>
-                
-                {/* Hidden Admin Link - Visible on all devices now */}
-                <div className="mt-6 text-center">
-                  <Link href="/admin" className="text-xs text-gray-500 hover:text-green-700" title="Admin Dashboard">
-                    Administrator Access
-                  </Link>
                 </div>
               </div>
             </div>

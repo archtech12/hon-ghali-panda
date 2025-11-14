@@ -17,8 +17,6 @@ const legislativeRoutes = require('./routes/legislative');
 const contactRoutes = require('./routes/contact');
 const mediaRoutes = require('./routes/media');
 const uploadRoutes = require('./routes/upload');
-const applicationRoutes = require('./routes/applicationRoutes');
-const applicationSettingsRoutes = require('./routes/applicationSettingsRoutes');
 
 // Create Express app
 const app = express();
@@ -36,13 +34,34 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ghali-dashboard', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
+// Connect to MongoDB with fallback
+const connectDB = async () => {
+  try {
+    // Try to connect to MongoDB Atlas first
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB Atlas');
+  } catch (err) {
+    console.error('MongoDB Atlas connection error:', err.message);
+    console.log('Falling back to local MongoDB instance...');
+    
+    try {
+      // Fallback to local MongoDB
+      await mongoose.connect('mongodb://localhost:27017/ghali-dashboard', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log('Connected to local MongoDB');
+    } catch (localErr) {
+      console.error('Local MongoDB connection error:', localErr.message);
+      console.log('Starting server without database connection...');
+    }
+  }
+};
+
+connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -54,15 +73,17 @@ app.use('/api/legislative', legislativeRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/media', mediaRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use('/api/applications', applicationRoutes);
-app.use('/api/application-settings', applicationSettingsRoutes);
 
 // Serve static files from uploads directory
 app.use('/uploads', express.static('uploads'));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'OK', message: 'Ghali Dashboard API is running' });
+  res.status(200).json({ 
+    status: 'OK', 
+    message: 'Ghali Dashboard API is running',
+    database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
+  });
 });
 
 // Error handling middleware

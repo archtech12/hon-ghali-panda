@@ -12,15 +12,11 @@ const { protect, admin } = require('../middleware/auth');
 
 // Public routes
 router.route('/').get(getNews);
+router.route('/:id').get(getNewsById);
 
 // Private routes
 router.route('/admin').get(protect, admin, getAllNewsAdmin);
 router.route('/').post(protect, admin, createNews);
-
-// Public route for single news item (must be after /admin to avoid conflict)
-router.route('/:id').get(getNewsById);
-
-// Private routes for updating/deleting news
 router.route('/:id').put(protect, admin, updateNews).delete(protect, admin, deleteNews);
 
 module.exports = router;
