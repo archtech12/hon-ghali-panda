@@ -109,6 +109,28 @@ export default function AdminLayout({children}: {children: React.ReactNode}) {
             <span className="material-symbols-outlined mr-3">contact_mail</span>
             <span>Contact</span>
           </Link>
+
+          <div className="mt-4 pt-4 border-t border-green-700">
+            <div className="px-4 py-2 text-xs text-green-300 uppercase tracking-wider">
+              Settings
+            </div>
+
+            <Link
+              href="/admin/users"
+              className="flex items-center px-4 py-3 text-white hover:bg-green-700"
+            >
+              <span className="material-symbols-outlined mr-3">group</span>
+              <span>Users</span>
+            </Link>
+
+            <Link
+              href="/admin/change-password"
+              className="flex items-center px-4 py-3 text-white hover:bg-green-700"
+            >
+              <span className="material-symbols-outlined mr-3">lock</span>
+              <span>Change Password</span>
+            </Link>
+          </div>
         </nav>
       </div>
 
