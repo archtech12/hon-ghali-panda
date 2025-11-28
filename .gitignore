@@ -43,3 +43,8 @@ next-env.d.ts
 # server files
 server/uploads/
 data/
+
+# prototype/design files
+stich chat/
+app/assets/construction1.html
+public/assets/construction1.html
