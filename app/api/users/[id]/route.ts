@@ -29,11 +29,12 @@ const User = mongoose.models.User || mongoose.model('User', userSchema)
 // Delete user
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB()
-    await User.findByIdAndDelete(params.id)
+    const { id } = await params
+    await User.findByIdAndDelete(id)
     return NextResponse.json({ message: 'User deleted successfully' })
   } catch (error) {
     console.error('Error deleting user:', error)
