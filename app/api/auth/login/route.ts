@@ -1,31 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
-// Force dynamic rendering
 export const dynamic = 'force-dynamic'
-export const runtime = 'nodejs'
 
-// MongoDB connection
-let isConnected = false
+const MONGODB_URI = process.env.MONGODB_URI || ''
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret'
 
-async function connectDB() {
-  if (isConnected) return
-
-  try {
-    await mongoose.connect(process.env.MONGODB_URI || '', {
-      serverSelectionTimeoutMS: 10000,
-    })
-    isConnected = true
-    console.log('✅ MongoDB connected')
-  } catch (error) {
-    console.error('❌ MongoDB connection error:', error)
-    throw error
-  }
-}
-
-// User Schema (inline for serverless)
+// User Schema
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, required: true, unique: true },
@@ -35,12 +18,24 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.models.User || mongoose.model('User', userSchema)
 
-export async function POST(request: NextRequest) {
+// Connect to MongoDB
+async function connectDB() {
+  if (mongoose.connection.readyState >= 1) {
+    return
+  }
+  
+  return mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 10000,
+  })
+}
+
+export async function POST(request: Request) {
   try {
+    // Connect to database
     await connectDB()
 
-    const body = await request.json()
-    const { email, password } = body
+    // Parse request body
+    const { email, password } = await request.json()
 
     if (!email || !password) {
       return NextResponse.json(
@@ -59,27 +54,32 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check password
-    const isMatch = await bcrypt.compare(password, user.password)
+    // Verify password
+    const isValid = await bcrypt.compare(password, user.password)
     
-    if (!isMatch) {
+    if (!isValid) {
       return NextResponse.json(
         { message: 'Invalid credentials' },
         { status: 401 }
       )
     }
 
-    // Generate JWT
+    // Generate token
     const token = jwt.sign(
-      { userId: user._id, email: user.email, role: user.role },
-      process.env.JWT_SECRET || 'fallback-secret-key',
+      { 
+        userId: user._id.toString(), 
+        email: user.email, 
+        role: user.role 
+      },
+      JWT_SECRET,
       { expiresIn: '7d' }
     )
 
+    // Return success
     return NextResponse.json({
       token,
       user: {
-        id: user._id,
+        id: user._id.toString(),
         name: user.name,
         email: user.email,
         role: user.role,
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Login error:', error)
     return NextResponse.json(
-      { message: 'Server error' },
+      { message: 'Server error', error: String(error) },
       { status: 500 }
     )
   }
