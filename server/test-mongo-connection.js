@@ -14,7 +14,7 @@ const testConnection = async () => {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 10000, // 10 second timeout
+      serverSelectionTimeoutMS: 10000, // 10 second timeout 
     });
     
     console.log('✅ Successfully connected to MongoDB Atlas!');

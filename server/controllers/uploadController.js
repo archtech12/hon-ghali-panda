@@ -1,26 +1,33 @@
 const path = require('path');
 const fs = require('fs');
+const { uploadImage, cloudinaryEnabled } = require('../utils/cloudinary');
+
+// Helper function for delete
+const deleteImageUtil = async (publicId) => {
+  const { deleteImage } = require('../utils/cloudinary');
+  return await deleteImage(publicId);
+};
 
 // @desc    Upload image
 // @route   POST /api/upload
 // @access  Private
-const uploadImage = async (req, res) => {
+const uploadImageController = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    // Construct the URL for the uploaded file
-    const filePath = `/uploads/${req.file.filename}`;
+    // Upload to Cloudinary or local storage
+    const result = await uploadImage(req.file.path);
     
     res.status(201).json({
-      message: 'File uploaded successfully',
-      filePath: filePath,
-      fileName: req.file.filename
+      message: `File uploaded successfully ${cloudinaryEnabled ? 'to Cloudinary' : 'locally'}`,
+      imageUrl: result.secure_url,
+      publicId: result.public_id
     });
   } catch (error) {
     console.error('Upload error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error.message || 'Server error' });
   }
 };
 
@@ -30,12 +37,12 @@ const uploadImage = async (req, res) => {
 const deleteImage = async (req, res) => {
   try {
     const { filename } = req.params;
-    const filePath = path.join(__dirname, '../uploads', filename);
     
-    // Check if file exists
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-      res.json({ message: 'File deleted successfully' });
+    // Delete from Cloudinary or local storage
+    const deleted = await deleteImageUtil(filename);
+    
+    if (deleted) {
+      res.json({ message: `File deleted successfully ${cloudinaryEnabled ? 'from Cloudinary' : 'locally'}` });
     } else {
       res.status(404).json({ message: 'File not found' });
     }
@@ -46,6 +53,9 @@ const deleteImage = async (req, res) => {
 };
 
 module.exports = {
-  uploadImage,
+  uploadImage: uploadImageController,
   deleteImage
 };
+
+// Export helper for internal use
+module.exports.deleteImageUtil = deleteImageUtil;

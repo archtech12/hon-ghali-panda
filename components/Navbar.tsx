@@ -23,7 +23,7 @@ export function Navbar() {
           </svg>
         </div>
         <h2 className="text-white text-base sm:text-lg lg:text-xl font-bold tracking-tight">
-          Hon. Ghali Panda
+          Hon. Suleiman Kwari
         </h2>
       </div>
 

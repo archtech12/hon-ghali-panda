@@ -26,7 +26,7 @@ export default function StickerGenerator() {
   const [showQR, setShowQR] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
   const [watermark, setWatermark] = useState(true)
-  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhali2027')
+  const [campaignHashtag, setCampaignHashtag] = useState('#TeamKwariLegacy')
   const [stats, setStats] = useState<StickerStats>({totalGenerated: 0, lastGenerated: null})
   const [showBatchMode, setShowBatchMode] = useState(false)
   const [batchCount, setBatchCount] = useState(1)
@@ -100,28 +100,28 @@ export default function StickerGenerator() {
 
   const messages = {
     en: [
-      'Together We Rise 2027! 🚀',
-      'Vote for Progress & Development',
+      'Legacy of Service! 🚀',
+      'Celebrating A Visionary Leader',
       'Building a Better Tomorrow',
-      'Leadership That Delivers',
+      'Leadership That Delivered',
       'Empowering Our Community',
-      'Your Voice, Our Future',
+      'Honoring Our Hero',
     ],
     ha: [
-      'Tare Mun Tashi 2027! 🚀',
-      'Zaɓi Ci Gaba',
+      'Gado na Aiki Tukuru! 🚀',
+      'Muna Murnar Shugaba Nagari',
       'Gina Gobe Mai Kyau',
       'Jagoranci Mai Aiki',
       "Ƙarfafa Al'ummarmu",
-      'Muryarku, Makomarmu',
+      'Girmama Gwarzonmu',
     ],
     ar: [
-      'معاً نرتقي 2027! 🚀',
-      'صوت للتقدم والتنمية',
+      'إرث الخدمة! 🚀',
+      'نحتفل بقائد صاحب رؤية',
       'بناء غد أفضل',
-      'قيادة تحقق الإنجاز',
+      'قيادة حققت الإنجاز',
       'تمكين مجتمعنا',
-      'صوتك، مستقبلنا',
+      'تكريم بطلنا',
     ],
   }
 
@@ -156,24 +156,24 @@ export default function StickerGenerator() {
           // Share API for mobile
           if (navigator.share) {
             const blob = await (await fetch(image)).blob()
-            const file = new File([blob], 'ghali-supporter-sticker.png', {type: 'image/png'})
+            const file = new File([blob], 'kwari-supporter-sticker.png', {type: 'image/png'})
             await navigator.share({
-              title: 'I Support Hon. Dr. Ghali!',
-              text: `Proud supporter of Hon. Dr. Ghali Mustapha Tijjani Phanda - ${customMessage || 'Together We Rise 2027!'} ${campaignHashtag}`,
+              title: 'I Honor the Legacy of Sen. Kwari!',
+              text: `Celebrating the legacy of Hon. Suleiman Abdu Kwari - ${customMessage || 'Legacy of Service!'} ${campaignHashtag}`,
               files: [file],
             })
           } else {
             // Fallback to download
             const link = document.createElement('a')
             link.href = image
-            link.download = `ghali-supporter-${template}-${Date.now()}.png`
+            link.download = `kwari-supporter-${template}-${Date.now()}.png`
             link.click()
           }
         } else {
           // Regular download
           const link = document.createElement('a')
           link.href = image
-          link.download = `ghali-${supporterName.replace(/\s+/g, '-')}-${template}-${Date.now()}.png`
+          link.download = `kwari-${supporterName.replace(/\s+/g, '-')}-${template}-${Date.now()}.png`
           link.click()
         }
 
@@ -232,8 +232,7 @@ export default function StickerGenerator() {
             Create Your Support Sticker
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Design professional campaign stickers in seconds! Customize, download, and share your
-            support for Hon. Dr. Ghali
+            Design professional stickers in seconds! Customize, download, and share your recognition for Hon. Suleiman Kwari
           </p>
         </div>
 
@@ -269,7 +268,7 @@ export default function StickerGenerator() {
                     type="text"
                     value={customMessage}
                     onChange={(e) => setCustomMessage(e.target.value)}
-                    placeholder="e.g., Vote for Progress!"
+                    placeholder="e.g., A Legacy of Service!"
                     maxLength={40}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                   />
@@ -513,8 +512,8 @@ export default function StickerGenerator() {
                       {/* Candidate Photo - Full Body/Face Focus */}
                       <div className="absolute inset-0 z-0">
                          <img
-                          src="/ghaliphoto.jpg"
-                          alt="Hon. Dr. Ghali"
+                          src="/suleiman-portrait.jpg"
+                          alt="Hon. Suleiman Kwari"
                           className="w-full h-full object-cover"
                           style={{ 
                             objectPosition: 'center top', // Focus on head/shoulders
@@ -529,13 +528,13 @@ export default function StickerGenerator() {
                       {/* Candidate Text Overlay - Moved to Bottom to avoid face overlap */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-20">
                         <h1 className="text-white font-black text-2xl leading-tight drop-shadow-xl uppercase font-sans tracking-tight">
-                          Hon. Dr.<br/>
-                          <span className="text-3xl text-yellow-400">Ghali Mustapha</span><br/>
-                          Tijjani Phanda
+                          Hon.<br/>
+                          <span className="text-3xl text-yellow-400">Suleiman</span><br/>
+                          Abdu Kwari
                         </h1>
                         <div className="h-1 w-20 bg-yellow-500 mt-2 mb-2 rounded-full"></div>
                         <p className="text-yellow-200 font-bold text-[10px] uppercase tracking-wider drop-shadow-md">
-                          NNPP • Gaya/Ajingi/Albasu<br/>Federal Constituency
+                          APC • Kaduna North Senatorial District
                         </p>
                       </div>
                     </div>
@@ -587,9 +586,8 @@ export default function StickerGenerator() {
                           </h2>
                         ) : (
                           <h2 className="text-white font-black text-xl uppercase leading-none drop-shadow-lg">
-                            Together<br/>
-                            <span className="text-yellow-400 text-2xl">We Rise</span><br/>
-                            2027
+                            Legacy<br/>
+                            <span className="text-yellow-400 text-2xl">Of Service</span><br/>
                           </h2>
                         )}
                          <div className="flex items-center justify-center gap-2 mt-1">
@@ -605,7 +603,7 @@ export default function StickerGenerator() {
                   <div className="h-14 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 flex items-center justify-center shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-20 relative border-t-2 border-yellow-200">
                     <div className="flex items-center gap-2 px-4">
                       <span className="text-black font-black text-xl tracking-widest uppercase text-center whitespace-nowrap">
-                        2027 • Together We Rise
+                        Legacy of Service • Kaduna North
                       </span>
                       <span className="text-2xl filter drop-shadow-sm">🚀</span>
                     </div>

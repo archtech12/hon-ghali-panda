@@ -153,29 +153,29 @@ export const timelineData: TimelineItem[] = [
   {
     id: 1,
     title: "Early Life & Education",
-    description: "Born in Gaya, Kano State. Pursued higher education with a focus on public service and community development.",
-    date: "1990 - 2005",
+    description: "Born on June 12, 1962. Pursued academic excellence and built a strong foundation in finance and administration.",
+    date: "1962 - 1990",
     category: "personal"
   },
   {
     id: 2,
-    title: "Beginning of Public Service",
-    description: "Started community development initiatives in local communities, focusing on education and healthcare access.",
-    date: "2005 - 2010",
-    category: "philanthropic"
+    title: "Commissioner of Finance",
+    description: "Served as the Commissioner of Finance for Kaduna State, overseeing fiscal reforms and sustainable budget implementation.",
+    date: "2015 - 2018",
+    category: "political"
   },
   {
     id: 3,
-    title: "Leadership Role",
-    description: "Elected to a prominent leadership position, enabling broader impact across multiple communities.",
-    date: "2010 - Present",
+    title: "House of Representatives",
+    description: "Represented Sabon Gari Federal Constituency, championing bills for education and rural development.",
+    date: "2011 - 2015",
     category: "political"
   },
   {
     id: 4,
-    title: "Major Philanthropic Initiative",
-    description: "Launched a comprehensive program to support education and healthcare in underserved communities.",
-    date: "2015 - Present",
-    category: "philanthropic"
+    title: "Senator, Kaduna North",
+    description: "Elected Senator for Kaduna North District. Delivered 60+ projects regarding health, water, and infrastructure.",
+    date: "2019 - 2023",
+    category: "political"
   }
 ]

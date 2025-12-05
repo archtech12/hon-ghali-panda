@@ -1,9 +1,8 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import {getAboutContent} from '../../../services/api'
 
 interface AboutData {
   title: string
@@ -11,49 +10,23 @@ interface AboutData {
 }
 
 export default function AboutPage() {
-  const [aboutData, setAboutData] = useState<AboutData | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchAboutData = async () => {
-      try {
-        const data = await getAboutContent()
-        setAboutData(data)
-      } catch (error) {
-        console.error('Failed to fetch about data:', error)
-        // Fallback to hardcoded data if API fails
-        setAboutData({
-          title: 'About Hon. Dr. Ghali Mustapha Tijjani Phanda',
-          content: `<p>Dr. Ghali Mustapha Tijjani was born on June 13, 1980, in Kano State, Nigeria. A dedicated advocate for community development and participatory leadership, Dr. Ghali entered national public service in 2023 when he was elected to represent the Ajingi / Albasu / Gaya Federal Constituency in the House of Representatives on the platform of the New Nigeria Peoples Party (NNPP).</p>
-                  <p>His tenure is anchored in empowering youth, women, and families across his constituency—delivering vital support such as food aid, education infrastructure, and economic-opportunity programmes. With a strong commitment to transparent access and service, Dr. Ghali brings scholastic insight (including doctoral level study) together with boots-on-the-ground community engagement to fulfil his vision of leadership "by the people, for the people."</p>
-                  <p>Off the chamber floor, Dr. Ghali believes in harnessing the power of collective effort: his work builds on family values, indigenous heritage and the aspiration of a better future for Kano's communities. His story is one of service, integrity and hope.</p>`,
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchAboutData()
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="w-full py-16 text-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-700"></div>
-        <p className="mt-4 text-gray-600">Loading...</p>
-      </div>
-    )
+  const aboutData: AboutData = {
+    title: 'About Hon. Suleiman Abdu Kwari',
+    content: `<p>Born on June 12, 1962, Hon. Suleiman Abdu Kwari is a visionary leader and finance expert who has dedicated his life to public service. A former Senator representing Kaduna North Senatorial District (2019–2023), he has left an indelible mark on the landscape of Kaduna State.</p>
+            <p>Before his tenure in the Senate, Hon. Suleiman served as the Commissioner of Finance for Kaduna State, where he spearheaded critical fiscal reforms that placed the state on a path of sustainable economic growth. He also served as a Member of the House of Representatives (2011–2015), representing Sabon Gari Federal Constituency.</p>
+            <p>His legislative agenda has always been people-centric, focusing on education, healthcare, and infrastructure. As a Senator, he championed numerous bills aimed at anti-corruption and financial transparency, earning him a reputation as a crusader for integrity in governance. His legacy is defined by over 60 completed projects and direct impact on over 50,000 lives across his constituency.</p>`,
   }
+  const loading = false
 
   return (
     <div className="w-full">
       <section className="bg-green-900/90 dark:bg-green-900/95 py-12 sm:py-16 text-center text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter">
-            {aboutData?.title || 'About Hon. Dr. Ghali Mustapha Tijjani Phanda'}
+            {aboutData?.title || 'About Hon. Suleiman Abdu Kwari'}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
-            Dedicated advocate for community development and participatory leadership
+            Dedicated advocate for community development and fiscal responsibility
           </p>
         </div>
       </section>
@@ -74,20 +47,20 @@ export default function AboutPage() {
                 Core Values
               </h3>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Integrity in all actions and decisions</li>
-                <li>Transparency in governance and operations</li>
-                <li>Accountability to constituents and stakeholders</li>
-                <li>Equity in resource distribution and opportunity creation</li>
-                <li>Sustainability in development initiatives</li>
-                <li>Community empowerment through participatory leadership</li>
+                <li>integrity in public finance</li>
+                <li>Transparency in governance</li>
+                <li>Accountability to the people</li>
+                <li>Equity in development distribution</li>
+                <li>Education as a pillar of growth</li>
+                <li>Community-first approach to legislation</li>
               </ul>
             </div>
             <div className="lg:col-span-1">
               <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sticky top-24">
                 <div className="mb-4 relative w-full h-64">
                   <Image
-                    src="/ghaliphoto.jpg"
-                    alt="Hon. Dr. Ghali Mustapha Tijjani Phanda"
+                    src="/suleiman-portrait.jpg"
+                    alt="Hon. Suleiman Abdu Kwari"
                     fill
                     className="object-cover rounded-lg"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -101,7 +74,7 @@ export default function AboutPage() {
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">badge</span>
                     <span>
-                      <strong>Position:</strong> Representative, House of Representatives
+                      <strong>Former Role:</strong> Senator, Kaduna North
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -109,7 +82,7 @@ export default function AboutPage() {
                       location_on
                     </span>
                     <span>
-                      <strong>Constituency:</strong> Ajingi / Albasu / Gaya Federal Constituency
+                      <strong>Constituency:</strong> Kaduna North Senatorial District
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -117,25 +90,25 @@ export default function AboutPage() {
                       calendar_today
                     </span>
                     <span>
-                      <strong>Years of Service:</strong> 2023 - Present
+                      <strong>Years of Service:</strong> 2019 - 2023
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">groups</span>
                     <span>
-                      <strong>Party:</strong> New Nigeria Peoples Party (NNPP)
+                      <strong>Affiliation:</strong> APC (Former)
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">cake</span>
                     <span>
-                      <strong>Born:</strong> June 13, 1980
+                      <strong>Born:</strong> June 12, 1962
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">school</span>
                     <span>
-                      <strong>Education:</strong> Doctoral Level Study
+                      <strong>Expertise:</strong> Finance & Public Administration
                     </span>
                   </li>
                 </ul>

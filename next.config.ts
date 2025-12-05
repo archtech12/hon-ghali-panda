@@ -1,9 +1,13 @@
-import {NextConfig} from 'next'
+import { NextConfig } from 'next'
 
 const config: NextConfig = {
   reactCompiler: true,
   images: {
-    remotePatterns: [{hostname: 'cdn.sanity.io'}],
+    remotePatterns: [
+      { hostname: 'cdn.sanity.io' },
+      { hostname: 'localhost', port: '5000', protocol: 'http' },
+      { hostname: '127.0.0.1', port: '5000', protocol: 'http' }
+    ],
   },
   logging: {
     fetches: {

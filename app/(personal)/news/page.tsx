@@ -1,10 +1,9 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+import { news } from '@/lib/news'
 
 interface NewsItem {
   _id: string
@@ -15,27 +14,13 @@ interface NewsItem {
   publishDate: string
 }
 
+
 export default function NewsPage() {
-  const [news, setNews] = useState<NewsItem[]>([])
-  const [loading, setLoading] = useState(true)
+  // Use static data directly
+  // const [news, setNews] = useState<NewsItem[]>([])
+  const loading = false
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/news`)
-        if (response.ok) {
-          const data = await response.json()
-          setNews(data)
-        }
-      } catch (error) {
-        console.error('Failed to fetch news:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchNews()
-  }, [])
+  // useEffect removed as we are using static data
 
   const getCategoryColor = (category: string) => {
     const colors: {[key: string]: string} = {
@@ -62,7 +47,7 @@ export default function NewsPage() {
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
             Stay informed about the latest developments, initiatives, and community updates from
-            Hon. Dr. Ghali Mustapha Tijjani Phanda's office.
+            Hon. Suleiman Kwari's office.
           </p>
         </div>
       </section>
@@ -97,21 +82,29 @@ export default function NewsPage() {
                       />
                     ) : (
                       <div className="h-full flex items-center justify-center">
-                        <span className="material-symbols-outlined text-4xl text-gray-400">article</span>
+                        <span className="material-symbols-outlined text-4xl text-gray-400">
+                          article
+                        </span>
                       </div>
                     )}
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
                       <span className="flex items-center">
-                        <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
+                        <span className="material-symbols-outlined text-gold-400 mr-2">
+                          calendar_today
+                        </span>
                         {formatDate(article.publishDate)}
                       </span>
-                      <span className={`inline-block px-2 py-1 rounded-full text-xs ${getCategoryColor(article.category)}`}>
+                      <span
+                        className={`inline-block px-2 py-1 rounded-full text-xs ${getCategoryColor(article.category)}`}
+                      >
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{article.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                      {article.title}
+                    </h3>
                     <div
                       className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3"
                       dangerouslySetInnerHTML={{__html: article.content}}
@@ -120,21 +113,22 @@ export default function NewsPage() {
                       href={`/news/${article._id}`}
                       className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center"
                     >
-                      Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
+                      Read More{' '}
+                      <span className="material-symbols-outlined ml-1">arrow_forward</span>
                     </Link>
                   </div>
                 </div>
               ))}
             </div>
           )}
-          
+
           {/* YouTube Videos Section */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">
               Featured Videos
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-              Watch highlights and coverage of Dr. Ghali's work and political journey
+              Watch highlights and coverage of Hon. Suleiman Kwari's work and political journey
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -149,8 +143,7 @@ export default function NewsPage() {
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-white font-bold text-lg drop-shadow-lg line-clamp-2">
-                      NNPP Reps member from Kano Ghali Mustapha should be commend not castigated, he
-                      is a bravo
+                      Senate Committee on Finance: Reviewing Fiscal Policy with Hon. Suleiman Kwari
                     </h3>
                   </div>
                 </div>
@@ -162,12 +155,10 @@ export default function NewsPage() {
                     <span>Sep 22, 2025</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
-                    NNPP Reps member from Kano Ghali Mustapha should be commend not castigated, he
-                    is a bravo
+                     Senate Committee on Finance: Reviewing Fiscal Policy with Hon. Suleiman Kwari
                   </h3>
                   <Link
-                    href="https://youtu.be/ylpWeBsQkbA?si=YiZFyO2DiXOhReES"
-                    target="_blank"
+                    href="#"
                     className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-800 dark:hover:text-red-300 transition-colors"
                   >
                     Watch on YouTube
@@ -187,8 +178,7 @@ export default function NewsPage() {
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-white font-bold text-lg drop-shadow-lg line-clamp-2">
-                      Brief look at Ghali Mustapha Tijjani, member of New Nigeria Peoples Party
-                      (NNPP)
+                      Empowering Kaduna North: Scholarship Distribution Ceremony
                     </h3>
                   </div>
                 </div>
@@ -200,11 +190,10 @@ export default function NewsPage() {
                     <span>Sep 22, 2025</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
-                    Brief look at Ghali Mustapha Tijjani, member of New Nigeria Peoples Party (NNPP)
+                    Empowering Kaduna North: Scholarship Distribution Ceremony
                   </h3>
                   <Link
-                    href="https://youtu.be/Ze8oumMdqDc?si=aL971vR421ak0bni"
-                    target="_blank"
+                    href="#"
                     className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-800 dark:hover:text-red-300 transition-colors"
                   >
                     Watch on YouTube

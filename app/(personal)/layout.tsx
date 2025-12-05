@@ -26,11 +26,11 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                     </svg>
                   </div>
                   <h2 className="text-white text-lg sm:text-xl font-bold tracking-tight">
-                    Hon. Ghali Panda
+                    Hon. Suleiman Kwari
                   </h2>
                 </div>
                 <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
-                  Representing the great people with dedication, integrity, and tireless service.
+                  Representing the people of Kaduna North with dedication, integrity, and tireless service.
                 </p>
               </div>
               <div>
@@ -38,8 +38,8 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                   Office Address
                 </h3>
                 <ul className="mt-4 space-y-2 text-sm sm:text-base text-gray-300" role="list">
-                  <li>National Assembly Complex</li>
-                  <li>Three Arms Zone, Abuja</li>
+                  <li>Constituency Office</li>
+                  <li>Kaduna North, Kaduna State</li>
                   <li>Nigeria</li>
                 </ul>
               </div>
@@ -58,9 +58,9 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                     <span className="material-symbols-outlined text-gold-400 text-lg">mail</span>
                     <a
                       className="hover:text-gold-400 transition-colors"
-                      href="mailto:office@ghalipanda.gov.ng"
+                      href="mailto:contact@suleimankwari.com"
                     >
-                      office@ghalipanda.gov.ng
+                      contact@suleimankwari.com
                     </a>
                   </li>
                 </ul>
@@ -164,7 +164,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                 </a>
               </div>
               <p className="text-sm sm:text-base text-gray-400 text-center sm:text-left">
-                © 2024 Hon. Dr. Ghali Mustapha Tijjani Phanda. All rights reserved.
+                © 2024 Hon. Suleiman Abdu Kwari. All rights reserved.
               </p>
             </div>
           </div>
