@@ -19,6 +19,10 @@ const projectSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  videoEmbedLink: {
+    type: String,
+    trim: true
+  },
   status: {
     type: String,
     required: true,

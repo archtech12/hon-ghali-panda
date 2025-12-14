@@ -97,21 +97,29 @@ export default function NewsPage() {
                       />
                     ) : (
                       <div className="h-full flex items-center justify-center">
-                        <span className="material-symbols-outlined text-4xl text-gray-400">article</span>
+                        <span className="material-symbols-outlined text-4xl text-gray-400">
+                          article
+                        </span>
                       </div>
                     )}
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
                       <span className="flex items-center">
-                        <span className="material-symbols-outlined text-gold-400 mr-2">calendar_today</span>
+                        <span className="material-symbols-outlined text-gold-400 mr-2">
+                          calendar_today
+                        </span>
                         {formatDate(article.publishDate)}
                       </span>
-                      <span className={`inline-block px-2 py-1 rounded-full text-xs ${getCategoryColor(article.category)}`}>
+                      <span
+                        className={`inline-block px-2 py-1 rounded-full text-xs ${getCategoryColor(article.category)}`}
+                      >
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{article.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                      {article.title}
+                    </h3>
                     <div
                       className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3"
                       dangerouslySetInnerHTML={{__html: article.content}}
@@ -120,14 +128,15 @@ export default function NewsPage() {
                       href={`/news/${article._id}`}
                       className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center"
                     >
-                      Read More <span className="material-symbols-outlined ml-1">arrow_forward</span>
+                      Read More{' '}
+                      <span className="material-symbols-outlined ml-1">arrow_forward</span>
                     </Link>
                   </div>
                 </div>
               ))}
             </div>
           )}
-          
+
           {/* YouTube Videos Section */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">

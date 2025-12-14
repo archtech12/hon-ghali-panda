@@ -1,21 +1,11 @@
 const mongoose = require('mongoose');
 const Project = require('./models/Project');
-
-// Load environment variables
 require('dotenv').config();
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ghali-dashboard', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
 
 const sampleProjects = [
   {
     title: "Community School Construction",
-    description: "Building a new community school to provide quality education for local children. This project includes construction of classrooms, library, and playground facilities.",
+    description: "Building a new community school to provide quality education for local children.",
     category: "Education",
     status: "Ongoing",
     year: "2024",
@@ -23,7 +13,7 @@ const sampleProjects = [
   },
   {
     title: "Rural Healthcare Initiative",
-    description: "Establishing healthcare facilities in rural areas to improve access to medical services for underserved communities.",
+    description: "Establishing healthcare facilities in rural areas to improve access to medical services.",
     category: "Healthcare",
     status: "Planned",
     year: "2025",
@@ -31,7 +21,7 @@ const sampleProjects = [
   },
   {
     title: "Road Infrastructure Development",
-    description: "Construction and rehabilitation of roads to improve transportation and connectivity in the constituency.",
+    description: "Construction and rehabilitation of roads to improve transportation and connectivity.",
     category: "Infrastructure",
     status: "Completed",
     year: "2023",
@@ -39,16 +29,21 @@ const sampleProjects = [
   }
 ];
 
-const seedProjects = async () => {
+const seed = async () => {
   try {
-    // Clear existing projects
+    const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ghali-dashboard';
+    console.log('Connecting to:', uri.replace(/:([^:@]+)@/, ':****@'));
+
+    await mongoose.connect(uri);
+    console.log('Connected to MongoDB');
+
     await Project.deleteMany();
     console.log('Cleared existing projects');
-    
-    // Insert sample projects
+
     const createdProjects = await Project.insertMany(sampleProjects);
     console.log(`Created ${createdProjects.length} sample projects`);
-    
+
+    await mongoose.connection.close();
     process.exit(0);
   } catch (error) {
     console.error('Error seeding projects:', error);
@@ -56,5 +51,4 @@ const seedProjects = async () => {
   }
 };
 
-// Run seed after a short delay to ensure DB connection
-setTimeout(seedProjects, 2000);
+seed();

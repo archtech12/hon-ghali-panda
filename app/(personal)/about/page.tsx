@@ -24,7 +24,7 @@ export default function AboutPage() {
         // Fallback to hardcoded data if API fails
         setAboutData({
           title: 'About Hon. Dr. Ghali Mustapha Tijjani Phanda',
-          content: `<p>Dr. Ghali Mustapha Tijjani was born on June 13, 1980, in Kano State, Nigeria. A dedicated advocate for community development and participatory leadership, Dr. Ghali entered national public service in 2023 when he was elected to represent the Ajingi / Albasu / Gaya Federal Constituency in the House of Representatives on the platform of the New Nigeria Peoples Party (NNPP).</p>
+          content: `<p>Dr. Ghali Mustapha Tijjani was born on June 13, 1978, in Albasu Phanda, Kano State. A dedicated advocate for community development and participatory leadership, Dr. Ghali entered national public service in 2023 when he was elected to represent the Ajingi / Albasu / Gaya Federal Constituency in the House of Representatives on the platform of the New Nigeria Peoples Party (NNPP).</p>
                   <p>His tenure is anchored in empowering youth, women, and families across his constituency—delivering vital support such as food aid, education infrastructure, and economic-opportunity programmes. With a strong commitment to transparent access and service, Dr. Ghali brings scholastic insight (including doctoral level study) together with boots-on-the-ground community engagement to fulfil his vision of leadership "by the people, for the people."</p>
                   <p>Off the chamber floor, Dr. Ghali believes in harnessing the power of collective effort: his work builds on family values, indigenous heritage and the aspiration of a better future for Kano's communities. His story is one of service, integrity and hope.</p>`,
         })
@@ -129,7 +129,7 @@ export default function AboutPage() {
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">cake</span>
                     <span>
-                      <strong>Born:</strong> June 13, 1980
+                      <strong>Born:</strong> June 13, 1978
                     </span>
                   </li>
                   <li className="flex items-start">

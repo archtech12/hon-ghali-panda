@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const mongoose = require('mongoose');
 
 // Generate JWT Token
 const generateToken = (userId) => {
@@ -13,6 +14,14 @@ const generateToken = (userId) => {
 // @access  Public
 const registerUser = async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({ 
+        message: 'Database connection unavailable', 
+        error: 'Service temporarily unavailable due to database connection issues' 
+      });
+    }
+    
     const { name, email, password } = req.body;
 
     // Check if user already exists
@@ -51,6 +60,14 @@ const registerUser = async (req, res) => {
 // @access  Public
 const loginUser = async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({ 
+        message: 'Database connection unavailable', 
+        error: 'Service temporarily unavailable due to database connection issues' 
+      });
+    }
+    
     const { email, password } = req.body;
 
     // Find user by email
@@ -78,6 +95,14 @@ const loginUser = async (req, res) => {
 // @access  Private
 const getUserProfile = async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({ 
+        message: 'Database connection unavailable', 
+        error: 'Service temporarily unavailable due to database connection issues' 
+      });
+    }
+    
     const user = await User.findById(req.user._id).select('-password');
     res.json(user);
   } catch (error) {

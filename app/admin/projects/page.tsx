@@ -11,6 +11,7 @@ interface Project {
   description: string
   category: string
   imageUrl?: string
+  videoEmbedLink?: string
   status: string
   year: string
   priority: number
@@ -27,6 +28,9 @@ export default function ProjectsManager() {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('Education')
   const [imageUrl, setImageUrl] = useState('')
+  const [videoEmbedLink, setVideoEmbedLink] = useState('')
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [status, setStatus] = useState('Planned')
   const [year, setYear] = useState(new Date().getFullYear().toString())
   const [priority, setPriority] = useState(0)
@@ -62,10 +66,54 @@ export default function ProjectsManager() {
     fetchProjects()
   }, [])
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0]
+      setImageFile(file)
+
+      // Create preview
+      const reader = new FileReader()
+      reader.onload = (event) => {
+        if (event.target?.result) {
+          setImagePreview(event.target.result as string)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const uploadImageToCloudinary = async (file: File): Promise<string> => {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const token = localStorage.getItem('adminToken')
+    const response = await fetch(`${API_URL}/api/upload`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.message || 'Failed to upload image')
+    }
+
+    const data = await response.json()
+    return data.imageUrl
+  }
+
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault()
 
     try {
+      // Upload image to Cloudinary if file is selected
+      let finalImageUrl = imageUrl
+      if (imageFile) {
+        finalImageUrl = await uploadImageToCloudinary(imageFile)
+      }
+
       const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/api/projects`, {
         method: 'POST',
@@ -77,7 +125,8 @@ export default function ProjectsManager() {
           title,
           description,
           category,
-          imageUrl,
+          imageUrl: finalImageUrl,
+          videoEmbedLink,
           status,
           year,
           priority: priority,
@@ -93,8 +142,8 @@ export default function ProjectsManager() {
         const data = await response.json()
         setError(data.message || 'Failed to create project')
       }
-    } catch (err) {
-      setError('An error occurred. Please try again.')
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.')
     }
   }
 
@@ -104,6 +153,13 @@ export default function ProjectsManager() {
     if (!editingProject) return
 
     try {
+      // Upload image to Cloudinary if a new file is selected
+      // Otherwise, keep the existing image URL
+      let finalImageUrl = imageUrl
+      if (imageFile) {
+        finalImageUrl = await uploadImageToCloudinary(imageFile)
+      }
+
       const token = localStorage.getItem('adminToken')
       const response = await fetch(`${API_URL}/api/projects/${editingProject._id}`, {
         method: 'PUT',
@@ -115,7 +171,8 @@ export default function ProjectsManager() {
           title,
           description,
           category,
-          imageUrl,
+          imageUrl: finalImageUrl,
+          videoEmbedLink,
           status,
           year,
           priority: priority,
@@ -125,15 +182,15 @@ export default function ProjectsManager() {
       if (response.ok) {
         const updatedProject = await response.json()
         setProjects(projects.map((p) => (p._id === updatedProject._id ? updatedProject : p)))
-        resetForm()
         setEditingProject(null)
         setShowForm(false)
+        resetForm()
       } else {
         const data = await response.json()
         setError(data.message || 'Failed to update project')
       }
-    } catch (err) {
-      setError('An error occurred. Please try again.')
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.')
     }
   }
 
@@ -165,6 +222,9 @@ export default function ProjectsManager() {
     setDescription('')
     setCategory('Education')
     setImageUrl('')
+    setVideoEmbedLink('')
+    setImageFile(null)
+    setImagePreview(null)
     setStatus('Planned')
     setYear(new Date().getFullYear().toString())
     setPriority(0)
@@ -176,6 +236,10 @@ export default function ProjectsManager() {
     setDescription(project.description)
     setCategory(project.category)
     setImageUrl(project.imageUrl || '')
+    setVideoEmbedLink(project.videoEmbedLink || '')
+    setImageFile(null)
+    // Only show preview if there's an existing image URL
+    setImagePreview(project.imageUrl || null)
     setStatus(project.status)
     setYear(project.year)
     setPriority(project.priority || 0)
@@ -288,14 +352,41 @@ export default function ProjectsManager() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
+                {imagePreview && (
+                  <div className="mb-2">
+                    <img
+                      src={imagePreview}
+                      alt="Preview"
+                      className="w-32 h-32 object-cover rounded-md border border-gray-300"
+                    />
+                  </div>
+                )}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Choose an image file to upload to Cloudinary
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Video Link (YouTube/Vimeo)
+                </label>
                 <input
                   type="text"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
+                  value={videoEmbedLink}
+                  onChange={(e) => setVideoEmbedLink(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-                  placeholder="Image URL"
+                  placeholder="https://youtube.com/watch?v=... or https://vimeo.com/..."
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Enter a video URL to embed in the project display
+                </p>
               </div>
 
               <div className="md:col-span-2">
@@ -393,13 +484,13 @@ export default function ProjectsManager() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button
                     onClick={() => startEditing(project)}
-                    className="text-green-600 hover:text-green-900 mr-3"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDeleteProject(project._id)}
-                    className="text-red-600 hover:text-red-900"
+                    className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
                   >
                     Delete
                   </button>
