@@ -1,6 +1,7 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import { constituencyData as staticConstituencyData, initiatives as staticInitiatives, visionContent as staticVisionContent } from '@/lib/data'
+import {useState} from 'react'
 import Link from 'next/link'
 
 interface Initiative {
@@ -20,135 +21,11 @@ interface ConstituencyData {
 }
 
 export default function ConstituencyPage() {
-  const [constituencyData, setConstituencyData] = useState<ConstituencyData>({
-    name: '',
-    representative: '',
-    party: '',
-    electionYear: '',
-    communities: [],
-    population: '',
-  })
-  const [initiatives, setInitiatives] = useState<Initiative[]>([])
-  const [visionContent, setVisionContent] = useState('')
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchConstituencyData = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/constituency`,
-        )
-        if (response.ok) {
-          const data = await response.json()
-          setConstituencyData({
-            name: data.name,
-            representative: data.representative,
-            party: data.party,
-            electionYear: data.electionYear,
-            communities: data.communities,
-            population: data.population,
-          })
-          setInitiatives(data.initiatives || [])
-          setVisionContent(data.visionContent || '')
-        } else {
-          // Fallback to hardcoded data if API fails
-          setConstituencyData({
-            name: 'Gaya / Ajingi / Albasu Federal Constituency',
-            representative: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
-            party: 'New Nigeria Peoples Party (NNPP)',
-            electionYear: '2023',
-            communities: ['Gaya', 'Ajingi', 'Albasu'],
-            population: 'Approximately 200,000 residents',
-          })
-
-          setInitiatives([
-            {
-              id: 1,
-              title: 'Economic Empowerment Programs',
-              description:
-                'Initiatives to reduce import dependency and make essential goods more affordable for local communities.',
-              icon: 'trending_down',
-            },
-            {
-              id: 2,
-              title: 'Infrastructure Development',
-              description:
-                'Projects focused on improving transportation networks and addressing fuel scarcity issues.',
-              icon: 'local_shipping',
-            },
-            {
-              id: 3,
-              title: 'Local Manufacturing Support',
-              description:
-                'Supporting domestic production to create jobs and reduce reliance on foreign goods.',
-              icon: 'factory',
-            },
-            {
-              id: 4,
-              title: 'Community Health Programs',
-              description:
-                'Free medical checkups and health education programs for underserved rural communities.',
-              icon: 'local_hospital',
-            },
-          ])
-
-          setVisionContent(
-            "Dr. Ghali's vision for Gaya, Ajingi, and Albasu is rooted in sustainable development that creates opportunities for all residents. His approach combines grassroots community engagement with strategic policy advocacy at the federal level. By focusing on economic reforms that reduce the cost of living, improving infrastructure that connects communities to markets and services, and supporting local entrepreneurship, we aim to build a constituency that serves as a model for development across Nigeria.",
-          )
-        }
-      } catch (error) {
-        console.error('Failed to fetch constituency data:', error)
-        // Fallback to hardcoded data if API fails
-        setConstituencyData({
-          name: 'Gaya / Ajingi / Albasu Federal Constituency',
-          representative: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
-          party: 'New Nigeria Peoples Party (NNPP)',
-          electionYear: '2023',
-          communities: ['Gaya', 'Ajingi', 'Albasu'],
-          population: 'Approximately 200,000 residents',
-        })
-
-        setInitiatives([
-          {
-            id: 1,
-            title: 'Economic Empowerment Programs',
-            description:
-              'Initiatives to reduce import dependency and make essential goods more affordable for local communities.',
-            icon: 'trending_down',
-          },
-          {
-            id: 2,
-            title: 'Infrastructure Development',
-            description:
-              'Projects focused on improving transportation networks and addressing fuel scarcity issues.',
-            icon: 'local_shipping',
-          },
-          {
-            id: 3,
-            title: 'Local Manufacturing Support',
-            description:
-              'Supporting domestic production to create jobs and reduce reliance on foreign goods.',
-            icon: 'factory',
-          },
-          {
-            id: 4,
-            title: 'Community Health Programs',
-            description:
-              'Free medical checkups and health education programs for underserved rural communities.',
-            icon: 'local_hospital',
-          },
-        ])
-
-        setVisionContent(
-          "Dr. Ghali's vision for Gaya, Ajingi, and Albasu is rooted in sustainable development that creates opportunities for all residents. His approach combines grassroots community engagement with strategic policy advocacy at the federal level. By focusing on economic reforms that reduce the cost of living, improving infrastructure that connects communities to markets and services, and supporting local entrepreneurship, we aim to build a constituency that serves as a model for development across Nigeria.",
-        )
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchConstituencyData()
-  }, [])
+  const [constituencyData] = useState<ConstituencyData>(staticConstituencyData)
+  const [initiatives] = useState<Initiative[]>(staticInitiatives)
+  const [visionContent] = useState(staticVisionContent)
+  // const [loading, setLoading] = useState(true) // Removed loading state
+  const loading = false
 
   if (loading) {
     return (
@@ -167,7 +44,7 @@ export default function ConstituencyPage() {
             Constituency Services
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
-            Serving the people of Gaya, Ajingi, and Albasu with dedication and integrity
+            Serving the people of Kaduna North with dedication and integrity
           </p>
         </div>
       </section>
@@ -181,22 +58,22 @@ export default function ConstituencyPage() {
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
                 <p className="mb-4">
-                  The {constituencyData.name} is represented in the House of Representatives by
+                  The {constituencyData.name} was represented in the Senate by
                   {constituencyData.representative}, who was elected in{' '}
                   {constituencyData.electionYear} on the platform of the {constituencyData.party}.
                 </p>
                 <p className="mb-4">
                   Our constituency is home to {constituencyData.population} across{' '}
-                  {constituencyData.communities.length} distinct communities, each with its own
+                  {constituencyData.communities.length} distinct Local Government Areas (LGAs), each with its own
                   unique cultural heritage and economic characteristics.{' '}
-                  {constituencyData.representative}'s representation focuses on addressing the
+                  {constituencyData.representative}'s representation focused on addressing the
                   specific needs of these communities while advocating for policies that benefit all
                   Nigerians.
                 </p>
                 <p className="mb-6">
-                  Since taking office, {constituencyData.representative} has championed initiatives
+                  During his tenure, {constituencyData.representative} championed initiatives
                   that focus on economic empowerment, infrastructure development, and improving
-                  access to essential services. His legislative work emphasizes reducing dependency
+                  access to essential services. His legislative work emphasized reducing dependency
                   on imports, improving transportation networks, and supporting local manufacturing
                   to create jobs and reduce the cost of living.
                 </p>
@@ -205,7 +82,7 @@ export default function ConstituencyPage() {
                   Key Policy Focus Areas
                 </h3>
                 <ul className="list-disc pl-6 space-y-2 mb-6">
-                  <li>Reducing import barriers to make essential goods more affordable</li>
+                  <li>Enhancing fiscal transparency and accountability</li>
                   <li>Improving transportation infrastructure to reduce costs</li>
                   <li>Supporting local manufacturing and entrepreneurship</li>
                   <li>Expanding access to healthcare and education</li>
@@ -244,7 +121,7 @@ export default function ConstituencyPage() {
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">badge</span>
                     <span>
-                      <strong>Representative:</strong> {constituencyData.representative}
+                      <strong>Former Senator:</strong> {constituencyData.representative}
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -252,7 +129,7 @@ export default function ConstituencyPage() {
                       calendar_today
                     </span>
                     <span>
-                      <strong>Elected:</strong> {constituencyData.electionYear}
+                      <strong>Term:</strong> 2019 - 2023
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -284,7 +161,7 @@ export default function ConstituencyPage() {
               Key Initiatives
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Programs and policies championed by Dr. Ghali for our constituency
+              Programs and policies championed by Hon. Suleiman Kwari for our constituency
             </p>
           </div>
 
@@ -320,16 +197,7 @@ export default function ConstituencyPage() {
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 mx-auto">
                 <p className="mb-4">
-                  Dr. Ghali's vision for Gaya, Ajingi, and Albasu is rooted in sustainable
-                  development that creates opportunities for all residents. His approach combines
-                  grassroots community engagement with strategic policy advocacy at the federal
-                  level.
-                </p>
-                <p className="mb-6">
-                  By focusing on economic reforms that reduce the cost of living, improving
-                  infrastructure that connects communities to markets and services, and supporting
-                  local entrepreneurship, we aim to build a constituency that serves as a model for
-                  development across Nigeria.
+                   {visionContent}
                 </p>
                 <Link
                   href="/legislative"

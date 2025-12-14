@@ -6,34 +6,42 @@ import {ContactSection} from '@/components/ContactSection'
 import {useState, useEffect} from 'react'
 import Link from 'next/link'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+import {projects} from '@/lib/data'
 
 export default function IndexRoute() {
-  const [news, setNews] = useState<any[]>([])
-  const [projects, setProjects] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+  const [news, setNews] = useState<any[]>([
+    {
+      _id: '1',
+      title: 'Senate Committee on Finance: Reviewing Fiscal Policy',
+      category: 'Legislative',
+      imageUrl: '/suleiman-action.jpg',
+      excerpt: 'Hon. Suleiman Kwari leads discussions on the new fiscal policy to ensure economic stability.',
+      createdAt: '2023-01-15',
+    },
+    {
+      _id: '2',
+      title: 'Empowering Kaduna North: Scholarship Distribution',
+      category: 'Education',
+      imageUrl: '/schorlaship.jpg',
+      excerpt: 'Over 500 students received scholarships to pursue higher education in various fields.',
+      createdAt: '2022-11-20',
+    },
+    {
+      _id: '3',
+      title: 'Commissioning of Solar Boreholes in Zaria',
+      category: 'Infrastructure',
+      imageUrl: '/borehole.jpg',
+      excerpt: 'Providing clean drinking water to remote communities through solar-powered boreholes.',
+      createdAt: '2022-09-10',
+    },
+  ])
+  // const [projects, setProjects] = useState<any[]>([]) // Using imported data directly
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [newsRes, projectsRes] = await Promise.all([
-          fetch(`${API_URL}/api/news`),
-          fetch(`${API_URL}/api/projects`),
-        ])
-        const [newsData, projectsData] = await Promise.all([newsRes.json(), projectsRes.json()])
-        setNews(newsData.slice(0, 3))
-        setProjects(projectsData.slice(0, 3))
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+  // useEffect removed as we are using static data
 
   const mockData = {
-    title: 'Dr. Ghali Mustapha Tijjani Phanda',
+    title: 'Hon. Suleiman Abdu Kwari',
   }
 
   return (
@@ -61,7 +69,7 @@ export default function IndexRoute() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {projects.map((project, index) => (
+              {projects.slice(0, 3).map((project, index) => (
                 <div
                   key={index}
                   className="group bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-2"
@@ -76,21 +84,15 @@ export default function IndexRoute() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
-                      {project.title}
+                      {project.titleEN}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                    <p className="text-gray-600 mb-4 line-clamp-3">{project.shortDesc}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">{project.year || '2024'}</span>
+                      <span className="text-sm text-gray-500">{new Date(project.date).getFullYear()}</span>
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          project.status === 'Completed'
-                            ? 'bg-green-100 text-green-700'
-                            : project.status === 'Ongoing'
-                              ? 'bg-blue-100 text-blue-700'
-                              : 'bg-yellow-100 text-yellow-700'
-                        }`}
+                        className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700"
                       >
-                        {project.status || 'Active'}
+                        Completed
                       </span>
                     </div>
                   </div>
@@ -203,19 +205,19 @@ export default function IndexRoute() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <div className="text-5xl md:text-6xl font-bold mb-2">15K+</div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">50K+</div>
               <div className="text-green-200 text-sm md:text-base">Lives Impacted</div>
             </div>
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <div className="text-5xl md:text-6xl font-bold mb-2">25+</div>
-              <div className="text-green-200 text-sm md:text-base">Active Programs</div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">60+</div>
+              <div className="text-green-200 text-sm md:text-base">Projects Delivered</div>
             </div>
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <div className="text-5xl md:text-6xl font-bold mb-2">3</div>
-              <div className="text-green-200 text-sm md:text-base">Communities Served</div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">8</div>
+              <div className="text-green-200 text-sm md:text-base">LGAs Served</div>
             </div>
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <div className="text-5xl md:text-6xl font-bold mb-2">1+</div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">4</div>
               <div className="text-green-200 text-sm md:text-base">Years of Service</div>
             </div>
           </div>

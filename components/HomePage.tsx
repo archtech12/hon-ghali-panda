@@ -11,7 +11,7 @@ interface HomePageProps {
 
 export function HomePage({data}: HomePageProps) {
   // Default to empty values if no data is provided
-  const {title = 'Dr. Ghali Mustapha Tijjani Phanda'} = data || {}
+  const {title = 'Hon. Suleiman Abdu Kwari'} = data || {}
 
   return (
     <div className="space-y-20">
@@ -28,29 +28,28 @@ export function HomePage({data}: HomePageProps) {
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
             <div className="lg:w-1/2 mb-6 lg:mb-0 text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
-                Dr. Ghali Mustapha Tijjani Phanda
+                Hon. Suleiman Abdu Kwari
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 text-green-100">
-                Community Leader & Philanthropist
+                Former Senator, Kaduna North | Finance Expert | Champion of Development & Anti-Corruption
               </h2>
               <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 text-green-50 leading-relaxed">
-                Official digital home showcasing leadership, philanthropy, and community
-                transformation across Gaya, Ajingi, and Albasu.
+                Celebrating a legacy of integrity and service. From Commissioner of Finance to Senator (2019–2023), dedicated to transforming Kaduna North through education, infrastructure, and fiscal responsibility.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/contact"
+                  href="/projects"
                   className="bg-white text-green-800 hover:bg-green-50 active:bg-green-100 font-bold py-3 sm:py-3.5 px-6 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2 text-base sm:text-base touch-manipulation active:scale-95 sm:hover:scale-105"
                 >
-                  <span>Connect With Me</span>
-                  <span className="material-symbols-outlined text-xl">arrow_forward</span>
+                  <span>View Projects</span>
+                  <span className="material-symbols-outlined text-xl">visibility</span>
                 </Link>
                 <Link
-                  href="/projects"
+                  href="/about"
                   className="bg-transparent border-2 border-white text-white hover:bg-white/10 active:bg-white/20 font-bold py-3 sm:py-3.5 px-6 sm:px-8 rounded-xl transition-all duration-300 inline-flex items-center justify-center gap-2 text-base sm:text-base touch-manipulation active:scale-95 sm:hover:scale-105"
                 >
-                  <span>View My Work</span>
-                  <span className="material-symbols-outlined text-xl">visibility</span>
+                  <span>Biography</span>
+                  <span className="material-symbols-outlined text-xl">person</span>
                 </Link>
               </div>
             </div>
@@ -58,8 +57,8 @@ export function HomePage({data}: HomePageProps) {
               <div className="relative">
                 <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl relative">
                   <Image
-                    src="/ghaliphoto.jpg"
-                    alt="Dr. Ghali Mustapha Tijjani Phanda"
+                    src="/suleiman-portrait.jpg"
+                    alt="Hon. Suleiman Abdu Kwari"
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 320px"
@@ -67,10 +66,10 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </div>
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-gold-500 text-green-900 font-bold py-2 px-3 sm:py-2 sm:px-4 rounded-lg shadow-lg transform rotate-3 text-xs sm:text-sm">
-                  15,000+ Beneficiaries Helped
+                  50,000+ Residents Impacted
                 </div>
                 <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 bg-white text-green-800 font-bold py-2 px-3 sm:py-2 sm:px-4 rounded-lg shadow-lg transform -rotate-3 text-xs sm:text-sm">
-                  1+ Years Service
+                  4 Years dedicated Service
                 </div>
               </div>
             </div>
@@ -82,10 +81,9 @@ export function HomePage({data}: HomePageProps) {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-green-800">My Impact In Numbers</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-800">Legacy In Numbers</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Measuring the real difference we've made in our communities through dedicated service
-              and programs.
+              A track record of tangible achievements across Kaduna North Senatorial District.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -105,8 +103,8 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">15,000+</div>
-              <div className="text-gray-600">Beneficiaries Helped</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">50,000+</div>
+              <div className="text-gray-600">Residents Impacted</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
@@ -124,8 +122,8 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">25+</div>
-              <div className="text-gray-600">Programs Launched</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">60+</div>
+              <div className="text-gray-600">Projects Delivered</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
@@ -143,7 +141,7 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">1+</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">4</div>
               <div className="text-gray-600">Years of Service</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
@@ -162,8 +160,8 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">3</div>
-              <div className="text-gray-600">Communities Reached</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">8</div>
+              <div className="text-gray-600">LGAs Served</div>
             </div>
           </div>
         </div>
@@ -176,8 +174,8 @@ export function HomePage({data}: HomePageProps) {
             <div className="lg:w-1/3">
               <div className="rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105 relative h-80">
                 <Image
-                  src="/ghaliphoto.jpg"
-                  alt="Dr. Ghali"
+                  src="/suleiman-portrait.jpg"
+                  alt="Hon. Suleiman Kwari"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 33vw"
@@ -185,29 +183,25 @@ export function HomePage({data}: HomePageProps) {
               </div>
             </div>
             <div className="lg:w-2/3">
-              <h2 className="text-3xl font-bold mb-6 text-green-800">About Dr. Ghali</h2>
+              <h2 className="text-3xl font-bold mb-6 text-green-800">About Hon. Suleiman Kwari</h2>
               <p className="text-lg mb-4 text-gray-700">
-                Dr. Ghali Mustapha Tijjani Phanda is a dedicated community leader and philanthropist
-                committed to transforming lives and empowering communities.
+                Born on June 12, 1962, Hon. Suleiman Abdu Kwari is a visionary leader and finance expert who has dedicated his life to public service.
               </p>
               <p className="text-lg mb-6 text-gray-700">
-                Elected in 2023 to represent the Ajingi / Albasu / Gaya Federal Constituency in the
-                House of Representatives, Dr. Ghali has launched more than 25 programs that have
-                directly impacted over 15,000 beneficiaries across Gaya, Ajingi, and Albasu
-                communities.
+                He served as the Commissioner of Finance in Kaduna State, a Member of the House of Representatives (2011–2015), and most recently as the Senator representing Kaduna North Senatorial District (2019–2023). His tenure was marked by a relentless drive for infrastructural development, educational support, and anti-corruption initiatives.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/about"
                   className="inline-block bg-green-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-800 transition duration-300 transform hover:scale-105"
                 >
-                  Read My Full Biography
+                  Read Full Biography
                 </Link>
                 <Link
                   href="/projects"
                   className="inline-block bg-white border-2 border-green-700 text-green-700 font-bold py-3 px-6 rounded-lg hover:bg-green-50 transition duration-300 transform hover:scale-105"
                 >
-                  View Achievements
+                  View Legislative Achievements
                 </Link>
               </div>
             </div>

@@ -16,7 +16,20 @@ const volunteerTypes = [
   {value: 'General Supporter', icon: '⭐', desc: 'Support in any capacity'},
 ]
 
-const constituencies = ['Gaya', 'Ajingi', 'Albasu', 'Other']
+const constituencies = [
+  'Sabon Gari',
+  'Zaria',
+  'Kaduna North',
+  'Kaduna South',
+  'Makarfi',
+  'Kudan',
+  'Ikara',
+  'Kubau',
+  'Soba',
+  'Lere',
+  'Giwa',
+  'Other',
+]
 const availabilities = ['Full Time', 'Part Time', 'Weekends Only', 'Flexible']
 const educationLevels = [
   'Primary',
@@ -42,8 +55,8 @@ export default function VolunteerPage() {
       street: '',
       city: '',
       lga: '',
-      state: 'Kano',
-      constituency: 'Gaya',
+      state: 'Kaduna',
+      constituency: 'Kaduna North',
     },
     volunteerType: 'General Supporter',
     skills: [] as string[],
@@ -99,7 +112,7 @@ export default function VolunteerPage() {
 
       if (response.ok) {
         alert(
-          '🎉 Registration Successful!\n\nThank you for joining Team Ghali! We will contact you soon with next steps.',
+          '🎉 Registration Successful!\n\nThank you for joining Team Kwari! We will contact you soon with next steps.',
         )
         router.push('/')
       } else {
@@ -123,15 +136,15 @@ export default function VolunteerPage() {
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 rounded-full shadow-lg mb-4">
             <span className="text-white font-bold flex items-center gap-2">
               <span className="text-2xl">🤝</span>
-              JOIN TEAM GHALI
+              JOIN TEAM KWARI
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Volunteer Registration
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Be part of the movement! Register to volunteer and help build a better future for Gaya,
-            Ajingi, and Albasu
+            Be part of the movement! Register to volunteer and help build a better future for Kaduna
+            North Senatorial District
           </p>
         </div>
 
@@ -335,7 +348,7 @@ export default function VolunteerPage() {
                     value={formData.address.state}
                     onChange={(e) => updateFormData('address.state', e.target.value)}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                    placeholder="Kano"
+                    placeholder="Kaduna"
                   />
                 </div>
 
@@ -460,7 +473,7 @@ export default function VolunteerPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Why do you want to volunteer for Hon. Dr. Ghali? *
+                  Why do you want to volunteer for Hon. Suleiman Kwari? *
                 </label>
                 <textarea
                   required
@@ -468,7 +481,7 @@ export default function VolunteerPage() {
                   onChange={(e) => updateFormData('motivation', e.target.value)}
                   rows={4}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                  placeholder="Tell us what motivates you to support Hon. Dr. Ghali..."
+                  placeholder="Tell us what motivates you to support Hon. Suleiman Kwari..."
                 />
               </div>
 

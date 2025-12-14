@@ -161,47 +161,47 @@ export const mediaData: MediaItem[] = [
     type: 'image',
     src: '/480465286_605794928897267_5859580872040922079_n.jpg',
     title: 'Community Health Outreach',
-    description: 'Providing free medical checkups to underserved communities in Gaya.',
-    date: 'March 15, 2024'
+    description: 'Providing free medical checkups to underserved communities in Zaria and Sabon Gari.',
+    date: 'March 15, 2023'
   },
   {
     id: 2,
     type: 'video',
     src: '/videos/program-launch.mp4',
     title: 'Education Program Launch',
-    description: 'Launching our new literacy program for children in rural areas.',
-    date: 'February 28, 2024'
+    description: 'Launching our new literacy program for children in rural areas of Kaduna North.',
+    date: 'February 28, 2023'
   },
   {
     id: 3,
     type: 'image',
     src: '/schorlaship.jpg',
     title: 'Scholarship Program',
-    description: 'Honoring beneficiaries of our educational support program.',
-    date: 'January 20, 2024'
+    description: 'Honoring beneficiaries of the Suleiman Kwari Educational Support Scheme.',
+    date: 'January 20, 2023'
   },
   {
     id: 4,
     type: 'image',
     src: '/addini.jpg',
     title: 'Team Planning Session',
-    description: 'Strategic planning session with our community development team.',
-    date: 'April 5, 2024'
+    description: 'Strategic planning session with our community development team in Zaria.',
+    date: 'April 5, 2022'
   },
   {
     id: 5,
     type: 'video',
     src: '/videos/community-event.mp4',
     title: 'Annual Community Festival',
-    description: 'Celebrating our community achievements at the annual festival.',
-    date: 'December 10, 2023'
+    description: 'Celebrating our community achievements at the annual festival in Lere.',
+    date: 'December 10, 2022'
   },
   {
     id: 6,
     type: 'image',
     src: '/foodstuff.jpg',
     title: 'Food Aid Distribution',
-    description: 'Distributing food aid to families in need across the constituency.',
-    date: 'November 22, 2023'
+    description: 'Distributing food aid to families in need across the 8 LGAs.',
+    date: 'November 22, 2022'
   }
 ]

@@ -4,46 +4,47 @@ import {Metadata, Viewport} from 'next'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Hon. Dr. Ghali Mustapha Tijjani Phanda - Representative for Gaya/Ajingi/Albasu',
-    template: '%s | Hon. Dr. Ghali Panda',
+    default: 'Hon. Suleiman Abdu Kwari - Former Senator, Kaduna North',
+    template: '%s | Hon. Suleiman Kwari',
   },
   description:
-    'Official website of Hon. Dr. Ghali Mustapha Tijjani Phanda - Member representing Gaya/Ajingi/Albasu Federal Constituency. Empowering communities through education, healthcare, and infrastructure development.',
+    'Official website of Hon. Suleiman Abdu Kwari - Former Senator representing Kaduna North Senatorial District (2019-2023). Champion of Development, Finance Expert, and Anti-Corruption Advocate.',
   keywords: [
-    'Ghali Panda',
-    'Gaya Ajingi Albasu',
-    'Federal Constituency',
+    'Suleiman Kwari',
+    'Kaduna North',
+    'Senator',
     'Nigeria Politics',
     'Community Development',
+    'Finance Commissioner',
     'Legislative Work',
   ],
-  authors: [{name: 'Hon. Dr. Ghali Mustapha Tijjani Phanda'}],
-  creator: 'Hon. Dr. Ghali Campaign Team',
-  publisher: 'Hon. Dr. Ghali Campaign',
+  authors: [{name: 'Hon. Suleiman Abdu Kwari'}],
+  creator: 'Hon. Suleiman Kwari Legacy Team',
+  publisher: 'Hon. Suleiman Kwari Legacy',
   openGraph: {
     type: 'website',
     locale: 'en_NG',
-    url: 'https://ghalipada.vercel.app',
-    siteName: 'Hon. Dr. Ghali Panda',
-    title: 'Hon. Dr. Ghali Mustapha Tijjani Phanda - Your Representative',
+    url: 'https://suleimankwari.vercel.app',
+    siteName: 'Hon. Suleiman Kwari Legacy',
+    title: 'Hon. Suleiman Abdu Kwari - Legacy of Service',
     description:
-      'Empowering Gaya/Ajingi/Albasu communities through quality representation, development projects, and dedicated service. Together we build a better tomorrow.',
+      'Celebrating the impactful service of Hon. Suleiman Abdu Kwari in Kaduna North. 60+ projects delivered, 50,000+ lives impacted.',
     images: [
       {
-        url: 'https://ghalipada.vercel.app/og-image.jpg',
+        url: 'https://suleimankwari.vercel.app/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
+        alt: 'Hon. Suleiman Abdu Kwari',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hon. Dr. Ghali Panda - Your Representative',
+    title: 'Hon. Suleiman Kwari - Legacy of Service',
     description:
-      'Empowering communities through education, healthcare, and infrastructure development.',
-    images: ['https://ghalipada.vercel.app/og-image.jpg'],
-    creator: '@GhaliPanda',
+      'Championing development in Kaduna North. Former Senator and Commissioner of Finance.',
+    images: ['https://suleimankwari.vercel.app/og-image.jpg'],
+    creator: '@SuleimanKwari',
   },
   robots: {
     index: true,
@@ -56,6 +57,27 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/assets/favicon.ico' },
+      { url: '/assets/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/assets/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/assets/apple-touch-icon.png' },
+    ],
+    other: [
+      {
+        rel: 'android-chrome-192x192',
+        url: '/assets/android-chrome-192x192.png',
+      },
+      {
+        rel: 'android-chrome-512x512',
+        url: '/assets/android-chrome-512x512.png',
+      },
+    ],
+  },
+  manifest: '/assets/site.webmanifest', // Point to the manifest in assets
 }
 
 export const viewport: Viewport = {

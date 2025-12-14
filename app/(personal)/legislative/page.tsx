@@ -1,6 +1,6 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
 
 interface Bill {
@@ -19,70 +19,64 @@ interface LegislativeData {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 export default function LegislativeWorkPage() {
-  const [legislativeData, setLegislativeData] = useState<LegislativeData | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchLegislativeData = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/legislative`)
-        if (response.ok) {
-          const data = await response.json()
-          setLegislativeData(data)
-        } else {
-          // Fallback to hardcoded data if API fails
-          setLegislativeData({
-            title: 'Legislative Work',
-            content: `<p>Dr. Ghali's legislative work focuses on fundamental economic reforms that would benefit all Nigerians. His approach centers on reducing dependency on imports, improving infrastructure, and supporting local manufacturing.</p>
-            <p>Key to his vision is creating an environment where essential goods become more affordable through policy interventions that address the root causes of high prices - from transportation costs to import barriers.</p>
-            <p>By advocating for streamlined import procedures and improved infrastructure, Dr. Ghali aims to create a more competitive economic environment that benefits consumers, local businesses, and the broader Nigerian economy.</p>`,
-          })
-        }
-      } catch (error) {
-        console.error('Failed to fetch legislative data:', error)
-        // Fallback to hardcoded data if API fails
-        setLegislativeData({
-          title: 'Legislative Work',
-          content: `<p>Dr. Ghali's legislative work focuses on fundamental economic reforms that would benefit all Nigerians. His approach centers on reducing dependency on imports, improving infrastructure, and supporting local manufacturing.</p>
-          <p>Key to his vision is creating an environment where essential goods become more affordable through policy interventions that address the root causes of high prices - from transportation costs to import barriers.</p>
-          <p>By advocating for streamlined import procedures and improved infrastructure, Dr. Ghali aims to create a more competitive economic environment that benefits consumers, local businesses, and the broader Nigerian economy.</p>`,
-        })
-      } finally {
-        setLoading(false)
+  const [legislativeData] = useState<LegislativeData>({
+    title: 'Legislative Work',
+    content: `<p>Hon. Suleiman Kwari's legislative tenure was defined by a commitment to fiscal discipline, anti-corruption, and rural development. His approach centered on ensuring that appropriations were realistic and capable of being funded, reducing the deficit and improving the nation's credit rating.</p>
+    <p>Key to his vision was the establishment of a robust financial framework that supports both federal and state governments in delivering dividends of democracy. He championed bills that sought to block revenue leakages and enhance the efficiency of tax collection systems.</p>
+    <p>Beyond finance, he was a vocal advocate for the agricultural sector, sponsoring legislation to improve rural access to credit and modern farming tools, recognizing that the majority of his constituents in Kaduna North are agrarian.</p>`,
+    bills: [
+      {
+        name: 'Finance Act (Amendment) Bill',
+        date: '2021',
+        status: 'Passed',
+        description: 'A critical bill aimed at enhancing revenue mobilization and clarifying tax statutes to improve the ease of doing business.',
+      },
+      {
+        name: 'Public Procurement Act (Amendment) Bill',
+        date: '2020',
+        status: 'In Committee',
+        description: 'Proposed amendments to streamline public procurement processes, ensuring transparency and reducing bottlenecks in project execution.',
+      },
+      {
+        name: 'Rural Agricultural Credit Scheme Bill',
+        date: '2022',
+        status: 'Proposed',
+        description: 'Legislation designed to provide low-interest credit facilities to smallholder farmers in rural constituencies like Kaduna North.',
       }
-    }
+    ]
+  })
+  const loading = false
 
-    fetchLegislativeData()
-  }, [])
+  // useEffect removed as we are using static data
 
   // Policy positions based on the provided information
   const policyPositions = [
     {
       id: 1,
-      title: 'Economic Reform and Import Policy',
+      title: 'Fiscal Responsibility',
       description:
-        "Advocating for reforms that would reduce Nigeria's dependency on imports and make essential goods more affordable for citizens.",
-      icon: 'trending_down',
+        "Advocating for transparent budgeting processes and strict adherence to fiscal rules to prevent waste and corruption.",
+      icon: 'trending_up',
     },
     {
       id: 2,
-      title: 'Infrastructure Development',
+      title: 'Rural Development',
       description:
-        'Pushing for improved transportation infrastructure to reduce costs and address fuel scarcity issues affecting communities.',
-      icon: 'local_shipping',
+        'Sponsoring bills that direct funding towards rural roads, electrification, and water projects in underserved areas.',
+      icon: 'agriculture',
     },
     {
       id: 3,
-      title: 'Local Manufacturing Support',
+      title: 'Anti-Corruption',
       description:
-        'Promoting domestic production initiatives to reduce reliance on foreign goods and create local employment.',
-      icon: 'factory',
+        'Strengthening institutions involved in the fight against financial crimes and ensuring public officials are accountable.',
+      icon: 'gavel',
     },
     {
       id: 4,
-      title: 'Constituency Advocacy',
+      title: 'constituency Advocacy',
       description:
-        'Strong representation for Gaya/Ajingi/Albasu communities with policies that benefit the broader Nigerian population.',
+        'Strong representation for Kaduna North communities, ensuring their voices are heard in national debates.',
       icon: 'groups',
     },
   ]
@@ -104,7 +98,7 @@ export default function LegislativeWorkPage() {
             {legislativeData?.title || 'Legislative Work'}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
-            Advocating for policies that transform communities and strengthen Nigeria's economy
+            Advocating for transparency, development, and fiscal discipline
           </p>
         </div>
       </section>
@@ -116,7 +110,7 @@ export default function LegislativeWorkPage() {
               Policy Positions
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Key policy areas Dr. Ghali is championing in the House of Representatives
+              Key policy areas Hon. Suleiman Kwari championed in the Senate
             </p>
           </div>
 
@@ -148,7 +142,7 @@ export default function LegislativeWorkPage() {
               Recent Legislative Actions
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Current bills and initiatives Dr. Ghali is working on in the House of Representatives
+              Current bills and initiatives Hon. Suleiman Kwari worked on during his time in the Senate
             </p>
           </div>
 
