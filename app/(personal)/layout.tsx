@@ -30,8 +30,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                   </h2>
                 </div>
                 <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
-                  Representing the people of Ajingi / Albasu / Gaya with dedication, integrity, and tireless
-                  service.
+                  Representing the great people with dedication and service.
                 </p>
               </div>
               <div>

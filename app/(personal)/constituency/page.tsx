@@ -62,22 +62,22 @@ export default function ConstituencyPage() {
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
                 <p className="mb-4">
-                  The {constituencyData.name} was represented in the Senate by
+                  The {constituencyData.name} is represented in the House of Representatives by
                   {constituencyData.representative}, who was elected in{' '}
                   {constituencyData.electionYear} on the platform of the {constituencyData.party}.
                 </p>
                 <p className="mb-4">
-                  Our constituency is home to {constituencyData.population} across{' '}
-                  {constituencyData.communities.length} distinct Local Government Areas (LGAs), each
+                  Our constituency is home to approximately 200,000 residents across{' '}
+                  {constituencyData.communities.length} distinct communities, each
                   with its own unique cultural heritage and economic characteristics.{' '}
-                  {constituencyData.representative}'s representation focused on addressing the
+                  Dr. Ghali's representation focuses on addressing the
                   specific needs of these communities while advocating for policies that benefit all
                   Nigerians.
                 </p>
                 <p className="mb-6">
-                  During his tenure, {constituencyData.representative} championed initiatives that
+                  Since taking office, Dr. Ghali has championed initiatives that
                   focus on economic empowerment, infrastructure development, and improving access to
-                  essential services. His legislative work emphasized reducing dependency on
+                  essential services. His legislative work emphasizes reducing dependency on
                   imports, improving transportation networks, and supporting local manufacturing to
                   create jobs and reduce the cost of living.
                 </p>
@@ -86,7 +86,7 @@ export default function ConstituencyPage() {
                   Key Policy Focus Areas
                 </h3>
                 <ul className="list-disc pl-6 space-y-2 mb-6">
-                  <li>Enhancing fiscal transparency and accountability</li>
+                  <li>Reducing import barriers to make essential goods more affordable</li>
                   <li>Improving transportation infrastructure to reduce costs</li>
                   <li>Supporting local manufacturing and entrepreneurship</li>
                   <li>Expanding access to healthcare and education</li>
@@ -133,7 +133,7 @@ export default function ConstituencyPage() {
                       calendar_today
                     </span>
                     <span>
-                      <strong>Term:</strong> 2023 - Present
+                      <strong>Elected:</strong> {constituencyData.electionYear}
                     </span>
                   </li>
                   <li className="flex items-start">

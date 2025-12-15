@@ -266,37 +266,37 @@ export const constituencyData = {
     representative: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
     party: 'New Nigeria Peoples Party (NNPP)',
     electionYear: '2023',
-    communities: ['Ajingi', 'Albasu', 'Gaya', 'Kano State'],
+    communities: ['Gaya', 'Ajingi', 'Albasu'],
     population: 'Over 500,000 Residents',
 };
 
 export const initiatives = [
     {
         id: 1,
-        title: 'Infrastructure Development',
+        title: 'Economic Empowerment',
         description:
-            'Major road grading and construction projects linking rural areas to urban centers.',
-        icon: 'trending_down',
+            'Initiatives to reduce import dependency and make essential goods more affordable for local communities.',
+        icon: 'trending_up',
     },
     {
         id: 2,
-        title: 'Education & Scholarships',
+        title: 'Infrastructure Development',
         description:
-            'Scholarship schemes for indigent students and construction of new classroom blocks.',
-        icon: 'school',
+            'Projects focused on improving transportation networks and addressing fuel scarcity issues.',
+        icon: 'construction',
     },
     {
         id: 3,
-        title: 'Water & Sanitation',
+        title: 'Local Manufacturing',
         description:
-            'Installation of solar-powered boreholes in water-scarce communities.',
-        icon: 'water_drop',
+            'Supporting domestic production to create jobs and reduce reliance on foreign goods.',
+        icon: 'factory',
     },
     {
         id: 4,
-        title: 'Healthcare Revitalization',
+        title: 'Community Health',
         description:
-            'Upgrading Primary Healthcare Centers and providing essential medical equipment.',
+            'Free medical checkups and health education programs for underserved rural communities.',
         icon: 'local_hospital',
     },
 ];
