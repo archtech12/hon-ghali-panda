@@ -18,10 +18,8 @@ interface MediaGalleryProps {
 export function MediaGallery({items}: MediaGalleryProps) {
   const [selectedItem, setSelectedItem] = useState<MediaItem | null>(null)
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all')
-  
-  const filteredItems = filter === 'all' 
-    ? items 
-    : items.filter(item => item.type === filter)
+
+  const filteredItems = filter === 'all' ? items : items.filter((item) => item.type === filter)
 
   const openModal = (item: MediaItem) => {
     setSelectedItem(item)
@@ -38,46 +36,46 @@ export function MediaGallery({items}: MediaGalleryProps) {
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           Explore photos and videos from community events, programs, and initiatives
         </p>
-        
+
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <button 
+          <button
             onClick={() => setFilter('all')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
-              filter === 'all' 
-                ? 'bg-green-700 text-white' 
+              filter === 'all'
+                ? 'bg-green-700 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-green-100'
             }`}
           >
             All Media
           </button>
-          <button 
+          <button
             onClick={() => setFilter('image')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
-              filter === 'image' 
-                ? 'bg-green-700 text-white' 
+              filter === 'image'
+                ? 'bg-green-700 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-green-100'
             }`}
           >
             Photos
           </button>
-          <button 
+          <button
             onClick={() => setFilter('video')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
-              filter === 'video' 
-                ? 'bg-green-700 text-white' 
+              filter === 'video'
+                ? 'bg-green-700 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-green-100'
             }`}
           >
             Videos
           </button>
         </div>
-        
+
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
               onClick={() => openModal(item)}
             >
@@ -105,30 +103,46 @@ export function MediaGallery({items}: MediaGalleryProps) {
             </div>
           ))}
         </div>
-        
+
         {/* Media Modal */}
         {selectedItem && (
-          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={closeModal}>
-            <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+            onClick={closeModal}
+          >
+            <div
+              className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="p-4 border-b flex justify-between items-center">
                 <h3 className="text-xl font-bold text-green-800">{selectedItem.title}</h3>
-                <button 
-                  onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700"
-                >
+                <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
               <div className="p-4">
                 <div className="h-96 mb-4">
                   {selectedItem.type === 'image' ? (
-                    <img src={selectedItem.src} alt={selectedItem.title} className="w-full h-full object-contain" />
+                    <img
+                      src={selectedItem.src}
+                      alt={selectedItem.title}
+                      className="w-full h-full object-contain"
+                    />
                   ) : (
                     <div className="bg-gray-800 w-full h-full flex items-center justify-center">
                       <div className="w-24 h-24 bg-red-500 rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          className="w-12 h-12 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                         </svg>
                       </div>
@@ -139,7 +153,7 @@ export function MediaGallery({items}: MediaGalleryProps) {
                 <div className="text-sm text-gray-500">{selectedItem.date}</div>
               </div>
               <div className="p-4 border-t text-right">
-                <button 
+                <button
                   onClick={closeModal}
                   className="bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors"
                 >
@@ -161,8 +175,9 @@ export const mediaData: MediaItem[] = [
     type: 'image',
     src: '/480465286_605794928897267_5859580872040922079_n.jpg',
     title: 'Community Health Outreach',
-    description: 'Providing free medical checkups to underserved communities in Zaria and Sabon Gari.',
-    date: 'March 15, 2023'
+    description:
+      'Providing free medical checkups to underserved communities in Zaria and Sabon Gari.',
+    date: 'March 15, 2023',
   },
   {
     id: 2,
@@ -170,15 +185,15 @@ export const mediaData: MediaItem[] = [
     src: '/videos/program-launch.mp4',
     title: 'Education Program Launch',
     description: 'Launching our new literacy program for children in rural areas of Kaduna North.',
-    date: 'February 28, 2023'
+    date: 'February 28, 2023',
   },
   {
     id: 3,
     type: 'image',
     src: '/schorlaship.jpg',
     title: 'Scholarship Program',
-    description: 'Honoring beneficiaries of the Suleiman Kwari Educational Support Scheme.',
-    date: 'January 20, 2023'
+    description: 'Honoring beneficiaries of the Ghali Educational Support Scheme.',
+    date: 'January 20, 2023',
   },
   {
     id: 4,
@@ -186,7 +201,7 @@ export const mediaData: MediaItem[] = [
     src: '/addini.jpg',
     title: 'Team Planning Session',
     description: 'Strategic planning session with our community development team in Zaria.',
-    date: 'April 5, 2022'
+    date: 'April 5, 2022',
   },
   {
     id: 5,
@@ -194,7 +209,7 @@ export const mediaData: MediaItem[] = [
     src: '/videos/community-event.mp4',
     title: 'Annual Community Festival',
     description: 'Celebrating our community achievements at the annual festival in Lere.',
-    date: 'December 10, 2022'
+    date: 'December 10, 2022',
   },
   {
     id: 6,
@@ -202,6 +217,6 @@ export const mediaData: MediaItem[] = [
     src: '/foodstuff.jpg',
     title: 'Food Aid Distribution',
     description: 'Distributing food aid to families in need across the 8 LGAs.',
-    date: 'November 22, 2022'
-  }
+    date: 'November 22, 2022',
+  },
 ]

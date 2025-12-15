@@ -168,7 +168,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-800">Email</h4>
-                    <p className="text-gray-600">contact@suleimankwari.com</p>
+                    <p className="text-gray-600">contact@ghaliphanda.com</p>
                   </div>
                 </div>
                 
@@ -181,7 +181,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-800">Office</h4>
-                    <p className="text-gray-600">Constituency Office<br />Kaduna North, Kaduna State, Nigeria</p>
+                    <p className="text-gray-600">Constituency Office<br />Ajingi / Albasu / Gaya, Kano State, Nigeria</p>
                   </div>
                 </div>
                 

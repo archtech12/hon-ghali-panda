@@ -21,29 +21,32 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 export default function LegislativeWorkPage() {
   const [legislativeData] = useState<LegislativeData>({
     title: 'Legislative Work',
-    content: `<p>Hon. Suleiman Kwari's legislative tenure was defined by a commitment to fiscal discipline, anti-corruption, and rural development. His approach centered on ensuring that appropriations were realistic and capable of being funded, reducing the deficit and improving the nation's credit rating.</p>
-    <p>Key to his vision was the establishment of a robust financial framework that supports both federal and state governments in delivering dividends of democracy. He championed bills that sought to block revenue leakages and enhance the efficiency of tax collection systems.</p>
-    <p>Beyond finance, he was a vocal advocate for the agricultural sector, sponsoring legislation to improve rural access to credit and modern farming tools, recognizing that the majority of his constituents in Kaduna North are agrarian.</p>`,
+    content: `<p>Hon. Dr. Ghali Mustapha Tijjani Phanda's legislative tenure is defined by a commitment to community development, youth empowerment, and rapid infrastructure growth. His approach centers on ensuring that federal presence is felt in every ward of Ajingi, Albasu, and Gaya.</p>
+    <p>Key to his vision is the establishment of a robust framework that supports rural communities in accessing education and healthcare. He champions bills that seek to bridge the gap between urban and rural development.</p>
+    <p>Beyond infrastructure, he is a vocal advocate for the agricultural sector, sponsoring legislation to improve rural access to credit and modern farming tools for his constituents.</p>`,
     bills: [
       {
-        name: 'Finance Act (Amendment) Bill',
-        date: '2021',
-        status: 'Passed',
-        description: 'A critical bill aimed at enhancing revenue mobilization and clarifying tax statutes to improve the ease of doing business.',
-      },
-      {
-        name: 'Public Procurement Act (Amendment) Bill',
-        date: '2020',
-        status: 'In Committee',
-        description: 'Proposed amendments to streamline public procurement processes, ensuring transparency and reducing bottlenecks in project execution.',
-      },
-      {
-        name: 'Rural Agricultural Credit Scheme Bill',
-        date: '2022',
+        name: 'Rural Youth Empowerment Bill',
+        date: '2023',
         status: 'Proposed',
-        description: 'Legislation designed to provide low-interest credit facilities to smallholder farmers in rural constituencies like Kaduna North.',
-      }
-    ]
+        description:
+          'A critical bill aimed at establishing vocational training centers in rural constituencies to reduce youth unemployment.',
+      },
+      {
+        name: 'Community Health Access Bill',
+        date: '2023',
+        status: 'In Committee',
+        description:
+          'Proposed legislation to mandate the upgrade of Primary Healthcare Centers in rural LGAs.',
+      },
+      {
+        name: 'Agricultural Support Scheme Bill',
+        date: '2024',
+        status: 'Proposed',
+        description:
+          'Legislation designed to provide subsidized farming inputs to smallholder farmers in constituencies like Ajingi, Albasu, and Gaya.',
+      },
+    ],
   })
   const loading = false
 
@@ -53,30 +56,30 @@ export default function LegislativeWorkPage() {
   const policyPositions = [
     {
       id: 1,
-      title: 'Fiscal Responsibility',
+      title: 'Youth Empowerment',
       description:
-        "Advocating for transparent budgeting processes and strict adherence to fiscal rules to prevent waste and corruption.",
-      icon: 'trending_up',
+        'Advocating for skills acquisition and job creation programs to engage the youth productively.',
+      icon: 'school',
     },
     {
       id: 2,
       title: 'Rural Development',
       description:
-        'Sponsoring bills that direct funding towards rural roads, electrification, and water projects in underserved areas.',
+        'Sponsoring bills that direct funding towards rural roads, electrification, and water projects.',
       icon: 'agriculture',
     },
     {
       id: 3,
-      title: 'Anti-Corruption',
+      title: 'Healthcare Access',
       description:
-        'Strengthening institutions involved in the fight against financial crimes and ensuring public officials are accountable.',
-      icon: 'gavel',
+        'Strengthening healthcare institutions to ensure basic medical services reach every community.',
+      icon: 'local_hospital',
     },
     {
       id: 4,
-      title: 'constituency Advocacy',
+      title: 'Constituency Advocacy',
       description:
-        'Strong representation for Kaduna North communities, ensuring their voices are heard in national debates.',
+        'Strong representation for Ajingi, Albasu, and Gaya communities, ensuring their voices are heard.',
       icon: 'groups',
     },
   ]
@@ -98,7 +101,7 @@ export default function LegislativeWorkPage() {
             {legislativeData?.title || 'Legislative Work'}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
-            Advocating for transparency, development, and fiscal discipline
+            Advocating for community development, youth empowerment, and rapid infrastructure growth
           </p>
         </div>
       </section>
@@ -110,7 +113,7 @@ export default function LegislativeWorkPage() {
               Policy Positions
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Key policy areas Hon. Suleiman Kwari championed in the Senate
+              Key policy areas Hon. Dr. Ghali Mustapha Tijjani Phanda championed in the Senate
             </p>
           </div>
 
@@ -142,7 +145,8 @@ export default function LegislativeWorkPage() {
               Recent Legislative Actions
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Current bills and initiatives Hon. Suleiman Kwari worked on during his time in the Senate
+              Current bills and initiatives Hon. Dr. Ghali Mustapha Tijjani Phanda worked on during
+              his time in the Senate
             </p>
           </div>
 
@@ -197,7 +201,7 @@ export default function LegislativeWorkPage() {
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Economic Reform Vision
+                Community Development Vision
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 mx-auto">
                 <div dangerouslySetInnerHTML={{__html: legislativeData?.content || ''}} />

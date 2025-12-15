@@ -32,10 +32,10 @@ export function HomePage({data}: HomePageProps) {
                 {title}
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 text-green-100">
-                Member, House of Representatives | Ajingi / Albasu / Gaya Federal Constituency
+                Community Leader & Philanthropist | Member, House of Representatives
               </h2>
               <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 text-green-50 leading-relaxed">
-                Dedicated to transforming lives through effective representation, youth empowerment, and sustainable community development. A leader committed to the service of the people.
+                Official digital home showcasing leadership, philanthropy, and community transformation across Gaya, Ajingi, and Albasu.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -67,10 +67,10 @@ export function HomePage({data}: HomePageProps) {
                   />
                 </div>
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-gold-500 text-green-900 font-bold py-2 px-3 sm:py-2 sm:px-4 rounded-lg shadow-lg transform rotate-3 text-xs sm:text-sm">
-                  Community Focused
+                  15,000+ Beneficiaries
                 </div>
                 <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 bg-white text-green-800 font-bold py-2 px-3 sm:py-2 sm:px-4 rounded-lg shadow-lg transform -rotate-3 text-xs sm:text-sm">
-                  Servant Leadership
+                  25+ Programs Launched
                 </div>
               </div>
             </div>
@@ -82,9 +82,9 @@ export function HomePage({data}: HomePageProps) {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-green-800">Legacy In Numbers</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-800">My Impact In Numbers</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              A track record of tangible achievements across Ajingi, Albasu, and Gaya.
+              Measuring the real difference we've made in our communities through dedicated service and programs.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -94,8 +94,8 @@ export function HomePage({data}: HomePageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">Thousands</div>
-              <div className="text-gray-600">Residents Impacted</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">15,000+</div>
+              <div className="text-gray-600">Beneficiaries</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
@@ -103,8 +103,8 @@ export function HomePage({data}: HomePageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">Numerous</div>
-              <div className="text-gray-600">Projects Delivered</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">25+</div>
+              <div className="text-gray-600">Programs Launched</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
@@ -146,10 +146,10 @@ export function HomePage({data}: HomePageProps) {
             <div className="lg:w-2/3">
               <h2 className="text-3xl font-bold mb-6 text-green-800">About Hon. Dr. Ghali Phanda</h2>
               <p className="text-lg mb-4 text-gray-700">
-                Hon. Dr. Ghali Mustapha Tijjani Phanda is a dedicated public servant and community leader committed to the progress of the Ajingi / Albasu / Gaya Federal Constituency.
+                Dr. Ghali Mustapha Tijjani Phanda is a dedicated community leader and philanthropist committed to transforming lives and empowering communities.
               </p>
               <p className="text-lg mb-6 text-gray-700">
-                 As a Member of the House of Representatives, he is driving initiatives that focus on youth empowerment, educational advancement, and infrastructural development. His vision is built on the principles of inclusivity, transparency, and sustainable growth for all.
+                Elected in 2023 to represent the Ajingi / Albasu / Gaya Federal Constituency in the House of Representatives, Dr. Ghali has launched more than 25 programs that have directly impacted over 15,000 beneficiaries across Gaya, Ajingi, and Albasu communities.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link

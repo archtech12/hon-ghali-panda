@@ -262,12 +262,12 @@ export const projects = [
 ];
 
 export const constituencyData = {
-    name: 'Kaduna North Senatorial District',
-    representative: 'Hon. Suleiman Abdu Kwari',
-    party: 'All Progressives Congress (APC)',
-    electionYear: '2019',
-    communities: ['Zaria', 'Sabon Gari', 'Lere', 'Ikara', 'Kudan', 'Soba', 'Makarfi', 'Kubau'],
-    population: 'Over 2 Million Residents',
+    name: 'Ajingi / Albasu / Gaya Federal Constituency',
+    representative: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
+    party: 'New Nigeria Peoples Party (NNPP)',
+    electionYear: '2023',
+    communities: ['Ajingi', 'Albasu', 'Gaya', 'Kano State'],
+    population: 'Over 500,000 Residents',
 };
 
 export const initiatives = [
@@ -301,4 +301,4 @@ export const initiatives = [
     },
 ];
 
-export const visionContent = "Hon. Suleiman Abdu Kwari's vision for Kaduna North is built on the pillars of educational advancement, infrastructural connectivity, and fiscal responsibility. By leveraging his experience in finance and administration, he aims to attract sustainable investment to the Senatorial District while ensuring that government projects directly benefit the grassroots population.";
+export const visionContent = "Hon. Dr. Ghali Mustapha Tijjani Phanda's vision for Ajingi / Albasu / Gaya is built on the pillars of youth empowerment, educational advancement, and infrastructural connectivity. By leveraging his experience in community leadership and administration, he aims to attract sustainable investment to the Constituency while ensuring that government projects directly benefit the grassroots population.";

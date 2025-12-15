@@ -12,27 +12,30 @@ export default function IndexRoute() {
   const [news, setNews] = useState<any[]>([
     {
       _id: '1',
-      title: 'Senate Committee on Finance: Reviewing Fiscal Policy',
+      title: 'House Committee on Rural Development: Strategic Planning',
       category: 'Legislative',
-      imageUrl: '/suleiman-action.jpg',
-      excerpt: 'Hon. Suleiman Kwari leads discussions on the new fiscal policy to ensure economic stability.',
-      createdAt: '2023-01-15',
+      imageUrl: '/ghaliphoto.jpg',
+      excerpt:
+        'Hon. Dr. Ghali Phanda leads discussions on rural development strategies to ensure community growth.',
+      createdAt: '2023-10-15',
     },
     {
       _id: '2',
-      title: 'Empowering Kaduna North: Scholarship Distribution',
+      title: 'Empowering Future Leaders: Scholarship Distribution',
       category: 'Education',
-      imageUrl: '/schorlaship.jpg',
-      excerpt: 'Over 500 students received scholarships to pursue higher education in various fields.',
-      createdAt: '2022-11-20',
+      imageUrl: '/ghaliphoto.jpg',
+      excerpt:
+        'Over 500 students received scholarships to pursue higher education in various fields.',
+      createdAt: '2023-11-20',
     },
     {
       _id: '3',
-      title: 'Commissioning of Solar Boreholes in Zaria',
+      title: 'Commissioning of Solar Boreholes in Ajingi',
       category: 'Infrastructure',
-      imageUrl: '/borehole.jpg',
-      excerpt: 'Providing clean drinking water to remote communities through solar-powered boreholes.',
-      createdAt: '2022-09-10',
+      imageUrl: '/ghaliphoto.jpg',
+      excerpt:
+        'Providing clean drinking water to remote communities through solar-powered boreholes.',
+      createdAt: '2024-01-10',
     },
   ])
   // const [projects, setProjects] = useState<any[]>([]) // Using imported data directly
@@ -41,7 +44,7 @@ export default function IndexRoute() {
   // useEffect removed as we are using static data
 
   const mockData = {
-    title: 'Hon. Suleiman Abdu Kwari',
+    title: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
   }
 
   return (
@@ -88,10 +91,10 @@ export default function IndexRoute() {
                     </h3>
                     <p className="text-gray-600 mb-4 line-clamp-3">{project.shortDesc}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">{new Date(project.date).getFullYear()}</span>
-                      <span
-                        className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700"
-                      >
+                      <span className="text-sm text-gray-500">
+                        {new Date(project.date).getFullYear()}
+                      </span>
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
                         Completed
                       </span>
                     </div>

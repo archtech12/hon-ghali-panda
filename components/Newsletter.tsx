@@ -67,7 +67,7 @@ export function Newsletter() {
                   <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Thank you for subscribing! You'll receive updates from Hon. Suleiman Kwari soon.
+                  Thank you for subscribing! You'll receive updates from Hon. Dr. Ghali Phanda soon.
                 </div>
               )}
               
@@ -111,7 +111,7 @@ export function Newsletter() {
               </form>
               
               <p className="mt-3 text-green-200 text-sm">
-                By subscribing, you agree to receive updates from Hon. Suleiman Kwari. You can unsubscribe at any time.
+                By subscribing, you agree to receive updates from Hon. Dr. Ghali Phanda. You can unsubscribe at any time.
               </p>
             </div>
           </div>

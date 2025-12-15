@@ -26,7 +26,7 @@ export default function StickerGenerator() {
   const [showQR, setShowQR] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
   const [watermark, setWatermark] = useState(true)
-  const [campaignHashtag, setCampaignHashtag] = useState('#TeamKwariLegacy')
+  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhaliLegacy')
   const [stats, setStats] = useState<StickerStats>({totalGenerated: 0, lastGenerated: null})
   const [showBatchMode, setShowBatchMode] = useState(false)
   const [batchCount, setBatchCount] = useState(1)
@@ -156,10 +156,10 @@ export default function StickerGenerator() {
           // Share API for mobile
           if (navigator.share) {
             const blob = await (await fetch(image)).blob()
-            const file = new File([blob], 'kwari-supporter-sticker.png', {type: 'image/png'})
+            const file = new File([blob], 'ghali-supporter-sticker.png', {type: 'image/png'})
             await navigator.share({
-              title: 'I Honor the Legacy of Sen. Kwari!',
-              text: `Celebrating the legacy of Hon. Suleiman Abdu Kwari - ${customMessage || 'Legacy of Service!'} ${campaignHashtag}`,
+              title: 'I Honor the Legacy of Hon. Dr. Ghali!',
+              text: `Celebrating the legacy of Hon. Dr. Ghali Mustapha Tijjani Phanda - ${customMessage || 'Legacy of Service!'} ${campaignHashtag}`,
               files: [file],
             })
           } else {
@@ -232,7 +232,8 @@ export default function StickerGenerator() {
             Create Your Support Sticker
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Design professional stickers in seconds! Customize, download, and share your recognition for Hon. Suleiman Kwari
+            Design professional stickers in seconds! Customize, download, and share your recognition
+            for Hon. Dr. Ghali Mustapha Tijjani Phanda
           </p>
         </div>
 
@@ -491,34 +492,40 @@ export default function StickerGenerator() {
                   }}
                 >
                   {/* BACKGROUND PARTICLES (CSS Radial Gradients) */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'radial-gradient(#fbbf24 1px, transparent 1px), radial-gradient(#fbbf24 1px, transparent 1px)',
-                    backgroundSize: '40px 40px',
-                    backgroundPosition: '0 0, 20px 20px'
-                  }}></div>
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        'radial-gradient(#fbbf24 1px, transparent 1px), radial-gradient(#fbbf24 1px, transparent 1px)',
+                      backgroundSize: '40px 40px',
+                      backgroundPosition: '0 0, 20px 20px',
+                    }}
+                  ></div>
 
                   {/* TOP CENTER LOGO */}
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
                     <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-yellow-500/30 shadow-lg">
-                       <span className="material-symbols-outlined text-white text-3xl drop-shadow-md">shield</span>
+                      <span className="material-symbols-outlined text-white text-3xl drop-shadow-md">
+                        shield
+                      </span>
                     </div>
                   </div>
 
                   {/* MAIN CONTENT AREA */}
                   <div className="flex-1 flex relative z-10">
-                    
                     {/* LEFT SIDE: CANDIDATE HERO (60%) */}
                     <div className="w-[60%] h-full relative">
                       {/* Candidate Photo - Full Body/Face Focus */}
                       <div className="absolute inset-0 z-0">
-                         <img
-                          src="/suleiman-portrait.jpg"
-                          alt="Hon. Suleiman Kwari"
+                        <img
+                          src="/ghaliphoto.jpg"
+                          alt="Hon. Dr. Ghali Phanda"
                           className="w-full h-full object-cover"
-                          style={{ 
+                          style={{
                             objectPosition: 'center top', // Focus on head/shoulders
                             maskImage: 'linear-gradient(to right, black 70%, transparent 100%)',
-                            WebkitMaskImage: 'linear-gradient(to right, black 70%, transparent 100%)'
+                            WebkitMaskImage:
+                              'linear-gradient(to right, black 70%, transparent 100%)',
                           }}
                         />
                         {/* Gold Glow Behind/Around */}
@@ -528,50 +535,59 @@ export default function StickerGenerator() {
                       {/* Candidate Text Overlay - Moved to Bottom to avoid face overlap */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-20">
                         <h1 className="text-white font-black text-2xl leading-tight drop-shadow-xl uppercase font-sans tracking-tight">
-                          Hon.<br/>
-                          <span className="text-3xl text-yellow-400">Suleiman</span><br/>
-                          Abdu Kwari
+                          Hon.
+                          <br />
+                          <span className="text-3xl text-yellow-400">Dr. Ghali</span>
+                          <br />
+                          Tijjani Phanda
                         </h1>
                         <div className="h-1 w-20 bg-yellow-500 mt-2 mb-2 rounded-full"></div>
                         <p className="text-yellow-200 font-bold text-[10px] uppercase tracking-wider drop-shadow-md">
-                          APC • Kaduna North Senatorial District
+                          NNPP • Ajingi / Albasu / Gaya
                         </p>
                       </div>
                     </div>
 
                     {/* RIGHT SIDE: SUPPORTER & SLOGAN (40%) */}
                     <div className="w-[40%] h-full relative flex flex-col items-center justify-center pt-4">
-                      
                       {/* Supporter Photo - Circular Gold Frame */}
                       <div className="relative mb-3">
                         {supporterPhoto ? (
                           <div className="relative">
                             <div className="w-36 h-36 rounded-full border-[3px] border-yellow-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] overflow-hidden bg-gray-800">
-                              <img 
-                                src={supporterPhoto} 
-                                alt="Supporter" 
+                              <img
+                                src={supporterPhoto}
+                                alt="Supporter"
                                 className="w-full h-full object-cover"
                               />
                             </div>
                             {/* Verified Check */}
                             <div className="absolute bottom-1 right-1 bg-blue-500 text-white rounded-full p-1 border-2 border-white shadow-sm">
-                              <span className="material-symbols-outlined text-sm font-bold">check</span>
+                              <span className="material-symbols-outlined text-sm font-bold">
+                                check
+                              </span>
                             </div>
                           </div>
                         ) : (
-                           <div className="w-36 h-36 rounded-full border-[3px] border-dashed border-yellow-500/50 flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 transition-colors">
-                              <span className="material-symbols-outlined text-yellow-500 text-4xl mb-1">add_a_photo</span>
-                              <span className="text-yellow-200 text-[10px] uppercase font-bold">Upload Photo</span>
-                           </div>
+                          <div className="w-36 h-36 rounded-full border-[3px] border-dashed border-yellow-500/50 flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 transition-colors">
+                            <span className="material-symbols-outlined text-yellow-500 text-4xl mb-1">
+                              add_a_photo
+                            </span>
+                            <span className="text-yellow-200 text-[10px] uppercase font-bold">
+                              Upload Photo
+                            </span>
+                          </div>
                         )}
                       </div>
 
                       {/* Supporter Name - Elegant Script */}
                       <div className="text-center px-2 mb-6">
                         <p className="text-white font-serif italic text-lg tracking-wide drop-shadow-md">
-                          {supporterName || "Your Name"}
+                          {supporterName || 'Your Name'}
                         </p>
-                        <p className="text-yellow-500/80 text-[10px] uppercase tracking-widest font-bold mt-1">Proud Supporter</p>
+                        <p className="text-yellow-500/80 text-[10px] uppercase tracking-widest font-bold mt-1">
+                          Proud Supporter
+                        </p>
                       </div>
 
                       {/* Center Slogan with Stars */}
@@ -586,16 +602,17 @@ export default function StickerGenerator() {
                           </h2>
                         ) : (
                           <h2 className="text-white font-black text-xl uppercase leading-none drop-shadow-lg">
-                            Legacy<br/>
-                            <span className="text-yellow-400 text-2xl">Of Service</span><br/>
+                            Legacy
+                            <br />
+                            <span className="text-yellow-400 text-2xl">Of Service</span>
+                            <br />
                           </h2>
                         )}
-                         <div className="flex items-center justify-center gap-2 mt-1">
+                        <div className="flex items-center justify-center gap-2 mt-1">
                           <span className="text-yellow-400 text-[10px]">★</span>
                           <span className="text-yellow-400 text-[10px]">★</span>
                         </div>
                       </div>
-
                     </div>
                   </div>
 
@@ -603,12 +620,11 @@ export default function StickerGenerator() {
                   <div className="h-14 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 flex items-center justify-center shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-20 relative border-t-2 border-yellow-200">
                     <div className="flex items-center gap-2 px-4">
                       <span className="text-black font-black text-xl tracking-widest uppercase text-center whitespace-nowrap">
-                        Legacy of Service • Kaduna North
+                        Legacy of Service • Ajingi/Albasu/Gaya
                       </span>
                       <span className="text-2xl filter drop-shadow-sm">🚀</span>
                     </div>
                   </div>
-
                 </div>
               </div>
 

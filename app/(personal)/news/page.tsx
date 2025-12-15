@@ -47,7 +47,7 @@ export default function NewsPage() {
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
             Stay informed about the latest developments, initiatives, and community updates from
-            Hon. Suleiman Kwari's office.
+            Hon. Dr. Ghali Mustapha Tijjani Phanda's office.
           </p>
         </div>
       </section>
@@ -59,179 +59,175 @@ export default function NewsPage() {
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-700"></div>
               <p className="mt-4 text-gray-600 dark:text-gray-400">Loading news...</p>
             </div>
-          ) : news.length === 0 ? (
+          ) : filteredNews.length === 0 ? (
             <div className="text-center py-12">
-              <span className="material-symbols-outlined text-6xl text-gray-400 mb-4">article</span>
-              <p className="text-gray-600 dark:text-gray-400">No news articles available yet.</p>
+              <div className="bg-gray-200 dark:bg-gray-700 border-2 border-dashed rounded-xl w-16 h-16 mx-auto flex items-center justify-center">
+                <span className="material-symbols-outlined text-gray-500 dark:text-gray-400 text-2xl">article</span>
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-gray-900 dark:text-white">No news found</h3>
+              <p className="mt-1 text-gray-500 dark:text-gray-400">Try adjusting your search or filter.</p>
+              <button 
+                onClick={() => {setActiveCategory('All'); setSearchQuery('')}}
+                className="mt-4 text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 font-medium"
+              >
+                Clear all filters
+              </button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {news.map((article) => (
-                <div
-                  key={article._id}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              {filteredNews.map((item) => (
+                <div 
+                  key={item._id} 
+                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group"
                 >
-                  <div className="h-48 overflow-hidden bg-gray-200 relative">
-                    {article.imageUrl ? (
+                  <div className="relative h-64 overflow-hidden">
+                    {item.featuredImage ? (
                       <Image
-                        src={article.imageUrl}
-                        alt={article.title}
+                        src={item.featuredImage}
+                        alt={item.title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
-                      <div className="h-full flex items-center justify-center">
-                        <span className="material-symbols-outlined text-4xl text-gray-400">
+                      <div className="w-full h-full bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
+                        <span className="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">
                           article
                         </span>
                       </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {item.videoUrl && (
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+                          <span className="material-symbols-outlined text-white text-4xl">
+                            play_arrow
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
+                  
                   <div className="p-6">
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
-                      <span className="flex items-center">
-                        <span className="material-symbols-outlined text-gold-400 mr-2">
-                          calendar_today
-                        </span>
-                        {formatDate(article.publishDate)}
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(item.category)}`}>
+                        {item.category}
                       </span>
-                      <span
-                        className={`inline-block px-2 py-1 rounded-full text-xs ${getCategoryColor(article.category)}`}
-                      >
-                        {article.category}
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        {formatDate(item.publishDate)}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                      {article.title}
+                    
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors line-clamp-2">
+                      {item.title}
                     </h3>
-                    <div
-                      className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3"
-                      dangerouslySetInnerHTML={{__html: article.content}}
-                    />
-                    <Link
-                      href={`/news/${article._id}`}
-                      className="text-green-700 dark:text-gold-400 font-medium hover:text-green-800 dark:hover:text-gold-300 transition-colors flex items-center"
-                    >
-                      Read More{' '}
-                      <span className="material-symbols-outlined ml-1">arrow_forward</span>
-                    </Link>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {item.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between">
+                      <Link 
+                        href={`/news/${item._id}`}
+                        className="text-green-700 dark:text-green-400 font-semibold hover:underline flex items-center gap-1 group"
+                      >
+                        Read More
+                        <span className="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform">
+                          arrow_forward
+                        </span>
+                      </Link>
+                      
+                      <div className="flex items-center gap-2">
+                        <button 
+                          onClick={() => shareArticle(item)}
+                          className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                          title="Share"
+                        >
+                          <span className="material-symbols-outlined">share</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           )}
+        </div>
+      </section>
 
-          {/* YouTube Videos Section */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Featured Videos
-            </h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-              Watch highlights and coverage of Hon. Suleiman Kwari's work and political journey
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 bg-gray-200 flex items-center justify-center">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-700 transition-colors">
-                      <span className="material-symbols-outlined text-white text-3xl">
-                        play_arrow
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-bold text-lg drop-shadow-lg line-clamp-2">
-                      Senate Committee on Finance: Reviewing Fiscal Policy with Hon. Suleiman Kwari
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
-                    <span className="material-symbols-outlined text-red-500 mr-2">
-                      smart_display
-                    </span>
-                    <span>Sep 22, 2025</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
-                     Senate Committee on Finance: Reviewing Fiscal Policy with Hon. Suleiman Kwari
-                  </h3>
-                  <Link
-                    href="#"
-                    className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-800 dark:hover:text-red-300 transition-colors"
-                  >
-                    Watch on YouTube
-                    <span className="material-symbols-outlined ml-1">open_in_new</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 bg-gray-200 flex items-center justify-center">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-700 transition-colors">
-                      <span className="material-symbols-outlined text-white text-3xl">
-                        play_arrow
-                      </span>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-bold text-lg drop-shadow-lg line-clamp-2">
-                      Empowering Kaduna North: Scholarship Distribution Ceremony
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
-                    <span className="material-symbols-outlined text-red-500 mr-2">
-                      smart_display
-                    </span>
-                    <span>Sep 22, 2025</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
-                    Empowering Kaduna North: Scholarship Distribution Ceremony
-                  </h3>
-                  <Link
-                    href="#"
-                    className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-800 dark:hover:text-red-300 transition-colors"
-                  >
-                    Watch on YouTube
-                    <span className="material-symbols-outlined ml-1">open_in_new</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+      {/* Newsletter CTA */}
+      <section className="py-16 md:py-20 bg-gradient-to-r from-green-800 to-blue-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="material-symbols-outlined text-5xl mb-4 text-green-300">email</span>
+          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
+            Subscribe to our newsletter and never miss important updates, events, and community news.
+          </p>
+          
+          <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+            <button className="px-6 py-3 bg-white text-green-800 font-bold rounded-lg hover:bg-green-50 transition-colors whitespace-nowrap">
+              Subscribe
+            </button>
           </div>
+        </div>
+      </section>
 
-          {/* Pagination */}
-          <div className="mt-12 flex justify-center">
-            <nav className="flex items-center space-x-2">
-              <Link href="#" className="px-3 py-2 rounded-md bg-green-700 text-white">
+      {/* Pagination */}
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex items-center justify-between">
+            <Link
+              href="#"
+              className="px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <span className="material-symbols-outlined">arrow_back</span>
+            </Link>
+            
+            <div className="flex items-center space-x-1">
+              <Link
+                href="#"
+                className="px-4 py-2 rounded-md bg-green-700 text-white font-medium"
+              >
                 1
               </Link>
               <Link
                 href="#"
-                className="px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-4 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 2
               </Link>
               <Link
                 href="#"
-                className="px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-4 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 3
               </Link>
+              <span className="px-2 py-2 text-gray-500 dark:text-gray-400">
+                ...
+              </span>
               <Link
                 href="#"
-                className="px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-4 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <span className="material-symbols-outlined">arrow_forward</span>
+                10
               </Link>
-            </nav>
-          </div>
+            </div>
+            
+            <Link
+              href="#"
+              className="px-3 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </Link>
+          </nav>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

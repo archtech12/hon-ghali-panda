@@ -112,7 +112,7 @@ export default function VolunteerPage() {
 
       if (response.ok) {
         alert(
-          '🎉 Registration Successful!\n\nThank you for joining Team Kwari! We will contact you soon with next steps.',
+          '🎉 Registration Successful!\n\nThank you for joining Team Ghali! We will contact you soon with next steps.',
         )
         router.push('/')
       } else {
@@ -136,15 +136,15 @@ export default function VolunteerPage() {
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 rounded-full shadow-lg mb-4">
             <span className="text-white font-bold flex items-center gap-2">
               <span className="text-2xl">🤝</span>
-              JOIN TEAM KWARI
+              JOIN TEAM GHALI
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Volunteer Registration
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Be part of the movement! Register to volunteer and help build a better future for Kaduna
-            North Senatorial District
+            Be part of the movement! Register to volunteer and help build a better future for Ajingi
+            / Albasu / Gaya Constituency
           </p>
         </div>
 
@@ -473,7 +473,7 @@ export default function VolunteerPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Why do you want to volunteer for Hon. Suleiman Kwari? *
+                  Why do you want to volunteer for Hon. Dr. Ghali Mustapha Tijjani Phanda? *
                 </label>
                 <textarea
                   required
@@ -481,7 +481,7 @@ export default function VolunteerPage() {
                   onChange={(e) => updateFormData('motivation', e.target.value)}
                   rows={4}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                  placeholder="Tell us what motivates you to support Hon. Suleiman Kwari..."
+                  placeholder="Tell us what motivates you to support Hon. Dr. Ghali Mustapha Tijjani Phanda..."
                 />
               </div>
 

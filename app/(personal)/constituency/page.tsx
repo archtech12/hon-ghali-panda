@@ -1,6 +1,10 @@
 'use client'
 
-import { constituencyData as staticConstituencyData, initiatives as staticInitiatives, visionContent as staticVisionContent } from '@/lib/data'
+import {
+  constituencyData as staticConstituencyData,
+  initiatives as staticInitiatives,
+  visionContent as staticVisionContent,
+} from '@/lib/data'
 import {useState} from 'react'
 import Link from 'next/link'
 
@@ -64,18 +68,18 @@ export default function ConstituencyPage() {
                 </p>
                 <p className="mb-4">
                   Our constituency is home to {constituencyData.population} across{' '}
-                  {constituencyData.communities.length} distinct Local Government Areas (LGAs), each with its own
-                  unique cultural heritage and economic characteristics.{' '}
+                  {constituencyData.communities.length} distinct Local Government Areas (LGAs), each
+                  with its own unique cultural heritage and economic characteristics.{' '}
                   {constituencyData.representative}'s representation focused on addressing the
                   specific needs of these communities while advocating for policies that benefit all
                   Nigerians.
                 </p>
                 <p className="mb-6">
-                  During his tenure, {constituencyData.representative} championed initiatives
-                  that focus on economic empowerment, infrastructure development, and improving
-                  access to essential services. His legislative work emphasized reducing dependency
-                  on imports, improving transportation networks, and supporting local manufacturing
-                  to create jobs and reduce the cost of living.
+                  During his tenure, {constituencyData.representative} championed initiatives that
+                  focus on economic empowerment, infrastructure development, and improving access to
+                  essential services. His legislative work emphasized reducing dependency on
+                  imports, improving transportation networks, and supporting local manufacturing to
+                  create jobs and reduce the cost of living.
                 </p>
 
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">
@@ -121,7 +125,7 @@ export default function ConstituencyPage() {
                   <li className="flex items-start">
                     <span className="material-symbols-outlined text-gold-400 mr-2">badge</span>
                     <span>
-                      <strong>Former Senator:</strong> {constituencyData.representative}
+                      <strong>Representative:</strong> {constituencyData.representative}
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -129,7 +133,7 @@ export default function ConstituencyPage() {
                       calendar_today
                     </span>
                     <span>
-                      <strong>Term:</strong> 2019 - 2023
+                      <strong>Term:</strong> 2023 - Present
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -161,7 +165,8 @@ export default function ConstituencyPage() {
               Key Initiatives
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Programs and policies championed by Hon. Suleiman Kwari for our constituency
+              Programs and policies championed by Hon. Dr. Ghali Mustapha Tijjani Phanda for our
+              constituency
             </p>
           </div>
 
@@ -196,9 +201,7 @@ export default function ConstituencyPage() {
                 Our Vision for the Future
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 mx-auto">
-                <p className="mb-4">
-                   {visionContent}
-                </p>
+                <p className="mb-4">{visionContent}</p>
                 <Link
                   href="/legislative"
                   className="inline-block bg-green-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-800 transition duration-300 transform hover:scale-105"
