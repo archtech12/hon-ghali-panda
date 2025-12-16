@@ -21,30 +21,43 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 export default function LegislativeWorkPage() {
   const [legislativeData] = useState<LegislativeData>({
     title: 'Legislative Work',
-    content: `<p>Hon. Dr. Ghali Mustapha Tijjani Phanda's legislative tenure is defined by a commitment to community development, youth empowerment, and rapid infrastructure growth. His approach centers on ensuring that federal presence is felt in every ward of Ajingi, Albasu, and Gaya.</p>
-    <p>Key to his vision is the establishment of a robust framework that supports rural communities in accessing education and healthcare. He champions bills that seek to bridge the gap between urban and rural development.</p>
-    <p>Beyond infrastructure, he is a vocal advocate for the agricultural sector, sponsoring legislation to improve rural access to credit and modern farming tools for his constituents.</p>`,
+    content: (
+      <>
+        <p>
+          Dr. Ghali's legislative work focuses on fundamental economic reforms that would benefit all
+          Nigerians. His approach centers on reducing dependency on imports, improving infrastructure,
+          and supporting local manufacturing.
+        </p>
+        <p>
+          Key to his vision is creating an environment where essential goods become more affordable
+          through policy interventions that address the root causes of high prices - from transportation
+          costs to import barriers.
+        </p>
+        <p>
+          By advocating for streamlined import procedures and improved infrastructure, Dr. Ghali aims to
+          create a more competitive economic environment that benefits consumers, local businesses, and
+          the broader Nigerian economy.
+        </p>
+      </>
+    ),
     bills: [
       {
-        name: 'Rural Youth Empowerment Bill',
-        date: '2023',
-        status: 'Proposed',
-        description:
-          'A critical bill aimed at establishing vocational training centers in rural constituencies to reduce youth unemployment.',
-      },
-      {
-        name: 'Community Health Access Bill',
-        date: '2023',
-        status: 'In Committee',
-        description:
-          'Proposed legislation to mandate the upgrade of Primary Healthcare Centers in rural LGAs.',
-      },
-      {
-        name: 'Agricultural Support Scheme Bill',
+        name: 'Import Policy Reform Initiative',
+        status: 'In Progress',
+        description: 'Leading efforts to streamline import procedures and reduce costs for essential goods.',
         date: '2024',
+      },
+      {
+        name: 'Transportation Infrastructure Bill',
         status: 'Proposed',
-        description:
-          'Legislation designed to provide subsidized farming inputs to smallholder farmers in constituencies like Ajingi, Albasu, and Gaya.',
+        description: 'Advocating for improved road networks and transportation systems in rural communities.',
+        date: '2024',
+      },
+      {
+        name: 'Local Manufacturing Incentives',
+        status: 'In Support',
+        description: 'Proposing tax incentives and support programs for local manufacturing enterprises.',
+        date: '2024',
       },
     ],
   })
@@ -56,31 +69,31 @@ export default function LegislativeWorkPage() {
   const policyPositions = [
     {
       id: 1,
-      title: 'Youth Empowerment',
+      title: 'Economic Reform and Import Policy',
       description:
-        'Advocating for skills acquisition and job creation programs to engage the youth productively.',
-      icon: 'school',
+        "Advocating for reforms that would reduce Nigeria's dependency on imports and make essential goods more affordable for citizens.",
+      icon: 'trending_up',
     },
     {
       id: 2,
-      title: 'Rural Development',
+      title: 'Infrastructure Development',
       description:
-        'Sponsoring bills that direct funding towards rural roads, electrification, and water projects.',
-      icon: 'agriculture',
+        'Pushing for improved transportation infrastructure to reduce costs and address fuel scarcity issues affecting communities.',
+      icon: 'construction',
     },
     {
       id: 3,
-      title: 'Healthcare Access',
+      title: 'Local Manufacturing Support',
       description:
-        'Strengthening healthcare institutions to ensure basic medical services reach every community.',
-      icon: 'local_hospital',
+        'Promoting domestic production initiatives to reduce reliance on foreign goods and create local employment.',
+      icon: 'factory',
     },
     {
       id: 4,
       title: 'Constituency Advocacy',
       description:
-        'Strong representation for Ajingi, Albasu, and Gaya communities, ensuring their voices are heard.',
-      icon: 'groups',
+        'Strong representation for Gaya/Ajingi/Albasu communities with policies that benefit the broader Nigerian population.',
+      icon: 'campaign',
     },
   ]
 
@@ -101,7 +114,7 @@ export default function LegislativeWorkPage() {
             {legislativeData?.title || 'Legislative Work'}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-green-100">
-            Advocating for community development, youth empowerment, and rapid infrastructure growth
+            Advocating for policies that transform communities and strengthen Nigeria's economy
           </p>
         </div>
       </section>
