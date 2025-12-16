@@ -112,8 +112,8 @@ export function HomePage({data}: HomePageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">Active</div>
-              <div className="text-gray-600">Service</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">2+</div>
+              <div className="text-gray-600">Years of Service</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">

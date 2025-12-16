@@ -17,18 +17,9 @@ const volunteerTypes = [
 ]
 
 const constituencies = [
-  'Sabon Gari',
-  'Zaria',
-  'Kaduna North',
-  'Kaduna South',
-  'Makarfi',
-  'Kudan',
-  'Ikara',
-  'Kubau',
-  'Soba',
-  'Lere',
-  'Giwa',
-  'Other',
+  'Gaya',
+  'Ajingi',
+  'Albasu',
 ]
 const availabilities = ['Full Time', 'Part Time', 'Weekends Only', 'Flexible']
 const educationLevels = [
@@ -55,8 +46,8 @@ export default function VolunteerPage() {
       street: '',
       city: '',
       lga: '',
-      state: 'Kaduna',
-      constituency: 'Kaduna North',
+      state: 'Kano',
+      constituency: 'Gaya',
     },
     volunteerType: 'General Supporter',
     skills: [] as string[],
