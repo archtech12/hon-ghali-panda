@@ -12,7 +12,7 @@ interface Bill {
 
 interface LegislativeData {
   title: string
-  content: string
+  content: React.ReactNode
   bills?: Bill[]
 }
 
@@ -217,7 +217,7 @@ export default function LegislativeWorkPage() {
                 Community Development Vision
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 mx-auto">
-                <div dangerouslySetInnerHTML={{__html: legislativeData?.content || ''}} />
+                <div>{legislativeData?.content}</div>
                 <div className="bg-green-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
                   <blockquote className="text-lg italic text-gray-900 dark:text-white">
                     "When we make it easier for goods to enter Nigeria, we reduce prices for
