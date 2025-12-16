@@ -143,9 +143,8 @@ export default function NewsPage() {
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-white font-bold text-lg drop-shadow-lg line-clamp-2">
-                      Empowering Kaduna North: Scholarship Distribution Ceremony
+                      Empowering Ajingi/Albasu/Gaya: Scholarship Distribution Ceremony
                     </h3>
-                  </div>
                   </div>
                 </div>
                 <div className="p-6">
@@ -156,7 +155,7 @@ export default function NewsPage() {
                     <span>Sep 22, 2025</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
-                    Empowering Kaduna North: Scholarship Distribution Ceremony
+                    Empowering Ajingi/Albasu/Gaya: Scholarship Distribution Ceremony
                   </h3>
                   <Link
                     href="#"
