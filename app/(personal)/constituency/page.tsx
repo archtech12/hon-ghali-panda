@@ -24,6 +24,9 @@ interface ConstituencyData {
   population: string
 }
 
+// ... (imports same)
+// ... interfaces same
+
 export default function ConstituencyPage() {
   const [constituencyData] = useState<ConstituencyData>(staticConstituencyData)
   const [initiatives] = useState<Initiative[]>(staticInitiatives)
@@ -34,7 +37,7 @@ export default function ConstituencyPage() {
   if (loading) {
     return (
       <div className="w-full py-16 text-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-700"></div>
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-700"></div>
         <p className="mt-4 text-gray-600">Loading...</p>
       </div>
     )
@@ -42,13 +45,13 @@ export default function ConstituencyPage() {
 
   return (
     <div className="w-full">
-      <section className="bg-green-900/90 dark:bg-green-900/95 py-12 sm:py-16 text-center text-white">
+      <section className="bg-red-900/90 dark:bg-red-900/95 py-12 sm:py-16 text-center text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter">
             Constituency Services
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-green-100">
-            Serving the people of Kaduna North with dedication and integrity
+          <p className="mt-4 text-base sm:text-lg text-red-100">
+            Serving the people of Gaya, Ajingi & Albasu Federal Constituency with dedication and integrity
           </p>
         </div>
       </section>
@@ -67,7 +70,7 @@ export default function ConstituencyPage() {
                   {constituencyData.electionYear} on the platform of the {constituencyData.party}.
                 </p>
                 <p className="mb-4">
-                  Our constituency is home to approximately 200,000 residents across{' '}
+                  Our constituency is home to hundreds of thousands of residents across{' '}
                   {constituencyData.communities.length} distinct communities, each
                   with its own unique cultural heritage and economic characteristics.{' '}
                   Dr. Ghali's representation focuses on addressing the
@@ -93,7 +96,7 @@ export default function ConstituencyPage() {
                   <li>Creating employment opportunities for youth and women</li>
                 </ul>
 
-                <div className="bg-green-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
+                <div className="bg-red-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
                   <blockquote className="text-lg italic text-gray-900 dark:text-white">
                     "My representation is anchored in empowering youth, women, and families across
                     our constituency—delivering vital support such as food aid, education
@@ -147,7 +150,7 @@ export default function ConstituencyPage() {
                 <div className="mt-8">
                   <Link
                     href="/contact"
-                    className="inline-block w-full text-center bg-green-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-800 transition duration-300"
+                    className="inline-block w-full text-center bg-red-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-800 transition duration-300"
                   >
                     Contact Our Office
                   </Link>
@@ -165,7 +168,7 @@ export default function ConstituencyPage() {
               Key Initiatives
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Programs and policies championed by Hon. Dr. Ghali Mustapha Tijjani Phanda for our
+              Programs and policies championed by Hon. Dr. Ghali Mustapha Tijjani Panda for our
               constituency
             </p>
           </div>
@@ -174,11 +177,11 @@ export default function ConstituencyPage() {
             {initiatives.map((initiative) => (
               <div
                 key={initiative.id}
-                className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border-l-4 border-green-700"
+                className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 border-l-4 border-red-700"
               >
                 <div className="flex items-start mb-4">
-                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
-                    <span className="material-symbols-outlined text-green-700 dark:text-green-400">
+                  <div className="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mr-4">
+                    <span className="material-symbols-outlined text-red-700 dark:text-red-400">
                       {initiative.icon}
                     </span>
                   </div>
@@ -193,7 +196,7 @@ export default function ConstituencyPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-green-50 dark:bg-gray-900">
+      <section className="py-16 md:py-20 bg-red-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12">
             <div className="max-w-4xl mx-auto text-center">
@@ -204,7 +207,7 @@ export default function ConstituencyPage() {
                 <p className="mb-4">{visionContent}</p>
                 <Link
                   href="/legislative"
-                  className="inline-block bg-green-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-800 transition duration-300 transform hover:scale-105"
+                  className="inline-block bg-red-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-800 transition duration-300 transform hover:scale-105"
                 >
                   Learn About Legislative Work
                 </Link>

@@ -15,6 +15,7 @@ interface TimelineProps {
   items: TimelineItem[]
 }
 
+// ... (Timeline data import)
 export function GhaliTimeline({items}: TimelineProps) {
   const [filter, setFilter] = useState<'all' | 'political' | 'philanthropic' | 'personal'>('all')
   
@@ -26,7 +27,7 @@ export function GhaliTimeline({items}: TimelineProps) {
   const getCategoryColor = (category: string) => {
     switch(category) {
       case 'political': return 'bg-blue-100 text-blue-800 border-blue-200'
-      case 'philanthropic': return 'bg-green-100 text-green-800 border-green-200'
+      case 'philanthropic': return 'bg-red-100 text-red-800 border-red-200'
       case 'personal': return 'bg-purple-100 text-purple-800 border-purple-200'
       default: return 'bg-gray-100 text-gray-800 border-gray-200'
     }
@@ -46,7 +47,7 @@ export function GhaliTimeline({items}: TimelineProps) {
     <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-green-800">My Journey</h2>
+          <h2 className="text-3xl font-bold mb-4 text-red-800">My Journey</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Explore the milestones that have shaped my career and community impact
           </p>
@@ -58,8 +59,8 @@ export function GhaliTimeline({items}: TimelineProps) {
             onClick={() => setFilter('all')}
             className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
               filter === 'all' 
-                ? 'bg-green-700 text-white shadow-lg transform scale-105' 
-                : 'bg-white text-gray-700 hover:bg-green-100 shadow-md'
+                ? 'bg-red-700 text-white shadow-lg transform scale-105' 
+                : 'bg-white text-gray-700 hover:bg-red-100 shadow-md'
             }`}
           >
             All
@@ -79,8 +80,8 @@ export function GhaliTimeline({items}: TimelineProps) {
             onClick={() => setFilter('philanthropic')}
             className={`px-5 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
               filter === 'philanthropic' 
-                ? 'bg-green-600 text-white shadow-lg transform scale-105' 
-                : 'bg-white text-gray-700 hover:bg-green-100 shadow-md'
+                ? 'bg-red-600 text-white shadow-lg transform scale-105' 
+                : 'bg-white text-gray-700 hover:bg-red-100 shadow-md'
             }`}
           >
             <span className="material-symbols-outlined text-base mr-2">volunteer_activism</span>
@@ -102,7 +103,7 @@ export function GhaliTimeline({items}: TimelineProps) {
         {/* Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-green-400 to-green-600 hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-red-400 to-red-600 hidden md:block"></div>
           
           {/* Timeline items */}
           <div className="space-y-12">
@@ -124,17 +125,17 @@ export function GhaliTimeline({items}: TimelineProps) {
                       </span>
                     </div>
                     <p className="mt-2 text-gray-600 mb-3">{item.description}</p>
-                    <div className="text-sm font-medium text-green-700">{item.date}</div>
+                    <div className="text-sm font-medium text-red-700">{item.date}</div>
                   </div>
                 </div>
                 
                 {/* Dot and line */}
                 <div className="md:w-2/12 flex justify-center relative">
-                  <div className="w-8 h-8 rounded-full bg-green-700 border-4 border-white shadow-lg z-10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-red-700 border-4 border-white shadow-lg z-10 flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-white"></div>
                   </div>
                   {/* Vertical line for mobile */}
-                  <div className="absolute top-8 h-12 w-1 bg-green-200 md:hidden"></div>
+                  <div className="absolute top-8 h-12 w-1 bg-red-200 md:hidden"></div>
                 </div>
                 
                 {/* Spacer for alternate items on desktop */}
@@ -153,29 +154,29 @@ export const timelineData: TimelineItem[] = [
   {
     id: 1,
     title: "Early Life & Education",
-    description: "Born in Albasu Phanda, Kano State. Pursued higher education with a focus on public service and community development.",
-    date: "1978 - 2000s",
+    description: "Born into the Tijjani family in Kano State. Pursued academic excellence with a focus on community service.",
+    date: "1980 - 2000s",
     category: "personal"
   },
   {
     id: 2,
-    title: "Beginning of Public Service",
-    description: "Started community development initiatives in local communities, focusing on education and healthcare access.",
+    title: "Community Initiatives",
+    description: "Started grassroots development projects in Albasu, providing support for local education and healthcare.",
     date: "2010 - 2022",
     category: "philanthropic"
   },
   {
     id: 3,
-    title: "Leadership Role",
-    description: "Elected to a prominent leadership position, enabling broader impact across multiple communities.",
+    title: "Elected to House of Reps",
+    description: "Elected to represent the good people of Gaya, Ajingi, and Albasu Federal Constituency on the NNPP platform.",
     date: "2023",
     category: "political"
   },
   {
     id: 4,
-    title: "Major Philanthropic Initiative",
-    description: "Launched a comprehensive program to support education and healthcare in underserved communities.",
-    date: "2023 - Present",
-    category: "philanthropic"
+    title: "Ongoing Legislative Impact",
+    description: "Championing bills for infrastructure, agriculture, and youth empowerment. Delivering solar boreholes and educational grants.",
+    date: "2024 - Present",
+    category: "political"
   }
 ]

@@ -32,9 +32,9 @@ export function MediaGallery({items}: MediaGalleryProps) {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 md:px-8">
-        <h2 className="text-3xl font-bold text-center mb-4 text-green-800">Media Gallery</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 text-red-800">Media Gallery</h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Explore photos and videos from community events, programs, and initiatives
+          Explore photos and moments from community events, programs, and initiatives in Gaya, Ajingi, and Albasu.
         </p>
 
         {/* Filter Buttons */}
@@ -43,8 +43,8 @@ export function MediaGallery({items}: MediaGalleryProps) {
             onClick={() => setFilter('all')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
               filter === 'all'
-                ? 'bg-green-700 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-green-100'
+                ? 'bg-red-700 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-red-100'
             }`}
           >
             All Media
@@ -53,8 +53,8 @@ export function MediaGallery({items}: MediaGalleryProps) {
             onClick={() => setFilter('image')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
               filter === 'image'
-                ? 'bg-green-700 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-green-100'
+                ? 'bg-red-700 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-red-100'
             }`}
           >
             Photos
@@ -63,8 +63,8 @@ export function MediaGallery({items}: MediaGalleryProps) {
             onClick={() => setFilter('video')}
             className={`px-6 py-2 rounded-full font-medium transition-colors ${
               filter === 'video'
-                ? 'bg-green-700 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-green-100'
+                ? 'bg-red-700 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-red-100'
             }`}
           >
             Videos
@@ -91,7 +91,7 @@ export function MediaGallery({items}: MediaGalleryProps) {
                     </div>
                   </div>
                 )}
-                <div className="absolute top-4 right-4 bg-green-700 text-white text-xs font-bold px-2 py-1 rounded">
+                <div className="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-2 py-1 rounded">
                   {item.type === 'image' ? 'Photo' : 'Video'}
                 </div>
               </div>
@@ -115,7 +115,7 @@ export function MediaGallery({items}: MediaGalleryProps) {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b flex justify-between items-center">
-                <h3 className="text-xl font-bold text-green-800">{selectedItem.title}</h3>
+                <h3 className="text-xl font-bold text-red-800">{selectedItem.title}</h3>
                 <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -155,7 +155,7 @@ export function MediaGallery({items}: MediaGalleryProps) {
               <div className="p-4 border-t text-right">
                 <button
                   onClick={closeModal}
-                  className="bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors"
+                  className="bg-red-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-800 transition-colors"
                 >
                   Close
                 </button>
@@ -173,50 +173,50 @@ export const mediaData: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/480465286_605794928897267_5859580872040922079_n.jpg',
-    title: 'Community Health Outreach',
+    src: '/projects/solar-boreholes.jpg',
+    title: 'Solar Borehole Commissioning',
     description:
-      'Providing free medical checkups to underserved communities in Zaria and Sabon Gari.',
-    date: 'March 15, 2023',
+      'Providing free access to clean water in Ukays, Makyandawa, and Kademi communities provided by Hon. Ghali Panda.',
+    date: 'December 5, 2024',
   },
   {
     id: 2,
-    type: 'video',
-    src: '/videos/program-launch.mp4',
-    title: 'Education Program Launch',
-    description: 'Launching our new literacy program for children in rural areas of Kaduna North.',
-    date: 'February 28, 2023',
+    type: 'image',
+    src: '/projects/motorcycles-21.jpg',
+    title: 'Youth Empowerment',
+    description: 'Empowering 21 youths with motorcycles to start their own logistics businesses in Gaya.',
+    date: 'December 26, 2024',
   },
   {
     id: 3,
     type: 'image',
-    src: '/schorlaship.jpg',
-    title: 'Scholarship Program',
-    description: 'Honoring beneficiaries of the Ghali Educational Support Scheme.',
-    date: 'January 20, 2023',
+    src: '/projects/nursing-scholarship.jpg',
+    title: 'Nursing Scholarship Award',
+    description: 'Presentation of scholarship grants to nursing students to boost healthcare capacity in the constituency.',
+    date: 'August 7, 2025',
   },
   {
     id: 4,
     type: 'image',
-    src: '/addini.jpg',
-    title: 'Team Planning Session',
-    description: 'Strategic planning session with our community development team in Zaria.',
-    date: 'April 5, 2022',
+    src: '/ghaliphoto.jpg',
+    title: 'Legislative Duty',
+    description: 'Hon. Dr. Ghali Panda engaging with colleagues at the National Assembly.',
+    date: '2024',
   },
   {
     id: 5,
-    type: 'video',
-    src: '/videos/community-event.mp4',
-    title: 'Annual Community Festival',
-    description: 'Celebrating our community achievements at the annual festival in Lere.',
-    date: 'December 10, 2022',
+    type: 'image',
+    src: '/projects/food-palliatives.jpg',
+    title: 'Ramadan Relief',
+    description: 'Distribution of grains and cash support to vulnerable families during Ramadan.',
+    date: 'March 15, 2024',
   },
   {
     id: 6,
     type: 'image',
-    src: '/foodstuff.jpg',
-    title: 'Food Aid Distribution',
-    description: 'Distributing food aid to families in need across the 8 LGAs.',
-    date: 'November 22, 2022',
+    src: '/projects/fertilizer-1800.jpg',
+    title: 'Agricultural Support',
+    description: 'Flagging off the distribution of 1,800 bags of fertilizer to farmers in Albasu.',
+    date: 'August 10, 2025',
   },
 ]

@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { projects2025 } from '@/lib/projects'
 import Link from 'next/link'
 
+// ... (Imports)
+
 // Helper for Category Icons
 const getCategoryIcon = (category: string) => {
   if (category.includes('Water')) return 'water_drop'
@@ -16,12 +18,12 @@ const getCategoryIcon = (category: string) => {
   return 'category'
 }
 
-// Category Colors for Badges
+// Category Colors for Badges (Updated to Red Theme mostly)
 const getCategoryColor = (category: string) => {
   if (category.includes('Water')) return 'bg-blue-100 text-blue-700 border-blue-200'
   if (category.includes('Lighting')) return 'bg-yellow-100 text-yellow-700 border-yellow-200'
   if (category.includes('Education')) return 'bg-indigo-100 text-indigo-700 border-indigo-200'
-  if (category.includes('Agriculture')) return 'bg-green-100 text-green-700 border-green-200'
+  if (category.includes('Agriculture')) return 'bg-red-100 text-red-700 border-red-200' // Changed to Red family for brand
   if (category.includes('Youth')) return 'bg-pink-100 text-pink-700 border-pink-200'
   if (category.includes('Community')) return 'bg-orange-100 text-orange-700 border-orange-200'
   return 'bg-gray-100 text-gray-700 border-gray-200'
@@ -59,16 +61,16 @@ export default function ProjectsPage() {
   }, [activeCategory, searchQuery])
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans selection:bg-green-100 selection:text-green-800">
+    <div className="min-h-screen bg-gray-50 font-sans selection:bg-red-100 selection:text-red-800">
       
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white overflow-hidden">
+      <div className="relative bg-gradient-to-br from-red-900 via-red-800 to-red-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="container mx-auto px-4 py-20 md:py-28 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-green-200 drop-shadow-sm">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-red-200 drop-shadow-sm">
             {lang === 'en' ? 'Transforming Our Community' : 'Canza Al\'ummarmu'}
           </h1>
-          <p className="text-lg md:text-xl text-green-100 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-red-100 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
             {lang === 'en' 
               ? 'Explore the impactful projects and initiatives delivering real change to Gaya, Ajingi, and Albasu.' 
               : 'Bincika muhimman ayyuka da tsare-tsaren da ke kawo sauyi na hakika ga Gaya, Ajingi, da Albasu.'}
@@ -77,13 +79,13 @@ export default function ProjectsPage() {
           <div className="inline-flex bg-white/10 backdrop-blur-md rounded-full p-1 border border-white/20">
             <button 
               onClick={toggleLang}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-white text-green-900 shadow-lg' : 'text-white hover:bg-white/10'}`}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-white text-red-900 shadow-lg' : 'text-white hover:bg-white/10'}`}
             >
               English
             </button>
             <button 
               onClick={toggleLang}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'ha' ? 'bg-white text-green-900 shadow-lg' : 'text-white hover:bg-white/10'}`}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'ha' ? 'bg-white text-red-900 shadow-lg' : 'text-white hover:bg-white/10'}`}
             >
               Hausa
             </button>
@@ -103,7 +105,7 @@ export default function ProjectsPage() {
                 onClick={() => setActiveCategory(cat)}
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border ${
                   activeCategory === cat 
-                    ? 'bg-green-700 text-white border-green-700 shadow-md ring-2 ring-green-200 ring-offset-1' 
+                    ? 'bg-red-700 text-white border-red-700 shadow-md ring-2 ring-red-200 ring-offset-1' 
                     : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
                 }`}
               >
@@ -122,7 +124,7 @@ export default function ProjectsPage() {
               placeholder={lang === 'en' ? "Search projects..." : "Nemi ayyuka..."}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all outline-none text-sm"
+              className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all outline-none text-sm"
             />
           </div>
         </div>
@@ -139,7 +141,7 @@ export default function ProjectsPage() {
             <p className="text-gray-500">Try adjusting your search or category filter.</p>
             <button 
               onClick={() => {setActiveCategory('All'); setSearchQuery('')}}
-              className="mt-6 text-green-600 font-medium hover:underline"
+              className="mt-6 text-red-600 font-medium hover:underline"
             >
               Clear all filters
             </button>
@@ -166,8 +168,8 @@ export default function ProjectsPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </>
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-gray-50 group-hover:bg-green-50/50 transition-colors">
-                      <span className="material-symbols-outlined text-6xl text-gray-300 mb-2 group-hover:text-green-300 transition-colors">
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gray-50 group-hover:bg-red-50/50 transition-colors">
+                      <span className="material-symbols-outlined text-6xl text-gray-300 mb-2 group-hover:text-red-300 transition-colors">
                         {getCategoryIcon(project.category)}
                       </span>
                     </div>
@@ -185,15 +187,15 @@ export default function ProjectsPage() {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow relative">
                   <div className="flex items-center gap-2 mb-3 text-xs font-medium text-gray-400 uppercase tracking-widest">
-                    <span className="material-symbols-outlined text-[16px] text-green-600">calendar_today</span>
+                    <span className="material-symbols-outlined text-[16px] text-red-600">calendar_today</span>
                     {project.date}
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-green-700 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-red-700 transition-colors">
                     {lang === 'en' ? project.titleEN : project.titleHA}
                   </h3>
 
-                  <div className="w-12 h-1 bg-green-100 rounded-full mb-4 group-hover:w-20 group-hover:bg-green-500 transition-all duration-300"></div>
+                  <div className="w-12 h-1 bg-red-100 rounded-full mb-4 group-hover:w-20 group-hover:bg-red-500 transition-all duration-300"></div>
 
                   <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow line-clamp-4">
                     {project.desc}
@@ -250,21 +252,21 @@ export default function ProjectsPage() {
         )}
         
         {/* Call to Action Footer */}
-        <div className="mt-20 relative rounded-3xl overflow-hidden bg-green-900 text-white text-center py-16 px-6">
+        <div className="mt-20 relative rounded-3xl overflow-hidden bg-red-900 text-white text-center py-16 px-6">
           <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]"></div>
           <div className="relative z-10 max-w-3xl mx-auto">
-             <span className="material-symbols-outlined text-6xl mb-4 text-green-300">volunteer_activism</span>
+             <span className="material-symbols-outlined text-6xl mb-4 text-red-300">volunteer_activism</span>
              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 {lang === 'en' ? 'Have an Idea for Your Community?' : 'Kuna da Shawara ga Al\'ummarku?'}
              </h2>
-             <p className="text-green-100 mb-8 text-lg">
+             <p className="text-red-100 mb-8 text-lg">
                 {lang === 'en' 
                     ? "We are listening. Suggest a project or report an issue in your area."
                     : "Muna sauraro. Ba da shawarar aiki ko kawo kuka game da matsalar yankinku."}
              </p>
              <Link 
                 href="/contact" 
-                className="inline-flex items-center gap-3 bg-white text-green-900 px-8 py-4 rounded-full font-bold hover:bg-green-50 hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 bg-white text-red-900 px-8 py-4 rounded-full font-bold hover:bg-red-50 hover:scale-105 transition-all shadow-xl"
             >
                 {lang === 'en' ? 'Contact Us Today' : 'Tuntube Mu Yau'}
                 <span className="material-symbols-outlined">arrow_forward</span>

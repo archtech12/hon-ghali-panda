@@ -26,7 +26,7 @@ export default function StickerGenerator() {
   const [showQR, setShowQR] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
   const [watermark, setWatermark] = useState(true)
-  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhaliLegacy')
+  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhali')
   const [stats, setStats] = useState<StickerStats>({totalGenerated: 0, lastGenerated: null})
   const [showBatchMode, setShowBatchMode] = useState(false)
   const [batchCount, setBatchCount] = useState(1)
@@ -39,11 +39,11 @@ export default function StickerGenerator() {
 
   const templates = {
     classic: {
-      bg: 'bg-gradient-to-br from-[#052e16] via-[#022c22] to-black',
-      accent: 'bg-gradient-to-r from-yellow-400 to-yellow-500',
+      bg: 'bg-gradient-to-br from-red-900 via-red-800 to-black',
+      accent: 'bg-gradient-to-r from-red-500 to-red-600',
       text: 'text-white',
-      name: 'Classic Green',
-      icon: '🌿',
+      name: 'Classic Red',
+      icon: '🔴',
     },
     modern: {
       bg: 'bg-gradient-to-br from-blue-900 via-indigo-900 to-black',
@@ -67,11 +67,11 @@ export default function StickerGenerator() {
       icon: '👑',
     },
     bold: {
-      bg: 'bg-gradient-to-br from-red-900 via-rose-900 to-black',
-      accent: 'bg-gradient-to-r from-yellow-300 to-yellow-400',
+      bg: 'bg-gradient-to-br from-green-900 via-emerald-900 to-black',
+      accent: 'bg-gradient-to-r from-green-400 to-green-500',
       text: 'text-white',
-      name: 'Bold Red',
-      icon: '🔥',
+      name: 'Bold Green',
+      icon: '🌿',
     },
     neon: {
       bg: 'bg-gradient-to-br from-teal-900 via-emerald-900 to-black',
@@ -101,8 +101,8 @@ export default function StickerGenerator() {
   const messages = {
     en: [
       'Together We Rise',
-      'Hon. Dr. Ghali Phanda',
-      'NNPP - Gaya/Ajingi/Albasu',
+      'Hon. Dr. Ghali Panda',
+      'NNPP - Gaya, Ajingi, Albasu',
       'Official Supporter',
       'Leadership That Delivers',
       '2027 - The Future is Bright',
@@ -158,8 +158,8 @@ export default function StickerGenerator() {
             const blob = await (await fetch(image)).blob()
             const file = new File([blob], 'ghali-supporter-sticker.png', {type: 'image/png'})
             await navigator.share({
-              title: 'I Honor the Legacy of Hon. Dr. Ghali!',
-              text: `Celebrating the legacy of Hon. Dr. Ghali Mustapha Tijjani Phanda - ${customMessage || 'Legacy of Service!'} ${campaignHashtag}`,
+              title: 'I Honor the Service of Hon. Dr. Ghali!',
+              text: `Celebrating the service of Hon. Dr. Ghali Mustapha Tijjani Panda - ${customMessage || 'Service to Humanity!'} ${campaignHashtag}`,
               files: [file],
             })
           } else {
@@ -222,7 +222,7 @@ export default function StickerGenerator() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 rounded-full shadow-lg mb-4">
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 rounded-full shadow-lg mb-4">
             <span className="text-white font-bold text-sm flex items-center gap-2">
               <span className="material-symbols-outlined">stars</span>
               PREMIUM STICKER GENERATOR
@@ -233,7 +233,7 @@ export default function StickerGenerator() {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Design professional stickers in seconds! Customize, download, and share your recognition
-            for Hon. Dr. Ghali Mustapha Tijjani Phanda
+            for Hon. Dr. Ghali Mustapha Tijjani Panda
           </p>
         </div>
 
@@ -243,7 +243,7 @@ export default function StickerGenerator() {
             {/* Personal Info */}
             <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-600">person</span>
+                <span className="material-symbols-outlined text-red-600">person</span>
                 Your Information
               </h2>
 
@@ -257,7 +257,7 @@ export default function StickerGenerator() {
                     value={supporterName}
                     onChange={(e) => setSupporterName(e.target.value)}
                     placeholder="e.g., Ahmed Ibrahim"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   />
                 </div>
 
@@ -269,9 +269,9 @@ export default function StickerGenerator() {
                     type="text"
                     value={customMessage}
                     onChange={(e) => setCustomMessage(e.target.value)}
-                    placeholder="e.g., A Legacy of Service!"
+                    placeholder="e.g., Service to Humanity!"
                     maxLength={40}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   />
                   <p className="text-xs text-gray-500 mt-1">{customMessage.length}/40 characters</p>
 
@@ -285,7 +285,7 @@ export default function StickerGenerator() {
                         <button
                           key={idx}
                           onClick={() => setCustomMessage(msg)}
-                          className="px-3 py-1 text-xs bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors font-medium"
+                          className="px-3 py-1 text-xs bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors font-medium"
                         >
                           {msg.substring(0, 20)}
                           {msg.length > 20 ? '...' : ''}
@@ -305,7 +305,7 @@ export default function StickerGenerator() {
                       onClick={() => setLanguage('en')}
                       className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                         language === 'en'
-                          ? 'bg-green-600 text-white shadow-lg scale-105'
+                          ? 'bg-red-600 text-white shadow-lg scale-105'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -315,7 +315,7 @@ export default function StickerGenerator() {
                       onClick={() => setLanguage('ha')}
                       className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                         language === 'ha'
-                          ? 'bg-green-600 text-white shadow-lg scale-105'
+                          ? 'bg-red-600 text-white shadow-lg scale-105'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -325,7 +325,7 @@ export default function StickerGenerator() {
                       onClick={() => setLanguage('ar')}
                       className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                         language === 'ar'
-                          ? 'bg-green-600 text-white shadow-lg scale-105'
+                          ? 'bg-red-600 text-white shadow-lg scale-105'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -347,7 +347,7 @@ export default function StickerGenerator() {
                   />
                   <button
                     onClick={triggerFileInput}
-                    className="w-full py-3 px-4 border-2 border-dashed border-gray-300 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 flex items-center justify-center gap-2 font-medium text-gray-700"
+                    className="w-full py-3 px-4 border-2 border-dashed border-gray-300 rounded-xl hover:border-red-500 hover:bg-red-50 transition-all duration-200 flex items-center justify-center gap-2 font-medium text-gray-700"
                   >
                     <span className="material-symbols-outlined">upload</span>
                     {supporterPhoto ? 'Change Photo' : 'Upload Photo'}
@@ -358,7 +358,7 @@ export default function StickerGenerator() {
                         <img
                           src={supporterPhoto}
                           alt="Preview"
-                          className="w-20 h-20 rounded-full object-cover border-4 border-green-500 shadow-lg"
+                          className="w-20 h-20 rounded-full object-cover border-4 border-red-500 shadow-lg"
                         />
                       </div>
                       <button
@@ -377,7 +377,7 @@ export default function StickerGenerator() {
             {/* Template Selection */}
             <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-600">palette</span>
+                <span className="material-symbols-outlined text-red-600">palette</span>
                 Choose Template
               </h2>
               <div className="grid grid-cols-3 gap-3">
@@ -387,8 +387,8 @@ export default function StickerGenerator() {
                     onClick={() => setTemplate(t)}
                     className={`p-3 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
                       template === t
-                        ? 'border-green-500 bg-green-50 shadow-lg scale-105 ring-1 ring-green-500'
-                        : 'border-gray-200 hover:border-green-300 hover:shadow-md hover:bg-gray-50'
+                        ? 'border-red-500 bg-red-50 shadow-lg scale-105 ring-1 ring-red-500'
+                        : 'border-gray-200 hover:border-red-300 hover:shadow-md hover:bg-gray-50'
                     }`}
                   >
                     <div className={`w-full h-12 ${templates[t].bg} rounded-lg shadow-inner`}></div>
@@ -401,7 +401,7 @@ export default function StickerGenerator() {
             {/* Size Selection */}
             <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-600">
+                <span className="material-symbols-outlined text-red-600">
                   photo_size_select_large
                 </span>
                 Sticker Size
@@ -413,8 +413,8 @@ export default function StickerGenerator() {
                     onClick={() => setSize(s)}
                     className={`w-full p-3 rounded-xl border-2 transition-all duration-200 flex items-center justify-between ${
                       size === s
-                        ? 'border-green-500 bg-green-50'
-                        : 'border-gray-200 hover:border-green-300'
+                        ? 'border-red-500 bg-red-50'
+                        : 'border-gray-200 hover:border-red-300'
                     }`}
                   >
                     <span className="font-semibold text-gray-700 flex items-center gap-2">
@@ -430,23 +430,23 @@ export default function StickerGenerator() {
             </div>
 
             {/* Sticker Stats */}
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-xl p-6 text-white">
+            <div className="bg-gradient-to-br from-red-600 to-red-800 rounded-2xl shadow-xl p-6 text-white">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined">emoji_events</span>
                 Your Impact
               </h2>
               <div className="space-y-3">
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                  <p className="text-sm text-green-100">Stickers Created</p>
+                  <p className="text-sm text-red-100">Stickers Created</p>
                   <p className="text-3xl font-black">{stats.totalGenerated}</p>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                  <p className="text-sm text-green-100">Campaign Hashtag</p>
+                  <p className="text-sm text-red-100">Campaign Hashtag</p>
                   <p className="text-lg font-bold">{campaignHashtag}</p>
                 </div>
                 {stats.lastGenerated && (
                   <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3">
-                    <p className="text-xs text-green-100">Last Generated</p>
+                    <p className="text-xs text-red-100">Last Generated</p>
                     <p className="text-sm font-semibold">{stats.lastGenerated}</p>
                   </div>
                 )}
@@ -465,7 +465,7 @@ export default function StickerGenerator() {
             <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-600">preview</span>
+                  <span className="material-symbols-outlined text-red-600">preview</span>
                   Live Preview
                 </h2>
                 <button
@@ -519,7 +519,7 @@ export default function StickerGenerator() {
                       <div className="absolute inset-0 z-0">
                         <img
                           src="/ghaliphoto.jpg"
-                          alt="Hon. Dr. Ghali Phanda"
+                          alt="Hon. Dr. Ghali Panda"
                           className="w-full h-full object-cover"
                           style={{
                             objectPosition: 'center top', // Focus on head/shoulders
@@ -539,11 +539,11 @@ export default function StickerGenerator() {
                           <br />
                           <span className="text-3xl text-yellow-400">Dr. Ghali</span>
                           <br />
-                          Tijjani Phanda
+                          Tijjani Panda
                         </h1>
                         <div className="h-1 w-20 bg-yellow-500 mt-2 mb-2 rounded-full"></div>
                         <p className="text-yellow-200 font-bold text-[10px] uppercase tracking-wider drop-shadow-md">
-                          NNPP • Ajingi / Albasu / Gaya
+                          NNPP • Gaya, Ajingi, Albasu
                         </p>
                       </div>
                     </div>
@@ -602,9 +602,9 @@ export default function StickerGenerator() {
                           </h2>
                         ) : (
                           <h2 className="text-white font-black text-xl uppercase leading-none drop-shadow-lg">
-                            Legacy
+                            Service
                             <br />
-                            <span className="text-yellow-400 text-2xl">Of Service</span>
+                            <span className="text-yellow-400 text-2xl">To Humanity</span>
                             <br />
                           </h2>
                         )}
@@ -617,10 +617,11 @@ export default function StickerGenerator() {
                   </div>
 
                   {/* BOTTOM BANNER - Solid Gradient */}
-                  <div className="h-14 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 flex items-center justify-center shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-20 relative border-t-2 border-yellow-200">
-                    <div className="flex items-center gap-2 px-4">
-                      <span className="text-black font-black text-xl tracking-widest uppercase text-center whitespace-nowrap">
-                        Legacy of Service • Ajingi/Albasu/Gaya
+                  {/* BOTTOM BANNER - Solid Gradient */}
+                  <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 flex items-center justify-center shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-20 relative border-t-2 border-yellow-200 py-4">
+                    <div className="flex items-center gap-3 px-8">
+                      <span className="text-black font-black text-xl tracking-wider uppercase text-center whitespace-nowrap drop-shadow-sm">
+                        Service to Humanity • Gaya / Ajingi / Albasu
                       </span>
                       <span className="text-2xl filter drop-shadow-sm">🚀</span>
                     </div>
@@ -636,7 +637,7 @@ export default function StickerGenerator() {
                   className={`py-4 px-6 rounded-xl font-bold text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-lg ${
                     isGenerating || !supporterName
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 transform hover:scale-105 hover:shadow-xl'
+                      : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transform hover:scale-105 hover:shadow-xl'
                   }`}
                 >
                   <span className="material-symbols-outlined">download</span>
@@ -670,8 +671,8 @@ export default function StickerGenerator() {
             {/* Features */}
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="material-symbols-outlined text-green-600 text-2xl">hd</span>
+                <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="material-symbols-outlined text-red-600 text-2xl">hd</span>
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">HD Quality</h3>
                 <p className="text-sm text-gray-600">

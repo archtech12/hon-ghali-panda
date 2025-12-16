@@ -4,14 +4,14 @@ import {Metadata, Viewport} from 'next'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Hon. Dr. Ghali Mustapha Tijjani Phanda - Member, House of Representatives',
-    template: '%s | Hon. Ghali Phanda',
+    default: 'Hon. Dr. Ghali Mustapha Tijjani Panda - Member, House of Representatives',
+    template: '%s | Hon. Ghali Panda',
   },
   description:
-    'Official website of Hon. Dr. Ghali Mustapha Tijjani Phanda - Member representing Ajingi / Albasu / Gaya Federal Constituency. Champion of Community Development and Participatory Leadership.',
+    'Official website of Hon. Dr. Ghali Mustapha Tijjani Panda - Member representing Gaya, Ajingi, and Albasu Federal Constituency. Champion of Community Development and Kwankwasiyya Principles.',
   keywords: [
     'Ghali Mustapha Tijjani',
-    'Ghali Phanda',
+    'Ghali Panda',
     'Ajingi',
     'Albasu',
     'Gaya',
@@ -19,34 +19,35 @@ export const metadata: Metadata = {
     'Nigeria Politics',
     'Community Development',
     'NNPP',
+    'Kwankwasiyya',
   ],
-  authors: [{name: 'Hon. Dr. Ghali Mustapha Tijjani Phanda'}],
-  creator: 'Ghali Phanda Media Team',
-  publisher: 'Ghali Phanda Legacy',
+  authors: [{name: 'Hon. Dr. Ghali Mustapha Tijjani Panda'}],
+  creator: 'Ghali Panda Media Team',
+  publisher: 'Ghali Panda Media',
   openGraph: {
     type: 'website',
     locale: 'en_NG',
-    url: 'https://ghaliphanda.vercel.app',
-    siteName: 'Hon. Ghali Phanda Legacy',
-    title: 'Hon. Dr. Ghali Mustapha Tijjani Phanda - Legacy of Service',
+    url: 'https://hon-ghali-panda.com',
+    siteName: 'Hon. Ghali Panda Official',
+    title: 'Hon. Dr. Ghali Mustapha Tijjani Panda - Service to Humanity',
     description:
-      'Celebrating the impactful service of Hon. Dr. Ghali in Ajingi, Albasu, and Gaya. Empowering communities through dedicated leadership.',
+      'Celebrating the impactful service of Hon. Dr. Ghali Panda in Gaya, Ajingi, and Albasu. Empowering communities through dedicated leadership.',
     images: [
       {
         url: '/ghaliphoto.jpg',
         width: 1200,
         height: 630,
-        alt: 'Hon. Dr. Ghali Mustapha Tijjani Phanda',
+        alt: 'Hon. Dr. Ghali Mustapha Tijjani Panda',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hon. Ghali Phanda - Legacy of Service',
+    title: 'Hon. Ghali Panda - Service to Humanity',
     description:
-      'Championing development in Ajingi / Albasu / Gaya. Member, House of Representatives.',
+      'Championing development in Gaya, Ajingi, and Albasu. Member, House of Representatives.',
     images: ['/ghaliphoto.jpg'],
-    creator: '@GhaliPhanda',
+    creator: '@GhaliPanda',
   },
   robots: {
     index: true,
@@ -87,7 +88,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: '#166534',
+  themeColor: '#b91c1c', // Red-700
 }
 
 const serif = PT_Serif({
@@ -120,7 +121,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
         />
-        <meta name="theme-color" content="#166534" />
+        <meta name="theme-color" content="#b91c1c" />
       </head>
       <body>{children}</body>
     </html>

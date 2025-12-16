@@ -9,7 +9,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
         <Navbar />
         <div className="flex-grow">{children}</div>
         <Newsletter />
-        <footer className="bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white relative overflow-hidden">
+        <footer className="bg-gradient-to-br from-red-900 via-red-800 to-red-900 text-white relative overflow-hidden">
           {/* Decorative background */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
@@ -26,7 +26,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                     </svg>
                   </div>
                   <h2 className="text-white text-lg sm:text-xl font-bold tracking-tight">
-                    Hon. Dr. Ghali Mustapha Tijjani Phanda
+                    Hon. Dr. Ghali Mustapha Tijjani Panda
                   </h2>
                 </div>
                 <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -39,8 +39,8 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                 </h3>
                 <ul className="mt-4 space-y-2 text-sm sm:text-base text-gray-300" role="list">
                   <li>Constituency Office</li>
-                  <li>Ajingi / Albasu / Gaya, Kano State</li>
-                  <li>Nigeria</li>
+                  <li>Gaya, Ajingi, Albasu Federal Constituency</li>
+                  <li>Kano State, Nigeria</li>
                 </ul>
               </div>
               <div>
@@ -58,9 +58,9 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                     <span className="material-symbols-outlined text-gold-400 text-lg">mail</span>
                     <a
                       className="hover:text-gold-400 transition-colors"
-                      href="mailto:contact@ghaliphanda.com"
+                      href="mailto:contact@ghalipanda.com"
                     >
-                      contact@ghaliphanda.com
+                      contact@ghalipanda.com
                     </a>
                   </li>
                 </ul>
@@ -107,7 +107,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                 </ul>
               </div>
             </div>
-            <div className="mt-10 pt-8 border-t border-green-700/50 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="mt-10 pt-8 border-t border-red-700/50 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex space-x-4 sm:space-x-6">
                 <a
                   className="text-gray-400 hover:text-gold-400 transition-all hover:scale-110 p-2 hover:bg-white/10 rounded-full"
@@ -164,7 +164,7 @@ export default function IndexRoute({children}: {children: React.ReactNode}) {
                 </a>
               </div>
               <p className="text-sm sm:text-base text-gray-400 text-center sm:text-left">
-                © 2024 Hon. Dr. Ghali Mustapha Tijjani Phanda. All rights reserved.
+                © 2024 Hon. Dr. Ghali Mustapha Tijjani Panda. All rights reserved.
               </p>
             </div>
           </div>

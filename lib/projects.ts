@@ -1,30 +1,28 @@
 export const projects2025 = [
-    // 1–12
-    { id: 1, category: "Water & Electricity", date: "January 2024", titleEN: "Repair of All Damaged Boreholes", titleHA: "Gyaran Dukkanntin Ramin Rijiyoyin da suka Lalace", desc: "All broken boreholes in Gaya, Ajingi and Albasu repaired — clean water restored to thousands of homes.", photo: "/projects/borehole-repair.jpg" },
-    { id: 2, category: "Water & Electricity", date: "5 December 2024", titleEN: "20 Solar-Powered Boreholes Installed", titleHA: "An Samar da Ramin Rijiyoyin Hasken Rana 20", desc: "Gaya 6 · Ajingi 5 · Albasu 6 — sustainable water for over 10,000 people daily.", photo: "/projects/solar-boreholes.jpg" },
-    { id: 3, category: "Water & Electricity", date: "December 2024", titleEN: "Transformer Installation", titleHA: "Samarda da Transformer", desc: "New transformers in Kwalele, Panda and Albasu — ending years of darkness.", photo: "/projects/transformer.jpg" },
-    { id: 4, category: "Lighting & Energy", date: "18 October 2024", titleEN: "39 Solar Streetlights Launched in Gaya", titleHA: "An Kaddamar da Fitilu 39 Masu Hasken Rana a Gaya", desc: "30 on main road + 9 at Bus Station, INEC & DSS — safer nights in Gaya.", photo: "/projects/solar-streetlights-launch.jpg" },
-    { id: 5, category: "Lighting & Energy", date: "2024", titleEN: "100+ Solar Streetlights Across Gaya", titleHA: "Fitilu Sama da 100 na Hasken Rana a Gaya", desc: "Massive lighting project making Gaya safer and brighter.", photo: "/projects/100-streetlights.jpg" },
-    { id: 6, category: "Education", date: "2024–2025", titleEN: "New Classroom Blocks & Primary Schools", titleHA: "Sabbin Classrooms da Makarantun Firamare", desc: "Gandu Model, Kazuruva, Kalachadi, Kademi, Ajingi Model, Kunkurawa, Ganuwa, GRA Quarters and more.", photo: "/projects/new-schools.jpg" },
-    { id: 7, category: "Education", date: "7 August 2025", titleEN: "Nursing Scholarship — 30 Students (₦2.25M)", titleHA: "Tallafin Nursing — Yanayin 30 (₦2.25M)", desc: "Registration fees fully paid — building tomorrow’s nurses.", photo: "/projects/nursing-scholarship.jpg" },
-    { id: 8, category: "Education", date: "2024", titleEN: "20 Female Students Full Scholarship + Allowance", titleHA: "Cikakken Tallafin Mata 20 Tare da Allowance", desc: "Admission + fees + monthly allowance covered.", photo: "/projects/female-scholarship.jpg" },
-    { id: 9, category: "Agriculture", date: "10 August 2025", titleEN: "1,800 Bags of Fertilizer + 8 Motorcycles", titleHA: "Bukuku 1,800 na Taki + Babura 8", desc: "Massive farming boost across the three LGAs.", photo: "/projects/fertilizer-1800.jpg" },
-    { id: 10, category: "Youth & Women", date: "2024", titleEN: "300 Markade (Noodle) Machines + 10kg Flour Each", titleHA: "Injin Markade 300 + Gari 10kg Kowane", desc: "Women and youth now running their own food businesses.", photo: "/projects/markade-machines.jpg" },
-    { id: 11, category: "Youth & Women", date: "26 December 2024", titleEN: "21 Motorcycles Empowerment", titleHA: "Tallafin Babura 21", desc: "Gaya 10 · Ajingi 5 · Albasu 6 — new okada businesses started.", photo: "/projects/motorcycles-21.jpg" },
-    { id: 12, category: "Community", date: "2024", titleEN: "Food Palliatives & Monthly Cash Support", titleHA: "Tallafin Abinci da Kuɗi Duk Wata", desc: "Thousands of bags of rice, maize, millet + regular cash to vulnerable families.", photo: "/projects/food-palliatives.jpg" },
+    // Highlighted Project
+    { id: 1, category: "Empowerment", date: "March 2024", titleEN: "Ramadan Relief Package (18,600 Bags + ₦20M)", titleHA: "Tallafin Azumi (Buhu 18,600 + Naira Miliyan 20)", desc: "Flagged off in Gaya: Distribution of 18,600 bags of grains and ₦20 million cash support to 1,000 vulnerable youths and families across Gaya, Ajingi, and Albasu.", photo: "/projects/food-palliatives.jpg" },
 
-    // 13–25
-    { id: 13, category: "Lighting & Energy", date: "2024", titleEN: "Solar Batteries for Mosques (Sharifawa)", titleHA: "Batir Din Sola a Masallaci (Sharifawa)", desc: "Mosques now have uninterrupted power for prayers.", photo: "/projects/mosque-solar-batteries.jpg" },
-    { id: 14, category: "Education", date: "January 2025", titleEN: "KUST Student Support (₦20,000 each)", titleHA: "Tallafin Daliban KUST", desc: "Financial help to KUST Gaya student association members.", photo: "/projects/kust-support.jpg" },
-    { id: 15, category: "Agriculture", date: "6 July 2024", titleEN: "Fertilizer Support", titleHA: "Tallafin Taki", desc: "Modern fertilizers given to farmers for better harvest.", photo: "/projects/fertilizer-july.jpg" },
-    { id: 16, category: "Agriculture", date: "2024", titleEN: "Fish Feed & Pesticide Support", titleHA: "Tallafin Kifi da Maganin Tsauni", desc: "Support for fish farmers and crop protection.", photo: "/projects/fish-feed.jpg" },
-    { id: 17, category: "Youth & Women", date: "2024", titleEN: "Goat Voucher Support", titleHA: "Tallafin Rago", desc: "Vouchers for goats to start livestock businesses.", photo: "/projects/goat-vouchers.jpg" },
-    { id: 18, category: "Youth & Women", date: "9 November 2024", titleEN: "Motorcycle to Volunteer Ayuba", titleHA: "Babur ga Dan Gwagwarmaya Ayuba", desc: "Special reward for dedicated community volunteer.", photo: "/projects/ayuba-motorcycle.jpg" },
-    { id: 19, category: "Youth & Women", date: "November 2024", titleEN: "50 Bags to Mahauta Group", titleHA: "Bukuku 50 ga Mahauta", desc: "Food support to vulnerable community group.", photo: "/projects/mahuata-food.jpg" },
-    { id: 20, category: "Youth & Women", date: "19 April 2025", titleEN: "₦5 Million Grant to Kwankwasiyya Youth", titleHA: "Tallafin ₦5M ga Matasan Kwankwasiyya", desc: "Cash grant to strengthen youth activities.", photo: "/projects/kwankwasiyya-grant.jpg" },
-    { id: 21, category: "Youth & Women", date: "3 June 2025", titleEN: "₦1.2 Million Grant to Door-to-Door Team", titleHA: "Tallafin ₦1.2M ga Kungiyar D2D", desc: "Support for grassroots mobilization volunteers.", photo: "/projects/d2d-grant.jpg" },
-    { id: 22, category: "Community Support", date: "2024", titleEN: "Fuel Allowance Support", titleHA: "Tallafin Man Fetur", desc: "Fuel vouchers to reduce transport hardship.", photo: "/projects/fuel-allowance.jpg" },
-    { id: 23, category: "Community Support", date: "2024–Ongoing", titleEN: "Monthly Cash Allowances", titleHA: "Tallafin Kudi Duk Wata", desc: "Regular stipends to vulnerable individuals.", photo: "/projects/monthly-allowance.jpg" },
-    { id: 24, category: "Community Support", date: "21 April 2024", titleEN: "FMC Azare Medical Assistance", titleHA: "Taimakon Lafiya a FMC Azare", desc: "Support for Muhammad Mattara Grays & Abubakar Aliyu Alusi.", photo: "/projects/fmc-azare.jpg" },
-    { id: 25, category: "Community Support", date: "2024", titleEN: "N320 Million Empowerment Programme", titleHA: "Tallafin Naira Miliyan 320", desc: "Massive food items + cash grants to over 18,000 households.", photo: "/projects/n320m-empowerment.jpg" }
+    // Water
+    { id: 2, category: "Water & Electricity", date: "5 December 2024", titleEN: "20 Solar-Powered Boreholes Commissioned", titleHA: "Rijiyoyin Burtsatse na Solar 20", desc: "Providing clean water to Ukays, Makyandawa, Stadium, Kademi, Ataus, and Harunawa-B in Gaya, plus communities in Ajingi and Albasu.", photo: "/projects/solar-boreholes.jpg" },
+    { id: 3, category: "Water & Electricity", date: "January 2024", titleEN: "Rehabilitation of Damaged Boreholes", titleHA: "Gyaran Rijiyoyin Burtsatse", desc: "Restored access to clean water by repairing key boreholes across the three LGAs.", photo: "/projects/borehole-repair.jpg" },
+
+    // Empowerment
+    { id: 4, category: "Youth & Women", date: "26 December 2024", titleEN: "Motorcycle Empowerment (21 Units)", titleHA: "Tallafin Babura 21", desc: "Distributed 21 motorcycles to youths for business: Gaya (10), Ajingi (5), Albasu (6).", photo: "/projects/motorcycles-21.jpg" },
+    { id: 5, category: "Agriculture", date: "10 August 2025", titleEN: "1,800 Bags of Fertilizer Support", titleHA: "Tallafin Taki Buhu 1,800", desc: "Massive support for farmers across Gaya, Ajingi, and Albasu to ensure food security.", photo: "/projects/fertilizer-1800.jpg" },
+
+    // Education
+    { id: 6, category: "Education", date: "7 August 2025", titleEN: "Nursing Scholarship Scheme (30 Students)", titleHA: "Tallafin Karatu ga Dalibai 30 na Nursing", desc: "Full N2.25M scholarship fund covering tuition for 30 nursing students from the constituency.", photo: "/projects/nursing-scholarship.jpg" },
+    { id: 7, category: "Education", date: "2024-2025", titleEN: "Construction of Classroom Blocks", titleHA: "Ginin Azuzuwa", desc: "New learning blocks to decongest schools in Ajingi and Albasu.", photo: "/projects/new-schools.jpg" },
+
+    // Infrastructure
+    { id: 8, category: "Lighting & Energy", date: "18 October 2024", titleEN: "Solar Streetlights Installation", titleHA: "Fitilun Titi na Solar", desc: "Installation of solar streetlights in Harunawa-B (Gaya) and other strategic locations to improve security.", photo: "/projects/solar-streetlights-launch.jpg" },
+    { id: 9, category: "Lighting & Energy", date: "December 2024", titleEN: "Transformer Installation", titleHA: "Samar da Tasfoma", desc: "New transformers for Kwalele and Panda communities.", photo: "/projects/transformer.jpg" },
+
+    // Social Support
+    { id: 10, category: "Community", date: "2024", titleEN: "N320 Million Empowerment Programme", titleHA: "Tallafin Naira Miliyan 320", desc: "Comprehensive support reaching over 18,000 households with food and cash grants.", photo: "/projects/n320m-empowerment.jpg" },
+    { id: 11, category: "Youth & Women", date: "2024", titleEN: "Business Support Grants", titleHA: "Tallafin Sana'a", desc: "Supporting women and youth with start-up capital for small businesses.", photo: "/projects/markade-machines.jpg" },
+
+    // Other specific items from previous data that seem authentic enough to keep or adjust
+    { id: 12, category: "Education", date: "January 2025", titleEN: "KUST Student Support", titleHA: "Tallafin Daliban KUST", desc: "Financial assistance to students from the constituency at KUST Wudil.", photo: "/projects/kust-support.jpg" },
+    { id: 13, category: "Community", date: "2024", titleEN: "Daily Legislative Representation", titleHA: "Wakilci Mai Inganci", desc: "Vocal opposition to anti-masses taxes and advocacy for rural development projects.", photo: "/ghaliphoto.jpg" }
 ];
