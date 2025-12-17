@@ -5,7 +5,7 @@ import html2canvas from 'html2canvas'
 import Cropper from 'react-easy-crop'
 import type {Area} from 'react-easy-crop'
 
-type Template = 'classic' | 'modern' | 'vibrant' | 'elegant' | 'bold' | 'neon' | 'royal'
+type Template = 'classic' | 'modern' | 'vibrant' | 'elegant' | 'bold' | 'neon' | 'royal' | 'greenCircular'
 type Size = 'small' | 'medium' | 'large' | 'story' | 'banner' | 'poster'
 type Language = 'en' | 'ha' | 'ar'
 
@@ -19,6 +19,7 @@ export default function StickerGenerator() {
   const [supporterName, setSupporterName] = useState('')
   const [customMessage, setCustomMessage] = useState('')
   const [supporterPhoto, setSupporterPhoto] = useState<string | null>(null)
+  const [year, setYear] = useState('2027')
   const [template, setTemplate] = useState<Template>('classic')
   const [size, setSize] = useState<Size>('medium')
   const [language, setLanguage] = useState<Language>('en')
@@ -86,6 +87,16 @@ export default function StickerGenerator() {
       text: 'text-white',
       name: 'Royal Purple',
       icon: '✨',
+    },
+    greenCircular: {
+      bg: 'bg-gradient-to-br from-green-800 via-green-900 to-black',
+      accent: 'bg-gradient-to-r from-yellow-400 to-yellow-500',
+      text: 'text-white',
+      name: 'Green Circular',
+      icon: '🟢',
+      layout: 'circular',
+      hasCircularFrame: true,
+      hasGhaliPhoto: true,
     },
   }
 
@@ -334,6 +345,56 @@ export default function StickerGenerator() {
                   </div>
                 </div>
 
+                {template === 'greenCircular' && (
+                  <>
+                    <div className="pt-4 border-t border-gray-100">
+                      <label className="block text-sm font-bold text-gray-800 mb-2">
+                        Campaign Options
+                      </label>
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                         <button
+                          onClick={() => setCustomMessage('TOGETHER WE RISE')}
+                          className="text-xs px-2 py-1 bg-green-50 text-green-800 border border-green-200 rounded hover:bg-green-100"
+                        >
+                          Together We Rise
+                        </button>
+                        <button
+                          onClick={() => setCustomMessage('KWANKWASIYYA IN ACTION')}
+                          className="text-xs px-2 py-1 bg-green-50 text-green-800 border border-green-200 rounded hover:bg-green-100"
+                        >
+                          Kwankwasiyya
+                        </button>
+                        <button
+                          onClick={() => setCustomMessage('COMMUNITY FIRST')}
+                          className="text-xs px-2 py-1 bg-green-50 text-green-800 border border-green-200 rounded hover:bg-green-100"
+                        >
+                          Community First
+                        </button>
+                        <button
+                          onClick={() => setCustomMessage('PROGRESS FOR ALL')}
+                          className="text-xs px-2 py-1 bg-green-50 text-green-800 border border-green-200 rounded hover:bg-green-100"
+                        >
+                          Progress For All
+                        </button>
+                      </div>
+
+                      <label htmlFor="year" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Year
+                      </label>
+                      <input
+                        type="number"
+                        id="year"
+                        value={year}
+                        onChange={(e) => setYear(e.target.value)}
+                        min="2020"
+                        max="2030"
+                        placeholder="2027"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all font-mono"
+                      />
+                    </div>
+                  </>
+                )}
+
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Your Photo (Optional)
@@ -478,6 +539,80 @@ export default function StickerGenerator() {
               </div>
 
               <div className="flex justify-center items-center min-h-[600px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8">
+            {template === 'greenCircular' ? (
+              // NEW: Green Circular Layout
+              <div
+                ref={stickerRef}
+                className={`${templates[template].bg} rounded-2xl shadow-xl flex flex-col items-center justify-center p-8 relative overflow-hidden text-center`}
+                style={{
+                    width: currentSize.width,
+                    height: currentSize.height,
+                    ...(showEffects && {
+                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                    }),
+                  }}
+              >
+                {/* NNPP Logo */}
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 z-10 shadow-lg">
+                  <span className="material-symbols-outlined text-green-800 text-4xl">
+                    security
+                  </span>
+                </div>
+
+                {/* Circular Photo Frame */}
+                <div className="relative w-48 h-48 mb-6 z-10 group">
+                  <div className="absolute inset-0 rounded-full overflow-hidden border-[6px] border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.3)] bg-gray-800">
+                    {supporterPhoto ? (
+                      <img src={supporterPhoto} alt="Supporter" className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-800">
+                        <span className="material-symbols-outlined text-4xl mb-1">add_a_photo</span>
+                        <span className="text-xs uppercase font-bold">Upload Photo</span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Decorative outer ring */}
+                  <div className="absolute -inset-2 border border-yellow-500/30 rounded-full animate-pulse"></div>
+                </div>
+
+                {/* Supporter Name */}
+                <p className="text-white italic text-3xl font-serif font-medium mb-4 z-10 drop-shadow-md">
+                  {supporterName || 'Your Name'}
+                </p>
+
+                {/* Decorative Stars */}
+                <div className="flex gap-3 mb-3 z-10">
+                  <span className="text-yellow-400 text-2xl">★</span>
+                  <span className="text-yellow-400 text-2xl">★</span>
+                  <span className="text-yellow-400 text-2xl">★</span>
+                </div>
+
+                {/* Campaign Slogan */}
+                <p className="text-yellow-400 font-bold text-2xl tracking-wide mb-2 z-10 drop-shadow-md uppercase">
+                  {customMessage || 'TOGETHER WE RISE'}
+                </p>
+
+                {/* Year */}
+                <p className="text-white font-black text-6xl tracking-tighter mb-6 z-10 drop-shadow-lg opacity-90">
+                  {year || '2027'}
+                </p>
+
+                {/* Campaign Text */}
+                <div className="mt-auto px-6 py-2 bg-black/20 backdrop-blur-sm rounded-full border border-white/10 z-10">
+                  <p className="text-white text-sm font-bold tracking-widest uppercase">
+                    NNPP – GAYA / AJINGI / ALBASU
+                  </p>
+                </div>
+
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10" 
+                     style={{
+                        backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                        backgroundSize: '30px 30px'
+                     }}>
+                </div>
+              </div>
+            ) : (
                 <div
                   ref={stickerRef}
                   className={`relative overflow-hidden flex flex-col ${currentTemplate.bg} ${
@@ -617,7 +752,6 @@ export default function StickerGenerator() {
                   </div>
 
                   {/* BOTTOM BANNER - Solid Gradient */}
-                  {/* BOTTOM BANNER - Solid Gradient */}
                   <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 flex items-center justify-center shadow-[0_-5px_20px_rgba(0,0,0,0.3)] z-20 relative border-t-2 border-yellow-200 py-4">
                     <div className="flex items-center gap-3 px-8">
                       <span className="text-black font-black text-xl tracking-wider uppercase text-center whitespace-nowrap drop-shadow-sm">
@@ -627,6 +761,7 @@ export default function StickerGenerator() {
                     </div>
                   </div>
                 </div>
+              )}
               </div>
 
               {/* Action Buttons */}
