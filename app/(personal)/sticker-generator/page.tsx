@@ -27,7 +27,7 @@ export default function StickerGenerator() {
   const [showQR, setShowQR] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState('')
   const [watermark, setWatermark] = useState(true)
-  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhali')
+  const [campaignHashtag, setCampaignHashtag] = useState('#TeamGhaliPanda')
   const [stats, setStats] = useState<StickerStats>({totalGenerated: 0, lastGenerated: null})
   const [showBatchMode, setShowBatchMode] = useState(false)
   const [batchCount, setBatchCount] = useState(1)
@@ -552,63 +552,82 @@ export default function StickerGenerator() {
                     }),
                   }}
               >
-                {/* NNPP Logo */}
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 z-10 shadow-lg">
-                  <span className="material-symbols-outlined text-green-800 text-4xl">
-                    security
-                  </span>
-                </div>
-
-                {/* Circular Photo Frame */}
-                <div className="relative w-48 h-48 mb-6 z-10 group">
-                  <div className="absolute inset-0 rounded-full overflow-hidden border-[6px] border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.3)] bg-gray-800">
-                    {supporterPhoto ? (
-                      <img src={supporterPhoto} alt="Supporter" className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-800">
-                        <span className="material-symbols-outlined text-4xl mb-1">add_a_photo</span>
-                        <span className="text-xs uppercase font-bold">Upload Photo</span>
-                      </div>
-                    )}
+                {/* Content Container - Split Layout */}
+                <div className="flex-1 w-full grid grid-cols-2 gap-4 relative z-10">
+                  
+                  {/* LEFT: Ghali (Primary) */}
+                  <div className="relative flex flex-col justify-end items-center">
+                     <div className="absolute inset-x-0 bottom-0 top-10 z-0">
+                        <img 
+                          src="/ghaliphoto.jpg" 
+                          alt="Hon. Dr. Ghali" 
+                          className="w-full h-full object-cover object-top mask-image-gradient"
+                          style={{
+                             maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
+                             WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)'
+                          }}
+                        />
+                     </div>
                   </div>
-                  {/* Decorative outer ring */}
-                  <div className="absolute -inset-2 border border-yellow-500/30 rounded-full animate-pulse"></div>
+
+                  {/* RIGHT: User (Secondary) & Info */}
+                  <div className="flex flex-col items-center justify-center relative z-10">
+                    {/* NNPP Logo (Small top right) */}
+                    <div className="absolute -top-4 right-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+                      <span className="material-symbols-outlined text-green-800 text-2xl">security</span>
+                    </div>
+
+                    {/* User Photo Frame */}
+                    <div className="relative w-40 h-40 mb-3 group">
+                      <div className="absolute inset-0 rounded-full overflow-hidden border-[4px] border-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.5)] bg-gray-800">
+                        {supporterPhoto ? (
+                          <img src={supporterPhoto} alt="Supporter" className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-800">
+                            <span className="material-symbols-outlined text-3xl mb-1">add_a_photo</span>
+                            <span className="text-[10px] uppercase font-bold">Upload</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                     {/* Supporter Name */}
+                    <div className="text-center mb-2">
+                       <p className="text-yellow-400/80 text-[10px] uppercase font-bold tracking-widest">Proudly Supported By</p>
+                       <p className="text-white italic text-xl font-serif font-medium drop-shadow-md leading-tight">
+                        {supporterName || 'Your Name'}
+                      </p>
+                    </div>
+
+                     {/* Divider */}
+                    <div className="w-16 h-1 bg-yellow-500 rounded-full mb-2"></div>
+
+                    {/* Slogan */}
+                    <p className="text-yellow-400 font-bold text-lg uppercase tracking-wide text-center leading-tight drop-shadow-sm">
+                      {customMessage || 'TOGETHER WE RISE'}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Supporter Name */}
-                <p className="text-white italic text-3xl font-serif font-medium mb-4 z-10 drop-shadow-md">
-                  {supporterName || 'Your Name'}
-                </p>
-
-                {/* Decorative Stars */}
-                <div className="flex gap-3 mb-3 z-10">
-                  <span className="text-yellow-400 text-2xl">★</span>
-                  <span className="text-yellow-400 text-2xl">★</span>
-                  <span className="text-yellow-400 text-2xl">★</span>
-                </div>
-
-                {/* Campaign Slogan */}
-                <p className="text-yellow-400 font-bold text-2xl tracking-wide mb-2 z-10 drop-shadow-md uppercase">
-                  {customMessage || 'TOGETHER WE RISE'}
-                </p>
-
-                {/* Year */}
-                <p className="text-white font-black text-6xl tracking-tighter mb-6 z-10 drop-shadow-lg opacity-90">
-                  {year || '2027'}
-                </p>
-
-                {/* Campaign Text */}
-                <div className="mt-auto px-6 py-2 bg-black/20 backdrop-blur-sm rounded-full border border-white/10 z-10">
-                  <p className="text-white text-sm font-bold tracking-widest uppercase">
-                    NNPP – GAYA / AJINGI / ALBASU
-                  </p>
+                {/* BOTTOM: Global Footer for this template */}
+                <div className="w-full relative z-20 mt-[-20px] pt-10 pb-4 bg-gradient-to-t from-black/90 via-green-900/80 to-transparent">
+                  <h1 className="text-white font-black text-2xl uppercase tracking-wider text-center drop-shadow-lg mb-1">
+                     Hon. Dr. Ghali Tijjani Panda
+                  </h1>
+                   <div className="flex items-center justify-center gap-3">
+                      <span className="text-yellow-400 text-lg shadow-black drop-shadow-lg">★</span>
+                      <p className="text-white text-xs font-bold tracking-widest uppercase">
+                        NNPP – GAYA / AJINGI / ALBASU • {year}
+                      </p>
+                      <span className="text-yellow-400 text-lg shadow-black drop-shadow-lg">★</span>
+                   </div>
                 </div>
 
                 {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10" 
+                <div className="absolute inset-0 opacity-10 pointer-events-none" 
                      style={{
                         backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
-                        backgroundSize: '30px 30px'
+                        backgroundSize: '20px 20px'
                      }}>
                 </div>
               </div>
