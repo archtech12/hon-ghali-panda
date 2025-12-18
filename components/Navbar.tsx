@@ -82,7 +82,7 @@ export function Navbar() {
           className="bg-white hover:bg-red-50 text-red-700 px-4 py-2.5 rounded-lg text-sm font-bold transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center gap-1.5"
           href="/volunteer"
         >
-          <span className="material-symbols-outlined text-lg">volunteer_activism</span>
+          <i className="fa-solid fa-hand-holding-heart text-lg"></i>
           <span>Join Us</span>
         </Link>
         <Link
@@ -100,7 +100,7 @@ export function Navbar() {
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        <span className="material-symbols-outlined text-3xl">{isMenuOpen ? 'close' : 'menu'}</span>
+        <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
       </button>
 
       {/* Mobile Navigation Menu */}
@@ -112,7 +112,7 @@ export function Navbar() {
               href="/"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">home</span>
+              <i className="fa-solid fa-house text-xl w-6 text-center"></i>
               <span>Home</span>
             </Link>
             <Link
@@ -120,7 +120,7 @@ export function Navbar() {
               href="/about"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">person</span>
+              <i className="fa-solid fa-user text-xl w-6 text-center"></i>
               <span>About</span>
             </Link>
             <Link
@@ -128,7 +128,7 @@ export function Navbar() {
               href="/constituency"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">location_city</span>
+              <i className="fa-solid fa-map-location-dot text-xl w-6 text-center"></i>
               <span>Constituency</span>
             </Link>
             <Link
@@ -136,7 +136,7 @@ export function Navbar() {
               href="/projects"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">construction</span>
+              <i className="fa-solid fa-briefcase text-xl w-6 text-center"></i>
               <span>Projects</span>
             </Link>
             <Link
@@ -144,7 +144,7 @@ export function Navbar() {
               href="/legislative"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">gavel</span>
+              <i className="fa-solid fa-gavel text-xl w-6 text-center"></i>
               <span>Legislative Work</span>
             </Link>
             <Link
@@ -152,7 +152,7 @@ export function Navbar() {
               href="/news"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">newspaper</span>
+              <i className="fa-solid fa-newspaper text-xl w-6 text-center"></i>
               <span>News</span>
             </Link>
             <Link
@@ -160,7 +160,7 @@ export function Navbar() {
               href="/sticker-generator"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">style</span>
+              <i className="fa-solid fa-palette text-xl w-6 text-center"></i>
               <span>🎨 Sticker Generator</span>
             </Link>
             <div className="px-4 py-2">
@@ -169,7 +169,7 @@ export function Navbar() {
                 href="/volunteer"
                 onClick={closeMenu}
               >
-                <span className="material-symbols-outlined text-xl">volunteer_activism</span>
+                <i className="fa-solid fa-hand-holding-heart text-xl"></i>
                 <span>Join Us as Volunteer</span>
               </Link>
             </div>
@@ -178,7 +178,7 @@ export function Navbar() {
               href="/contact"
               onClick={closeMenu}
             >
-              <span className="material-symbols-outlined text-xl">mail</span>
+              <i className="fa-solid fa-paper-plane text-xl w-6 text-center"></i>
               <span>Contact</span>
             </Link>
           </nav>
