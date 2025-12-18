@@ -173,7 +173,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/projects/solar-boreholes.jpg',
+    src: '/assets/solar construction.jpg',
     title: 'Solar Borehole Commissioning',
     description:
       'Providing free access to clean water in Ukays, Makyandawa, and Kademi communities provided by Hon. Ghali Panda.',
@@ -182,7 +182,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 2,
     type: 'image',
-    src: '/projects/motorcycles-21.jpg',
+    src: '/assets/motorcycles-21.jpg',
     title: 'Youth Empowerment',
     description: 'Empowering 21 youths with motorcycles to start their own logistics businesses in Gaya.',
     date: 'December 26, 2024',
@@ -190,7 +190,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 3,
     type: 'image',
-    src: '/projects/nursing-scholarship.jpg',
+    src: '/assets/nursing-scholarship.jpg',
     title: 'Nursing Scholarship Award',
     description: 'Presentation of scholarship grants to nursing students to boost healthcare capacity in the constituency.',
     date: 'August 7, 2025',
@@ -198,7 +198,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 4,
     type: 'image',
-    src: '/ghaliphoto.jpg',
+    src: '/assets/ghaliphoto.jpg',
     title: 'Legislative Duty',
     description: 'Hon. Dr. Ghali Panda engaging with colleagues at the National Assembly.',
     date: '2024',
@@ -206,7 +206,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 5,
     type: 'image',
-    src: '/projects/food-palliatives.jpg',
+    src: '/assets/food-palliatives.jpg',
     title: 'Ramadan Relief',
     description: 'Distribution of grains and cash support to vulnerable families during Ramadan.',
     date: 'March 15, 2024',
@@ -214,7 +214,7 @@ export const mediaData: MediaItem[] = [
   {
     id: 6,
     type: 'image',
-    src: '/projects/fertilizer-1800.jpg',
+    src: '/assets/fertilizer-1800.jpg',
     title: 'Agricultural Support',
     description: 'Flagging off the distribution of 1,800 bags of fertilizer to farmers in Albasu.',
     date: 'August 10, 2025',

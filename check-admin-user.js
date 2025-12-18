@@ -1,44 +1,56 @@
 const mongoose = require('mongoose');
-const User = require('./server/models/User');
+const path = require('path');
+const fs = require('fs');
 
-// Load environment variables
-require('dotenv').config();
+// Simple Mongoose User Schema for verification without importing the app's model (to isolate issues)
+const userSchema = new mongoose.Schema({
+  email: String,
+  role: String,
+  password: String
+});
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ghali-dashboard', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
+async function check() {
+  let uri = 'mongodb://localhost:27017/ghali-dashboard'; // Default
 
-const checkAdminUser = async () => {
+  // Try to read .env
   try {
-    // Find admin user
-    const adminUser = await User.findOne({ email: 'admin@ghalipanda.gov.ng' });
-    
-    if (adminUser) {
-      console.log('Admin user found:');
-      console.log('Email:', adminUser.email);
-      console.log('Role:', adminUser.role);
-      console.log('Password hash length:', adminUser.password.length);
-    } else {
-      console.log('Admin user not found');
-      
-      // List all users
-      const allUsers = await User.find({}, 'email role');
-      console.log('All users in database:');
-      allUsers.forEach(user => {
-        console.log(`- ${user.email} (${user.role})`);
-      });
+    const envPath = path.join(__dirname, '.env');
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, 'utf8');
+      const match = envContent.match(/MONGODB_URI=(.+)/);
+      if (match && match[1]) {
+        uri = match[1].trim().replace(/["']/g, ''); // Remove quotes if any
+        console.log('Found URI in .env:', uri);
+      }
     }
-    
-    process.exit(0);
-  } catch (error) {
-    console.error('Error checking admin user:', error);
-    process.exit(1);
+  } catch (e) {
+    console.log('Error reading .env, using default URI');
   }
-};
 
-// Run check after a short delay to ensure DB connection
-setTimeout(checkAdminUser, 2000);
+  console.log('Connecting to:', uri);
+
+  try {
+    await mongoose.connect(uri);
+    console.log('✅ Connected to MongoDB');
+
+    const count = await User.countDocuments();
+    console.log('User count:', count);
+
+    const admin = await User.findOne({ email: 'admin@ghalipanda.gov.ng' });
+    if (admin) {
+      console.log('✅ Admin user found:', admin.email);
+      console.log('Role:', admin.role);
+    } else {
+      console.log('❌ Admin user NOT found');
+    }
+
+  } catch (err) {
+    console.error('❌ Database Error:', err);
+  } finally {
+    await mongoose.disconnect();
+    process.exit();
+  }
+}
+
+check();
