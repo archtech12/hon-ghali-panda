@@ -177,14 +177,14 @@ export default function StickerGenerator() {
             // Fallback to download
             const link = document.createElement('a')
             link.href = image
-            link.download = `kwari-supporter-${template}-${Date.now()}.png`
+            link.download = `ghali-panda-supporter-${template}-${Date.now()}.png`
             link.click()
           }
         } else {
           // Regular download
           const link = document.createElement('a')
           link.href = image
-          link.download = `kwari-${supporterName.replace(/\s+/g, '-')}-${template}-${Date.now()}.png`
+          link.download = `ghali-panda-${supporterName.replace(/\s+/g, '-')}-${template}-${Date.now()}.png`
           link.click()
         }
 
