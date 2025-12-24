@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Image from 'next/image'
 import { projects2025 } from '@/lib/projects'
 import Link from 'next/link'
@@ -10,32 +10,41 @@ import Link from 'next/link'
 // Helper for Category Icons
 const getCategoryIcon = (category: string) => {
   if (category.includes('Water')) return 'water_drop'
-  if (category.includes('Lighting')) return 'lightbulb'
+  if (category.includes('Electricity') || category.includes('Lighting') || category.includes('Infrastructure')) return 'bolt'
   if (category.includes('Education')) return 'school'
-  if (category.includes('Agriculture')) return 'agriculture'
-  if (category.includes('Youth')) return 'diversity_3'
-  if (category.includes('Community')) return 'volunteer_activism'
+  if (category.includes('Agriculture') || category.includes('Food')) return 'agriculture'
+  if (category.includes('Youth') || category.includes('Women') || category.includes('Empowerment')) return 'diversity_3'
+  if (category.includes('Community') || category.includes('Health') || category.includes('Support')) return 'volunteer_activism'
+  if (category.includes('Legislative')) return 'gavel'
+  if (category.includes('Construction')) return 'engineering'
   return 'category'
 }
 
 // Category Colors for Badges (Updated to Red Theme mostly)
 const getCategoryColor = (category: string) => {
   if (category.includes('Water')) return 'bg-blue-100 text-blue-700 border-blue-200'
-  if (category.includes('Lighting')) return 'bg-yellow-100 text-yellow-700 border-yellow-200'
+  if (category.includes('Electricity') || category.includes('Lighting') || category.includes('Infrastructure')) return 'bg-yellow-100 text-yellow-700 border-yellow-200'
   if (category.includes('Education')) return 'bg-indigo-100 text-indigo-700 border-indigo-200'
-  if (category.includes('Agriculture')) return 'bg-red-100 text-red-700 border-red-200' // Changed to Red family for brand
-  if (category.includes('Youth')) return 'bg-pink-100 text-pink-700 border-pink-200'
-  if (category.includes('Community')) return 'bg-orange-100 text-orange-700 border-orange-200'
+  if (category.includes('Agriculture') || category.includes('Food')) return 'bg-green-100 text-green-700 border-green-200'
+  if (category.includes('Youth') || category.includes('Women') || category.includes('Empowerment')) return 'bg-pink-100 text-pink-700 border-pink-200'
+  if (category.includes('Community') || category.includes('Health') || category.includes('Support')) return 'bg-red-100 text-red-700 border-red-200'
+  if (category.includes('Legislative')) return 'bg-purple-100 text-purple-700 border-purple-200'
+  if (category.includes('Construction')) return 'bg-orange-100 text-orange-700 border-orange-200'
   return 'bg-gray-100 text-gray-700 border-gray-200'
 }
 
 // Helper for Share Links
-const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
+// const shareUrl = typeof window !== 'undefined' ? window.location.href : '' // Removed to fix hydration mismatch
 
 export default function ProjectsPage() {
   const [lang, setLang] = useState<'en' | 'ha'>('en')
   const [activeCategory, setActiveCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
+  const [shareUrl, setShareUrl] = useState('') // Hydration-safe share URL
+
+  useEffect(() => {
+    setShareUrl(window.location.href)
+  }, [])
   
   const toggleLang = () => setLang(prev => prev === 'en' ? 'ha' : 'en')
 
@@ -156,17 +165,26 @@ export default function ProjectsPage() {
               >
                 {/* Image Container */}
                 <div className="relative h-64 overflow-hidden bg-gray-100">
-                  {project.photo ? (
-                    <>
-                      <Image
-                        src={project.photo}
-                        alt={project.titleEN}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </>
+                  {project.photos && project.photos.length > 0 ? (
+                    <div className={`grid h-full w-full ${project.photos.length > 1 ? 'grid-rows-2 md:grid-rows-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                      {project.photos.slice(0, 2).map((photo, pIndex) => (
+                        <div key={pIndex} className="relative h-full w-full border-b md:border-b-0 md:border-l first:border-0 border-white/20">
+                           <Image
+                            src={photo}
+                            alt={`${project.titleEN} - Image ${pIndex + 1}`}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          {pIndex === 1 && project.photos.length > 2 && (
+                             <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-bold text-xl">
+                               +{project.photos.length - 2}
+                             </div>
+                          )}
+                        </div>
+                      ))}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center bg-gray-50 group-hover:bg-red-50/50 transition-colors">
                       <span className="material-symbols-outlined text-6xl text-gray-300 mb-2 group-hover:text-red-300 transition-colors">

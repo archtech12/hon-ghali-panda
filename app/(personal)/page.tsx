@@ -1,13 +1,13 @@
 'use client'
 
 import {HomePage} from '@/components/HomePage'
-import {MediaGallery, mediaData} from '@/components/MediaGallery'
+import {MediaGallery} from '@/components/MediaGallery'
 import {ContactSection} from '@/components/ContactSection'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
-import {projects} from '@/lib/data'
-
+import {projects2025} from '@/lib/projects'
 import {news as newsData} from '@/lib/news'
 
 export default function IndexRoute() {
@@ -19,14 +19,24 @@ export default function IndexRoute() {
     excerpt: item.excerpt,
     createdAt: item.publishDate
   })))
-  // const [projects, setProjects] = useState<any[]>([]) // Using imported data directly
+  
   const [loading, setLoading] = useState(false)
-
-  // useEffect removed as we are using static data
 
   const mockData = {
     title: 'Hon. Dr. Ghali Mustapha Tijjani Panda',
   }
+
+  // Transform projects for Media Gallery
+  const projectGalleryItems = projects2025
+    .filter(p => p.photos && p.photos.length > 0)
+    .map(p => ({
+      id: p.id,
+      type: 'image' as const,
+      src: p.photos[0],
+      title: p.titleEN,
+      description: p.desc,
+      date: p.date
+    }))
 
   return (
     <div>
@@ -53,30 +63,41 @@ export default function IndexRoute() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {projects.slice(0, 3).map((project, index) => (
+              {projects2025.slice(0, 3).map((project, index) => (
                 <div
                   key={index}
                   className="group bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-2"
                 >
-                  <div className="h-48 bg-gradient-to-br from-red-500 to-red-700 relative overflow-hidden">
+                  <div className="h-48 relative overflow-hidden bg-gray-200">
+                    {project.photos && project.photos.length > 0 ? (
+                      <Image
+                        src={project.photos[0]}
+                        alt={project.titleEN}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    ) : (
+                       <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700"></div>
+                    )}
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm text-red-700 rounded-full text-xs font-semibold">
-                        {project.category || 'Community Project'}
+                        {project.category}
                       </span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-700 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-700 transition-colors line-clamp-2">
                       {project.titleEN}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{project.shortDesc}</p>
+                    <p className="text-gray-600 mb-4 line-clamp-3">{project.desc}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
-                        {new Date(project.date).getFullYear()}
+                        {project.date}
                       </span>
                       <span className="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
-                        Completed
+                        Active
                       </span>
                     </div>
                   </div>
@@ -208,7 +229,7 @@ export default function IndexRoute() {
         </div>
       </section>
 
-      <MediaGallery items={mediaData} />
+      <MediaGallery items={projectGalleryItems} />
       <ContactSection />
     </div>
   )

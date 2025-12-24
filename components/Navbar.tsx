@@ -15,7 +15,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="flex items-center justify-between whitespace-nowrap bg-red-700 text-white px-4 sm:px-6 md:px-8 lg:px-16 py-3 sm:py-4 shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-red-700/95">
+    <header className="flex items-center justify-between whitespace-nowrap bg-red-700 text-white px-4 sm:px-6 md:px-8 lg:px-16 py-3 sm:py-4 shadow-lg sticky top-0 z-50">
       <div className="flex items-center gap-2 sm:gap-3">
         <div className="size-7 sm:size-8 text-white flex-shrink-0">
           <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

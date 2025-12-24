@@ -2,43 +2,15 @@
 
 import Image from 'next/image'
 
-const galleryItems = [
-  {
-    id: 1,
-    title: 'Solar Borehole Installation',
-    category: 'Water & Sanitation',
-    image: '/ghaliphoto.jpg', // Placeholder
-    description: 'Commissioning of 20 Solar-Powered Boreholes across Gaya, Ajingi, and Albasu. Ensuring clean water access for our communities.'
-  },
-  {
-    id: 2,
-    title: 'Fertilizer Distribution',
-    category: 'Agriculture',
-    image: '/ghaliphoto.jpg', // Placeholder
-    description: 'Distribution of 1,800 bags of fertilizer to support our hardworking farmers for a bumper harvest.'
-  },
-  {
-    id: 3,
-    title: 'Motorcycle Empowerment',
-    category: 'Youth Empowerment',
-    image: '/ghaliphoto.jpg', // Placeholder
-    description: 'Empowering youth with motorcycles to create self-sustaining businesses and improve local transportation.'
-  },
-  {
-    id: 4,
-    title: 'School Construction Projects',
-    category: 'Education',
-    image: '/ghaliphoto.jpg', // Placeholder
-    description: 'Ongoing improved classroom blocks and new primary schools to provide a conducive learning environment.'
-  },
-  {
-    id: 5,
-    title: 'Streetlight Commissioning',
-    category: 'Infrastructure',
-    image: '/ghaliphoto.jpg', // Placeholder
-    description: 'Lighting up our streets for safety and commerce with new solar streetlights in Gaya and environs.'
-  }
-]
+import { projects2025 } from '@/lib/projects'
+
+const galleryItems = projects2025.map(project => ({
+  id: project.id,
+  title: project.titleEN,
+  category: project.category,
+  image: project.photos[0],
+  description: project.desc
+}))
 
 export default function GalleryPage() {
   return (
