@@ -54,11 +54,11 @@ export default function StickerGenerator() {
       icon: '🚀',
     },
     vibrant: {
-      bg: 'bg-gradient-to-br from-pink-900 via-rose-900 to-black',
-      accent: 'bg-gradient-to-r from-white to-yellow-100',
+      bg: 'bg-gradient-to-br from-fuchsia-900 via-purple-900 to-black',
+      accent: 'bg-gradient-to-r from-pink-500 to-orange-400',
       text: 'text-white',
-      name: 'Vibrant Pink',
-      icon: '⚡',
+      name: 'Sunset Vibes',
+      icon: '🌅',
     },
     elegant: {
       bg: 'bg-gradient-to-br from-gray-900 via-slate-900 to-black',
@@ -75,11 +75,11 @@ export default function StickerGenerator() {
       icon: '🌿',
     },
     neon: {
-      bg: 'bg-gradient-to-br from-teal-900 via-emerald-900 to-black',
-      accent: 'bg-gradient-to-r from-lime-300 to-green-400',
-      text: 'text-white',
-      name: 'Neon Green',
-      icon: '💚',
+      bg: 'bg-gradient-to-br from-black via-gray-900 to-slate-900',
+      accent: 'bg-gradient-to-r from-lime-400 to-cyan-400',
+      text: 'text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]',
+      name: 'Cyber Neon',
+      icon: '🦾',
     },
     royal: {
       bg: 'bg-gradient-to-br from-purple-900 via-violet-900 to-black',
@@ -227,6 +227,31 @@ export default function StickerGenerator() {
 
   const currentTemplate = templates[template]
   const currentSize = sizes[size]
+
+  const [previewScale, setPreviewScale] = useState(1)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // Auto-scale logic
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth
+        // Convert rem to px (approx 16px per rem)
+        const stickerWidthRem = parseInt(sizes[size].width.replace('rem', ''))
+        const stickerWidthPx = stickerWidthRem * 16 + 64 // +64 for padding/buffer
+        
+        if (containerWidth < stickerWidthPx) {
+          setPreviewScale(containerWidth / stickerWidthPx)
+        } else {
+          setPreviewScale(1)
+        }
+      }
+    }
+
+    handleResize() // Initial call
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [size])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -538,7 +563,11 @@ export default function StickerGenerator() {
                 </button>
               </div>
 
-              <div className="flex justify-center items-center min-h-[600px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8">
+              <div 
+                ref={containerRef}
+                className="flex justify-center items-start min-h-[400px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 overflow-hidden"
+              >
+               <div style={{ transform: `scale(${previewScale})`, transformOrigin: 'top center', transition: 'transform 0.3s ease-out' }}>
             {template === 'greenCircular' ? (
               // NEW: Green Circular Layout
               <div
@@ -781,6 +810,7 @@ export default function StickerGenerator() {
                   </div>
                 </div>
               )}
+               </div>
               </div>
 
               {/* Action Buttons */}
