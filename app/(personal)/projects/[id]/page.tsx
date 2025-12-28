@@ -5,14 +5,15 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // 1. Generate Metadata for Social Sharing (Server-Side)
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const projectId = parseInt(params.id)
+  const { id } = await params
+  const projectId = parseInt(id)
   const project = projects2025.find(p => p.id === projectId)
 
   if (!project) {
@@ -52,8 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // 2. Render the Project Details Page
-export default function ProjectDetailsPage({ params }: Props) {
-  const projectId = parseInt(params.id)
+export default async function ProjectDetailsPage({ params }: Props) {
+  const { id } = await params
+  const projectId = parseInt(id)
   const project = projects2025.find(p => p.id === projectId)
 
   if (!project) {
